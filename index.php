@@ -2,7 +2,7 @@
 session_start();
 
 // Base de données
-include_once "MVC/db.php";
+include_once "db.php";
 
 // Modèle
 include_once "MVC/modele.php";
