@@ -1,6 +1,7 @@
-*{
-    margin : 0px;
-    padding: 0px;
+* {
+	padding: 0px;
+	margin: 0px;
+    background-color: red;
 }
 
 nav ul {
@@ -33,4 +34,13 @@ nav a:link, nav a:visited{
     display: block;
     text-decoration: none;
     margin-left: 10px;
+}
+
+.banniere {
+	background-color: lightcyan;
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+.banniere h1 {
+	text-align: center;
 }
