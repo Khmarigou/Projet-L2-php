@@ -19,6 +19,7 @@
 	                <a href=".?page=recherche"><li>Recherche</li></a>
 	                <a href=".?page=louer"><li>Louer</li></a>
 	                <a href=".?page=demander"><li>Demander</li></a>
+					<a href=".?page=connexion"><li>Se connecter</li></a>
             	</ul>
         	</nav>
 		</header>
