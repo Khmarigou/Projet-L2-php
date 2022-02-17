@@ -11,8 +11,7 @@
 			<h1>DVD Share</h1>
 			<nav class="menu">
 	            <ul>
-	            	<a href=".?page=home"><li>Acceuil</li></a>
-	                <a href=".?page=recherche"><li>Recherche</li></a>
+	                <a href=".?page=recherche"><li>Explorer</li></a>
 	                <a href=".?page=louer"><li>Louer</li></a>
 	                <a href=".?page=demander"><li>Demander</li></a>
 					<a href=".?page=connexion"><li>Se connecter</li></a>
@@ -25,11 +24,11 @@
 			if (isset($_GET['page'])) {
 				include "PAGES/".$_GET['page'].".php";
 			} else {
-				include "PAGES/home.php";
+				include "PAGES/recherche.php";
 			}
 		?>
 		<footer>
-			
+			Paul le chef
 		</footer>
 	</body>
 </html>
