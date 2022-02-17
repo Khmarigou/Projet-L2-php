@@ -1,0 +1,13 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+.banniere {
+	background-color: lightcyan;
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+.banniere h1 {
+	text-align: center;
+}
