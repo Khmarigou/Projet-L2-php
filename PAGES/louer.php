@@ -1,1 +1,4 @@
-louer.php
+<?php
+posterAnnonce();
+
+?>
