@@ -1,4 +1,4 @@
 <?php
-posterAnnonce();
+    posterAnnonce();
 
 ?>

@@ -1,5 +1,13 @@
 <?php
-if ( isset( $_POST['action']) && $_POST['action'] == 'Ajouter'){
+
+//cree la table
+
+
+
+//ajoute dans la table
+
+
+if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
 
 $surname = $_POST['nom'];
 $name = $_POST['prenom'];
