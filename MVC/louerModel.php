@@ -2,7 +2,26 @@
 
 //cree la table
 
+function cree_table_dvd() {
 
+    global $bdd;
+    $sql = "CREATE TABLE Dvd(
+        id INT NOT NULL AUTO_INCREMENT,
+        titre VARCHAR(50) NOT NULL,
+        categorie INT NOT NULL,
+
+        intrigue VARCHAR(1000) NOT NULL,
+        duree DATE DEFAULT CURRENT_TIME,
+
+        proprio INT NOT NULL,
+
+        CONSTRAINT Pk_Dvd PRIMARY KEY (id),
+        CONSTRAINT Fk_Dvd_Utilisateur UNIQUE (nomUtilisateur) )";
+
+    $result = mysqli_query($bdd, $sql);
+    // il reste les compétences et les niveaux 
+    return $result;
+}
 
 //ajoute dans la table
 
@@ -24,7 +43,7 @@ $bHand = $_POST['revers'];
 
 
 
-$sql = "insert into adherent(surname,name,birthdate,licence_level,gender,mail,ranked,hand,backhand)
+$sql = "insert into Dvd(surname,name,birthdate,licence_level,gender,mail,ranked,hand,backhand)
 values('$surname','$name','$mail',$birth,$sexe,$hand,'$licence','$ranked',$bHandd)";
 mysqli_query($connexion,$sql);
 

@@ -11,7 +11,7 @@ function posterAnnonce(){
             <p><label>Titre du film</label> <input type="text" name="titre"></p><br>
 
             <p><label>Catégorie</label>
-                <select name="licence">
+                <select name="genre">
                     <option value="">--Choisir une option--</option>
                     <option value="0">Action</option>
                     <option value="1">Anime</option>
