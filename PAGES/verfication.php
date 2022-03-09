@@ -9,4 +9,4 @@ $result= $q = $db->query(
 $valide=password_verify($Motdepasse, $result);
 
 
->
+?>
