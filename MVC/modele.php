@@ -53,9 +53,9 @@ if(isset($_POST["register"])){
 	session_start();
 	if(!empty($_POST['username']) AND !empty($_POST['password']) AND !empty($_POST['name']) AND !empty($_POST['surname']))
 	{
-		$db = mysqli_connect("localhost", "root","","l2_info_11");
+		global $c ;
 		$sql = "INSERT INTO `User` (`id`, `nom`, `prenom`, `username`, `password`, `is_admin`) VALUES (NULL,'$_POST[surname]', '$_POST[name]', '$_POST[username]', '$_POST[password]', 0);";
-		$results = mysqli_query($db,$sql);
+		$results = mysqli_query($c,$sql);
 
 		header('Location: ../index.php?page=connexion');
 	}
@@ -68,9 +68,9 @@ if(isset($_POST["register"])){
 
 function afficher_admin()
 {	
-	global $bdd;
+	global $c;
 	$sql = "SELECT * FROM `User`";
-	$results = mysqli_query($bdd,$sql);
+	$results = mysqli_query($c,$sql);
 	$row = mysqli_fetch_assoc($results);
 	echo "<h2>Liste des administrateurs :</h2>";
 	while($row != null) {
@@ -83,10 +83,10 @@ function afficher_admin()
 
 function creer_utilisateur()
 {
-	global $bdd;
+	global $c;
 	if($_POST['pseudo'] !== "" and $_POST['mdp'] !== ""){
 		$sql = "INSERT INTO `User` (`id`, `username`, `password`, `is_admin`) VALUES (NULL, '$_POST[username]', '$_POST[password]', 0);";
-		$results = mysqli_query($bdd,$sql);
+		$results = mysqli_query($c,$sql);
 	}
 	else{
 		echo("champ vide.");
