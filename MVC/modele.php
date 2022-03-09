@@ -93,7 +93,7 @@ function afficher_dvd ($list)
 		echo "<article>";
 		echo "<h2>".$value["titre"]."</h2>";
 		echo "<p><b>Categorie :</b> ".$value["categorie"]."</p>";
-		echo "<p><b>Intrigue : </b>".$value["intrigue"]." min</p>";
+		echo "<p><b>Intrigue : </b>".$value["intrigue"]."</p>";
 		echo "</article>";
 		echo "</section>";
 		}
