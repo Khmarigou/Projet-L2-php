@@ -1,8 +1,7 @@
-@media screen and (max-width: 1024px) {
     * {
         padding: 0px;
         margin: 0px;
-        background-color: blue;
+        background-color: purple;
     }
     
     nav ul {
@@ -38,12 +37,9 @@
     }
     
     .banniere {
-        background-color: lightcyan;
         padding-top: 0.1em;
         padding-bottom: 0.1em;
     }
     .banniere h1 {
         text-align: center;
     }
-    
-}
