@@ -91,10 +91,9 @@ function afficher_dvd ($list)
 		foreach ($list as $key => $value) {
 		echo "<section class=film>";
 		echo "<article>";
-		echo "<h2>".$value["Titre"]."</h2>";
-		echo "<p><b>Realisateur : </b>".$value["Realisateur"]."</p>";
-		echo "<p><b>Annee :</b> ".$value["Annee"]."</p>";
-		echo "<p><b>Duree : </b>".$value["Duree"]." min</p>";
+		echo "<h2>".$value["titre"]."</h2>";
+		echo "<p><b>Categorie :</b> ".$value["categorie"]."</p>";
+		echo "<p><b>Intrigue : </b>".$value["intrigue"]." min</p>";
 		echo "</article>";
 		echo "</section>";
 		}
