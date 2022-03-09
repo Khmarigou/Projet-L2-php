@@ -62,10 +62,23 @@ function creer_utilisateur()
 function recup_dvd ()
 {
 	global $c;
-	$sql = "SELECT * FROM dvd";
+	$sql = "SELECT * FROM Dvdtest";
 	$result = mysqli_query($c, $sql);
     while($row = mysqli_fetch_assoc($result))
 		$list[] = $row;
+	if (!isset($list)) {
+		$list;
+	}
+	return $list;
+}
+function recup_dvd_sql ($sql) {
+	global $c;
+	$result = mysqli_query($c, $sql);
+    while($row = mysqli_fetch_assoc($result))
+		$list[] = $row;
+	if (!isset($list)) {
+		$list;
+	}
 	return $list;
 }
 
@@ -76,11 +89,14 @@ function afficher_dvd ($list)
 		echo "<article><h2>Aucun résultat ne correspond à votre recherche.</h2></article>";
 	} else {
 		foreach ($list as $key => $value) {
-		echo "<article class='background'>";
+		echo "<section class=film>";
+		echo "<article>";
 		echo "<h2>".$value["Titre"]."</h2>";
 		echo "<p><b>Realisateur : </b>".$value["Realisateur"]."</p>";
 		echo "<p><b>Annee :</b> ".$value["Annee"]."</p>";
 		echo "<p><b>Duree : </b>".$value["Duree"]." min</p>";
+		echo "</article>";
+		echo "</section>";
 		}
 	}
 }

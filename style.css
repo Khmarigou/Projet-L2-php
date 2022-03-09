@@ -1,7 +1,6 @@
 * {
 	padding: 0px;
 	margin: 0px;
-    background-color: red;
 }
 
 nav ul {
@@ -41,6 +40,30 @@ nav a:link, nav a:visited{
 	padding-top: 25px;
 	padding-bottom: 25px;
 }
-.banniere h1 {
+.banniere h1, .banniere h2{
 	text-align: center;
+    background-color: lightcyan;
+}
+
+.recherche {
+    background-color: lightgoldenrodyellow;
+    height: 50px;
+}
+.suggestion {
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: lightcyan;
+}
+
+.film {
+    width: 25%;
+    display: inline-block;
+}
+article {
+    margin: 2%;
+    padding: 2%;
+    min-height: 200px;
+    width: 92%;
+    display: inline-table;
+    background-color: lightblue;
 }
