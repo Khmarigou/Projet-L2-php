@@ -18,7 +18,15 @@
 	                <a href=".?page=recherche"><li>Explorer</li></a>
 	                <a href=".?page=louer"><li>Louer</li></a>
 	                <a href=".?page=demander"><li>Demander</li></a>
-					<a href=".?page=connexion"><li>Se connecter</li></a>
+					<?php
+					if(isset($_SESSION["username"])){
+						echo "<a href='index.php?page=admin'><li>Admin</li></a>";
+						echo "<a href='index.php?deconnexion=1'><li>Déconnexion</li></a>";
+					}
+					else{
+						echo "<a href='index.php?page=connexion'><li>Se connecter</li></a>";	
+					}
+					?>
             	</ul>
         	</nav>
 		</header>
@@ -30,7 +38,7 @@
 			}
 		?>
 		<footer>
-			Paul le chef
+			<p>&copy; Praujet</p>
 		</footer>
 	</body>
 </html>

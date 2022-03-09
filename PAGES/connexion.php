@@ -1,8 +1,8 @@
 <section id='connect'>
 <?php
-// if(isset($_SESSION["username"])){
-// 	header('Location: ./index.php?page=admin');
-// }
+if(isset($_SESSION["username"])){
+	header('Location: ./index.php?page=admin');
+}
 ?>
 
 	<form action="../praujet/MVC/modele.php" method="POST">

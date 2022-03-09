@@ -1,15 +1,31 @@
 
 <!-- Gestion connection admin -->
 <?php
+
+// global $bdd;
+// $sql = "CREATE TABLE User(
+//     id INT NOT NULL AUTO_INCREMENT,
+//     nom VARCHAR(50) NOT NULL,
+// 	prenom VARCHAR(50) NOT NULL,
+// 	username VARCHAR(50) NOT NULL,
+// 	password VARCHAR(50) NOT NULL,
+// 	is_admin TINYINT,
+
+//     CONSTRAINT Pk_Dvd PRIMARY KEY (id))";
+ 
+// $result = mysqli_query($bdd, $sql); 
+
+
+
 if(isset($_POST["login"])){
 	session_start();
 	if(!empty($_POST['username']) AND !empty($_POST['password']))
 	{
-		$db = mysqli_connect("localhost", "l2","L2","BTM");
+		$db = mysqli_connect("localhost", "root","","l2_info_11");
 		$username = mysqli_real_escape_string($db,htmlspecialchars($_POST['username'])); 
 		$password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password']));
 		
-		$requete = "SELECT * FROM `users` WHERE `username` = '". $username ."' AND `password` = '". $password ."' ";
+		$requete = "SELECT * FROM `User` WHERE `username` = '". $username ."' AND `password` = '". $password ."' ";
         $exec_requete = mysqli_query($db,$requete);
         $reponse = mysqli_fetch_assoc($exec_requete);
 		
@@ -32,11 +48,29 @@ if(isset($_POST["login"])){
 	}
 }
 
+
+if(isset($_POST["register"])){
+	session_start();
+	if(!empty($_POST['username']) AND !empty($_POST['password']) AND !empty($_POST['name']) AND !empty($_POST['surname']))
+	{
+		$db = mysqli_connect("localhost", "root","","l2_info_11");
+		$sql = "INSERT INTO `User` (`id`, `nom`, `prenom`, `username`, `password`, `is_admin`) VALUES (NULL,'$_POST[surname]', '$_POST[name]', '$_POST[username]', '$_POST[password]', 0);";
+		$results = mysqli_query($db,$sql);
+
+		header('Location: ../index.php?page=connexion');
+	}
+	else
+	{
+		header('Location: ../index.php?page=inscription&error=1');
+	}
+}
+
+
 function afficher_admin()
 {	
-	global $c;
-	$sql = "SELECT * FROM `users`";
-	$results = mysqli_query($c,$sql);
+	global $bdd;
+	$sql = "SELECT * FROM `User`";
+	$results = mysqli_query($bdd,$sql);
 	$row = mysqli_fetch_assoc($results);
 	echo "<h2>Liste des administrateurs :</h2>";
 	while($row != null) {
@@ -49,25 +83,27 @@ function afficher_admin()
 
 function creer_utilisateur()
 {
-	global $c;
-	if($_POST['username'] !== "" and $_POST['password'] !== ""){
-		$sql = "INSERT INTO `users` (`id`, `username`, `password`, `is_admin`) VALUES (NULL, '$_POST[username]', '$_POST[password]', 0);";
-		$results = mysqli_query($c,$sql);
+	global $bdd;
+	if($_POST['pseudo'] !== "" and $_POST['mdp'] !== ""){
+		$sql = "INSERT INTO `User` (`id`, `username`, `password`, `is_admin`) VALUES (NULL, '$_POST[username]', '$_POST[password]', 0);";
+		$results = mysqli_query($bdd,$sql);
 	}
 	else{
 		echo("champ vide.");
 	}
 }
 
-function recup_dvd ()
+/*function recup_dvd ()
 {
-	global $c;
+	global $bdd;
 	$sql = "SELECT * FROM dvd";
-	$result = mysqli_query($c, $sql);
+	$result = mysqli_query($bdd, $sql);
     while($row = mysqli_fetch_assoc($result))
 		$list[] = $row;
 	return $list;
 }
+
+*/
 
 function afficher_dvd ($list)
 {
