@@ -44,5 +44,13 @@
     .banniere h1 {
         text-align: center;
     }
+
+    #connection{
+        padding: 0.5em;
+        margin : 0.5em; 
+        width: auto;
+        height: 2.5em;
+        float: right;
+    }
     
 }
