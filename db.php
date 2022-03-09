@@ -1,5 +1,5 @@
 <?php
-$db = mysqli_connect("localhost", "", "", "");
-mysqli_set_charset($db, "utf8");
+$bdd = mysqli_connect("localhost", "root", "", "l2_info_11");
+mysqli_set_charset($bdd, "utf8");
 
 ?>

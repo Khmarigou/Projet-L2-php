@@ -5,7 +5,7 @@ function posterAnnonce(){
     <article>
 
         <h2>Louer votre DVD</h2>
-        <form method="post" action="louer.php">
+        <form method="POST" action="../PRAUJET/MVC/louerModel.php">
             
             
             <p><label>Titre du film</label> <input type="text" name="titre"></p><br>
@@ -13,16 +13,17 @@ function posterAnnonce(){
             <p><label>Catégorie</label>
                 <select name="genre">
                     <option value="">--Choisir une option--</option>
-                    <option value="0">Action</option>
-                    <option value="1">Anime</option>
-                    <option value="2">Comédies</option>
-                    <option value="3">Documentaires</option>
-                    <option value="4">Drames</option>
-                    <option value="5">Fantastique</option>
-                    <option value="6">Horreur</option>
-                    <option value="7">Musical</option>
-                    <option value="8">Policier</option>
-                    <option value="9">Science-Fiction</option>
+                    <option value="Action">Action</option>
+                    <option value="Anime">Anime</option>
+                    <option value="Comedie">Comédie</option>
+                    <option value="Documentaire">Documentaire</option>
+                    <option value="Drame">Drame</option>
+                    <option value="Fantastique">Fantastique</option>
+                    <option value="Horreur">Horreur</option>
+                    <option value="Musical">Musical</option>
+                    <option value="Policier">Policier</option>
+                    <option value="SF">Science-Fiction</option>
+                    <option value="Autres">Autres</option>
 
                 </select></p><br>
 

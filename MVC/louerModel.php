@@ -2,51 +2,59 @@
 
 //cree la table
 
-function cree_table_dvd() {
 
+function creer_table_dvd(){
     global $bdd;
     $sql = "CREATE TABLE Dvd(
         id INT NOT NULL AUTO_INCREMENT,
         titre VARCHAR(50) NOT NULL,
-        categorie INT NOT NULL,
+        categorie ENUM ('Action','Anime','Comedie','Documentaire','Drame','Fantastique','Horreur','Musical','Policier','SF','Autres') NOT NULL,
 
         intrigue VARCHAR(1000) NOT NULL,
-        duree DATE DEFAULT CURRENT_TIME,
+        duree DATE DEFAULT (CURRENT_DATE),
 
-        proprio INT NOT NULL,
+        CONSTRAINT Pk_Dvd PRIMARY KEY (id) )";
+        
 
-        CONSTRAINT Pk_Dvd PRIMARY KEY (id),
-        CONSTRAINT Fk_Dvd_Utilisateur UNIQUE (nomUtilisateur) )";
+    //var_dump($sql);
 
     $result = mysqli_query($bdd, $sql);
-    // il reste les compétences et les niveaux 
+
+    // proprio INT NOT NULL,
+    //CONSTRAINT Fk_Dvd_Utilisateur UNIQUE (nomUtilisateur) )";
+
     return $result;
 }
+
 
 //ajoute dans la table
 
 
-if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
+    if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
 
-$surname = $_POST['nom'];
-$name = $_POST['prenom'];
-$mail = $_POST['mail'];
+        $bdd = mysqli_connect("localhost", "root", "", "l2_info_11");
 
-$birth = $_POST['birthdate'];
-$sexe = $_POST['genre'];
-$hand = $_POST['main'];
+        $titre = $_POST['titre'];
+        $categorie = $_POST['genre'];
 
-$licence = $_POST['licence'];
-$ranked = $_POST['rank'];
-$bHand = $_POST['revers'];
+        $intrigue = $_POST['resume'];
+        $date = $_POST['location'];
 
+        //$proprietaire = 3;
 
+        //,proprio
+        //,$proprietaire
 
+        //$sql = "INSERT INTO Dvd(titre,categorie,intrigue,duree)
+        //VALUES('$titre','$categorie','$intrigue',$date)";
 
-$sql = "insert into Dvd(surname,name,birthdate,licence_level,gender,mail,ranked,hand,backhand)
-values('$surname','$name','$mail',$birth,$sexe,$hand,'$licence','$ranked',$bHandd)";
-mysqli_query($connexion,$sql);
+        $sql = "INSERT INTO Dvd(titre,categorie,intrigue,duree) VALUES('$titre','$categorie','$intrigue','$date')";
+        var_dump($sql);
 
-}
+        mysqli_query($bdd,$sql);
+        header("Location: ../index.php?page=recherche");
+
+    }
+
 
 ?>
