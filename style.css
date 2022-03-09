@@ -1,8 +1,10 @@
 * {
 	padding: 0px;
 	margin: 0px;
-    background-color: white;
+}
 
+header, footer{
+    background-color : gray;
 }
 
 nav ul {
