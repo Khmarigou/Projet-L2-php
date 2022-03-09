@@ -65,10 +65,13 @@ nav a:link, nav a:visited{
 article {
     margin: 2%;
     padding: 2%;
-    min-height: 200px;
+    height: 400px;
     width: 92%;
     display: inline-table;
     background-color: lightblue;
+}
+.img {
+    max-height: 200px;
 }
 
 

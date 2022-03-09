@@ -9,11 +9,9 @@ function creer_table_dvd(){
         id INT NOT NULL AUTO_INCREMENT,
         titre VARCHAR(50) NOT NULL,
         categorie ENUM ('Action','Anime','Comedie','Documentaire','Drame','Fantastique','Horreur','Musical','Policier','SF','Autres') NOT NULL,
-
         couverture VARCHAR(100) NOT NULL,
         intrigue VARCHAR(1000) NOT NULL,
         duree DATE DEFAULT (CURRENT_DATE),
-
         CONSTRAINT Pk_Dvd PRIMARY KEY (id) )";
         
 
@@ -34,8 +32,8 @@ function creer_table_dvd(){
 
 if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
 
-        $c = mysqli_connect("localhost", "root", "", "l2_info_11");
-        //$c = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
+        //$c = mysqli_connect("localhost", "root", "", "l2_info_11");
+        $c = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
 
     $titre = $_POST['titre'];
     $categorie = $_POST['genre'];
