@@ -5,7 +5,7 @@ function posterAnnonce(){
     <article>
 
         <h2>Louer votre DVD</h2>
-        <form method="POST" action="MVC/louerModel.php">
+        <form method="POST" action="MVC/louerModel.php" enctype="multipart/form-data">
             
             
             <p><label>Titre du film</label> <input type="text" name="titre"></p><br>
@@ -29,7 +29,7 @@ function posterAnnonce(){
 
             <p><label>Résumé</label> <input type="text" name="resume"></p><br>
 
-            <p><label for="file">Fichier</label><input type="file" name="photo"></p><br>
+            <p><label for="file">Fichier</label><input type="file" name="file"></p><br>
 
             <p><label>Durée location</label> <input type="date" name="location"></p><br>
 

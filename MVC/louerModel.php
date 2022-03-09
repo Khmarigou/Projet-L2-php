@@ -30,10 +30,12 @@ function creer_table_dvd(){
 
 //ajoute dans la table
 
+    
 
     if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
 
-        $bdd = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
+        //$c = mysqli_connect("localhost", "root", "", "l2_info_11");
+        $c = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
 
         $titre = $_POST['titre'];
         $categorie = $_POST['genre'];
@@ -51,23 +53,24 @@ function creer_table_dvd(){
         //,$proprietaire
         //$user = $_SESSION["username"];
 
-        $tmpName = $_FILES['photo']['tmp_name'];
-        $name = $_FILES['photo']['name'];
-        $size = $_FILES['photo']['size'];
-        $error = $_FILES['photo']['error'];
+        $tmpName = $_FILES['file']['tmp_name'];
+        $name = $_FILES['file']['name'];
+        $size = $_FILES['file']['size'];
+        $error = $_FILES['file']['error'];
 
-        move_uploaded_file($tmpName, './IMAGES/location/'.$name);
+        move_uploaded_file($tmpName, '../IMAGES/location/'.$name);
 
     
 
         $sql = "INSERT INTO Dvd(titre,categorie,couverture,intrigue,duree)
         VALUES('$titre','$categorie','$name','$intrigue','$date')";
-        var_dump($sql);
 
-        mysqli_query($bdd,$sql);
-        header("Location: ../?page=recherche");
+        mysqli_query($c,$sql);
+
+        header('Location: ../index.php?page=suggestion');
+        
 
     }    
-}
+ 
 
 ?>
