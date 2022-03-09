@@ -1,7 +1,7 @@
 <section id='pageAdmin'>
 	<?php
 	if(isset($_SESSION["username"])){
-		echo "<h2 id='bonjour'>Bonjour " . $_SESSION["username"] .", vous êtes connecté en admin.</h2>";
+		echo "<h2 id='bonjour'>Bonjour " . $_SESSION["username"] .", vous êtes connecté.</h2>";
 		if(count($_POST) != 0){
 			if($_POST['action'] == 'ajouter'){
 				ajouter_admin();
@@ -10,11 +10,11 @@
 				delete_admin();
 			}
 		}
-		afficher_admin();
 		if($_SESSION["is_admin"] == 1){
 			echo '<section id="admin">
-			<article>
-			<h3>Ajout d\'un administrateur</h3>
+			<article>';
+			afficher_admin();
+			echo '<h3>Ajout d\'un administrateur</h3>
 			<form action="index.php?page=admin" method="post">
 			<div class="form">
 				<label for="username">Pseudo </label>
@@ -42,5 +42,5 @@
 	}
 ?>
 	
-<a id= "deco" href='index.php?deconnexion=1'>Déconnexion</a>
+<a id= "deco" href='index.php?page=deconnexion'>Déconnexion</a>
 </section>

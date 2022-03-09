@@ -18,6 +18,6 @@
                 <label><b>Confirmer votre Mot de passe</b></label>
                 <input type="password" placeholder="Confirmer votre mot de passe" name="confirmpassword" required>
 
-                <input type="submit" name='créer mon compte'>
+                <input type="submit" name='register'>
     </form>
 </section>
