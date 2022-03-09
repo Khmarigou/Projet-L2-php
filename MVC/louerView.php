@@ -29,7 +29,7 @@ function posterAnnonce(){
 
             <p><label>Résumé</label> <input type="text" name="resume"></p><br>
 
-            <! label pour mettre une image >
+            <p><label for="file">Fichier</label><input type="file" name="photo"></p><br>
 
             <p><label>Durée location</label> <input type="date" name="location"></p><br>
 

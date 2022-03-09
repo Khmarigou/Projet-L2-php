@@ -10,6 +10,7 @@ function creer_table_dvd(){
         titre VARCHAR(50) NOT NULL,
         categorie ENUM ('Action','Anime','Comedie','Documentaire','Drame','Fantastique','Horreur','Musical','Policier','SF','Autres') NOT NULL,
 
+        couverture VARCHAR(100) NOT NULL,
         intrigue VARCHAR(1000) NOT NULL,
         duree DATE DEFAULT (CURRENT_DATE),
 
@@ -37,18 +38,30 @@ function creer_table_dvd(){
         $titre = $_POST['titre'];
         $categorie = $_POST['genre'];
 
+        //$titre = addslashes($titre);
+        
         $intrigue = $_POST['resume'];
+        //$intrigue = .json_encode($intrigue);
+        //$intrigue = addslashes($intrigue);
+
         $date = $_POST['location'];
 
         //$proprietaire = 3;
-
         //,proprio
         //,$proprietaire
+        //$user = $_SESSION["username"];
 
-        //$sql = "INSERT INTO Dvd(titre,categorie,intrigue,duree)
-        //VALUES('$titre','$categorie','$intrigue',$date)";
+        $tmpName = $_FILES['photo']['tmp_name'];
+        $name = $_FILES['photo']['name'];
+        $size = $_FILES['photo']['size'];
+        $error = $_FILES['photo']['error'];
 
-        $sql = "INSERT INTO Dvd(titre,categorie,intrigue,duree) VALUES('$titre','$categorie','$intrigue','$date')";
+        move_uploaded_file($tmpName, './images/infos/'.$name);
+
+    
+
+        $sql = "INSERT INTO Dvd(titre,categorie,couverture,intrigue,duree)
+        VALUES('$titre','$categorie','$name','$intrigue','$date')";
         var_dump($sql);
 
         mysqli_query($bdd,$sql);
@@ -56,5 +69,13 @@ function creer_table_dvd(){
 
     }
 
+
+        
+    $sql = "insert into infos(title,article,name,userName)
+    values('$title','$article','$name','$user')";
+ 
+
+    
+}
 
 ?>
