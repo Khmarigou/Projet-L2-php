@@ -1,0 +1,56 @@
+@media screen and (max-width: 1024px) {
+    * {
+        padding: 0px;
+        margin: 0px;
+        background-color: purple;
+    }
+    
+    nav ul {
+        display : flex;
+        flex-wrap: nowrap;
+        width : 100%;
+        justify-content: space-around ;
+        list-style: none;
+        border-top: solid white 1px;
+        border-bottom: solid white 1px;
+        color : white;
+        font-weight: bold;
+        font-family :Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 20px;
+    }
+    
+    nav li {
+        list-style-type: none;
+        display: inline-block;
+        border: solid 1px;
+        color:  rgb(255, 255,255);
+        background-color: rgba(48, 48, 48, 0.4);
+        font-size: 0.7em;
+        padding: 0.5em;
+        margin:  0.25em;
+        transition: all 0.5s ease;
+    }
+    
+    nav a:link, nav a:visited{
+        display: block;
+        text-decoration: none;
+        margin-left: 0.5em;
+    }
+    
+    .banniere {
+        padding-top: 0.1em;
+        padding-bottom: 0.1em;
+    }
+    .banniere h1 {
+        text-align: center;
+    }
+
+    #connection{
+        padding: 0.5em;
+        margin : 0.5em; 
+        width: auto;
+        height: 2.5em;
+        float: right;
+    }
+    
+}

@@ -5,7 +5,7 @@ if(isset($_POST["login"])){
 	session_start();
 	if(!empty($_POST['username']) AND !empty($_POST['password']))
 	{
-		$db = mysqli_connect("localhost", "l2","L2","BTM");
+		global $db;
 		$username = mysqli_real_escape_string($db,htmlspecialchars($_POST['username'])); 
 		$password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password']));
 		

@@ -5,12 +5,16 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>DVD Share</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="style_tel.css" />
+
 	</head>
 	<body>
 		<header>
 			<div class="banniere">
+				<a href=".?page=connexion"><img alt="connection" src="IMAGES/CONNECT.svg" id="connection"/></a>
 				<h2>La location de DVD du futur</h2>
 				<h1>DVD Share</h1>
+				
 
 			</div>
 			<nav class="menu">
@@ -18,7 +22,6 @@
 	                <a href=".?page=suggestion"><li>Explorer</li></a>
 	                <a href=".?page=louer"><li>Louer</li></a>
 	                <a href=".?page=demander"><li>Demander</li></a>
-					<a href=".?page=connexion"><li>Se connecter</li></a>
             	</ul>
         	</nav>
 		</header>
