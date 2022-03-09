@@ -52,7 +52,7 @@ function creer_table_dvd(){
         var_dump($sql);
 
         mysqli_query($bdd,$sql);
-        header("Location: ../index.php?page=recherche");
+        header("Location: ../?page=recherche");
 
     }
 
