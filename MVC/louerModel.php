@@ -56,7 +56,7 @@ function creer_table_dvd(){
         $size = $_FILES['photo']['size'];
         $error = $_FILES['photo']['error'];
 
-        move_uploaded_file($tmpName, './images/infos/'.$name);
+        move_uploaded_file($tmpName, './IMAGES/location/'.$name);
 
     
 
@@ -67,15 +67,7 @@ function creer_table_dvd(){
         mysqli_query($bdd,$sql);
         header("Location: ../?page=recherche");
 
-    }
-
-
-        
-    $sql = "insert into infos(title,article,name,userName)
-    values('$title','$article','$name','$user')";
- 
-
-    
+    }    
 }
 
 ?>
