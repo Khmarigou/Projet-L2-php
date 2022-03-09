@@ -128,21 +128,14 @@ function afficher_dvd ($list)
 		echo "<article><h2>Aucun résultat ne correspond à votre recherche.</h2></article>";
 	} else {
 		foreach ($list as $key => $value) {
-		echo "<section class=film>";
-		echo "<article>";
-		echo "<h2>".$value["titre"]."</h2>";
-		if (is_dir('./IMAGES/Locations/'.$value['titre'])) { 
-			$tablofichier =scandir('./IMAGES/Locations/'.$value['titre']);
-			foreach ($tablofichier as  $elmtablofichier ){
-				if ($elmtablofichier != '.' && $elmtablofichier != '..') {
-					echo "<img src='./IMAGES/Locations/" . $value['titre'] . "/". $elmtablofichier . "' alt='img' class='img'/>";	
-				}
-			}
-		}
-		echo "<p><b>Categorie :</b> ".$value["categorie"]."</p>";
-		echo "<p><b>Intrigue : </b>".$value["intrigue"]."</p>";
-		echo "</article>";
-		echo "</section>";
+			echo "<section class=film>";
+			echo "<article>";
+			echo "<h2>".$value["titre"]."</h2>";
+			echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' alt='img' class='img'/>";
+			echo "<p><b>Categorie :</b> ".$value["categorie"]."</p>";
+			echo "<p><b>Intrigue : </b>".$value["intrigue"]."</p>";
+			echo "</article>";
+			echo "</section>";
 		}
 	}
 }
