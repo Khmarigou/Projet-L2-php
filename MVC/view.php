@@ -27,9 +27,6 @@
 						echo "<a href='index.php?page=admin'><li>Mon compte</li></a>";
 						echo "<a href='index.php?page=deconnexion'><li>Déconnexion</li></a>";
 					}
-					else{
-						echo "<a href='index.php?page=connexion'><li>Se connecter</li></a>";	
-					}
 					?>
             	</ul>
         	</nav>

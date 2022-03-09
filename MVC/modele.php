@@ -2,7 +2,7 @@
 <!-- Gestion connection admin -->
 <?php
 
-global $bdd;
+global $c;
 $sql = "CREATE TABLE User(
     id INT NOT NULL AUTO_INCREMENT,
     nom VARCHAR(50) NOT NULL,
@@ -13,7 +13,7 @@ $sql = "CREATE TABLE User(
 
     CONSTRAINT Pk_Dvd PRIMARY KEY (id))";
  
-$result = mysqli_query($bdd, $sql); 
+$result = mysqli_query($c, $sql); 
 
 
 
