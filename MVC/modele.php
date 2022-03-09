@@ -2,18 +2,18 @@
 <!-- Gestion connection admin -->
 <?php
 
-// global $bdd;
-// $sql = "CREATE TABLE User(
-//     id INT NOT NULL AUTO_INCREMENT,
-//     nom VARCHAR(50) NOT NULL,
-// 	prenom VARCHAR(50) NOT NULL,
-// 	username VARCHAR(50) NOT NULL,
-// 	password VARCHAR(50) NOT NULL,
-// 	is_admin TINYINT,
+global $bdd;
+$sql = "CREATE TABLE User(
+    id INT NOT NULL AUTO_INCREMENT,
+    nom VARCHAR(50) NOT NULL,
+	prenom VARCHAR(50) NOT NULL,
+	username VARCHAR(50) NOT NULL,
+	password VARCHAR(50) NOT NULL,
+	is_admin TINYINT,
 
-//     CONSTRAINT Pk_Dvd PRIMARY KEY (id))";
+    CONSTRAINT Pk_Dvd PRIMARY KEY (id))";
  
-// $result = mysqli_query($bdd, $sql); 
+$result = mysqli_query($bdd, $sql); 
 
 
 
