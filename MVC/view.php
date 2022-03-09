@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>DVD Share</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
-		<link rel="stylesheet" media="handheld" type="text/css" title="mobile" href="style_tel.css" />
+		<link rel="stylesheet" type="text/css" href="style_tel.css" />
 
 	</head>
 	<body>
