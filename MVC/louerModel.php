@@ -30,10 +30,12 @@ function creer_table_dvd(){
 
 //ajoute dans la table
 
+    
 
 if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
 
-    $bdd = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
+        //$c = mysqli_connect("localhost", "root", "", "l2_info_11");
+        $c = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
 
     $titre = $_POST['titre'];
     $categorie = $_POST['genre'];
@@ -51,23 +53,22 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
     //,$proprietaire
     //$user = $_SESSION["username"];
 
-    mkdir("../IMAGES/Locations/".$_POST['titre']);
-    $name = basename($_FILES['photo']['name']);
-    $uploaddir = '../IMAGES/Locations/'.$_POST['titre'].'/';
-    $uploadfile1 = $uploaddir . $name;
-    move_uploaded_file($_FILES['photo']['tmp_name'], $uploadfile1);
+        $tmpName = $_FILES['file']['tmp_name'];
+        $name = $_FILES['file']['name'];
+        $size = $_FILES['file']['size'];
+        $error = $_FILES['file']['error'];
 
-    move_uploaded_file($tmpName, './IMAGES/Locations/'.$name);
-
+        move_uploaded_file($tmpName, '../IMAGES/location/'.$name);
 
 
-    $sql = "INSERT INTO Dvd(titre,categorie,couverture,intrigue,duree)
-    VALUES('$titre','$categorie','$name','$intrigue','$date')";
-    var_dump($sql);
+        $sql = "INSERT INTO Dvd(titre,categorie,couverture,intrigue,duree)
+        VALUES('$titre','$categorie','$name','$intrigue','$date')";
 
-    mysqli_query($bdd,$sql);
-    header("Location: ../?page=suggestion");
-}    
+        mysqli_query($c,$sql);
 
+        header('Location: ../index.php?page=suggestion');
+        
+
+    }    
 
 ?>
