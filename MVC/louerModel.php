@@ -31,43 +31,43 @@ function creer_table_dvd(){
 //ajoute dans la table
 
 
-    if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
+if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
 
-        $bdd = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
+    $bdd = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
 
-        $titre = $_POST['titre'];
-        $categorie = $_POST['genre'];
+    $titre = $_POST['titre'];
+    $categorie = $_POST['genre'];
 
-        //$titre = addslashes($titre);
-        
-        $intrigue = $_POST['resume'];
-        //$intrigue = .json_encode($intrigue);
-        //$intrigue = addslashes($intrigue);
-
-        $date = $_POST['location'];
-
-        //$proprietaire = 3;
-        //,proprio
-        //,$proprietaire
-        //$user = $_SESSION["username"];
-
-        $tmpName = $_FILES['photo']['tmp_name'];
-        $name = $_FILES['photo']['name'];
-        $size = $_FILES['photo']['size'];
-        $error = $_FILES['photo']['error'];
-
-        move_uploaded_file($tmpName, './IMAGES/location/'.$name);
-
+    //$titre = addslashes($titre);
     
+    $intrigue = $_POST['resume'];
+    //$intrigue = .json_encode($intrigue);
+    //$intrigue = addslashes($intrigue);
 
-        $sql = "INSERT INTO Dvd(titre,categorie,couverture,intrigue,duree)
-        VALUES('$titre','$categorie','$name','$intrigue','$date')";
-        var_dump($sql);
+    $date = $_POST['location'];
 
-        mysqli_query($bdd,$sql);
-        header("Location: ../?page=recherche");
+    //$proprietaire = 3;
+    //,proprio
+    //,$proprietaire
+    //$user = $_SESSION["username"];
 
-    }    
-}
+    mkdir("../IMAGES/Locations/".$_POST['titre']);
+    $name = basename($_FILES['photo']['name']);
+    $uploaddir = '../IMAGES/Locations/'.$_POST['titre'].'/';
+    $uploadfile1 = $uploaddir . $name;
+    move_uploaded_file($_FILES['photo']['tmp_name'], $uploadfile1);
+
+    move_uploaded_file($tmpName, './IMAGES/Locations/'.$name);
+
+
+
+    $sql = "INSERT INTO Dvd(titre,categorie,couverture,intrigue,duree)
+    VALUES('$titre','$categorie','$name','$intrigue','$date')";
+    var_dump($sql);
+
+    mysqli_query($bdd,$sql);
+    header("Location: ../?page=suggestion");
+}    
+
 
 ?>
