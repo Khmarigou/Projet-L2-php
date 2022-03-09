@@ -131,6 +131,14 @@ function afficher_dvd ($list)
 		echo "<section class=film>";
 		echo "<article>";
 		echo "<h2>".$value["titre"]."</h2>";
+		if (is_dir('./IMAGES/Locations/'.$value['titre'])) { 
+			$tablofichier =scandir('./IMAGES/Locations/'.$value['titre']);
+			foreach ($tablofichier as  $elmtablofichier ){
+				if ($elmtablofichier != '.' && $elmtablofichier != '..') {
+					echo "<img src='./IMAGES/Locations/" . $value['titre'] . "/". $elmtablofichier . "' alt='img' class='img'/>";	
+				}
+			}
+		}
 		echo "<p><b>Categorie :</b> ".$value["categorie"]."</p>";
 		echo "<p><b>Intrigue : </b>".$value["intrigue"]."</p>";
 		echo "</article>";

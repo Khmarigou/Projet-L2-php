@@ -55,9 +55,7 @@ nav a:link, nav a:visited{
     height: 50px;
 }
 .suggestion {
-    padding-left: 50px;
-    padding-right: 50px;
-    background-color: lightcyan;
+    padding: 2%;
 }
 
 .film {
@@ -80,4 +78,11 @@ article {
     width: auto;
     height: 2.5em;
     float: right;
+}
+.img {
+    max-width: 100%;
+}
+
+div.location{
+    margin: 40px;
 }
