@@ -2,18 +2,18 @@
 <!-- Gestion connection admin -->
 <?php
 
-global $c;
-$sql = "CREATE TABLE User(
-    id INT NOT NULL AUTO_INCREMENT,
-    nom VARCHAR(50) NOT NULL,
-	prenom VARCHAR(50) NOT NULL,
-	username VARCHAR(50) NOT NULL,
-	password VARCHAR(50) NOT NULL,
-	is_admin TINYINT,
+// global $c;
+// $sql = "CREATE TABLE User(
+//     id INT NOT NULL AUTO_INCREMENT,
+//     nom VARCHAR(50) NOT NULL,
+// 	prenom VARCHAR(50) NOT NULL,
+// 	username VARCHAR(50) NOT NULL,
+// 	password VARCHAR(50) NOT NULL,
+// 	is_admin TINYINT,
 
-    CONSTRAINT Pk_Dvd PRIMARY KEY (id))";
+//     CONSTRAINT Pk_Dvd PRIMARY KEY (id))";
  
-$result = mysqli_query($c, $sql); 
+// $result = mysqli_query($c, $sql); 
 
 
 
@@ -53,9 +53,9 @@ if(isset($_POST["register"])){
 	session_start();
 	if(!empty($_POST['username']) AND !empty($_POST['password']) AND !empty($_POST['name']) AND !empty($_POST['surname']))
 	{
-		global $c ;
+		$db = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
 		$sql = "INSERT INTO `User` (`id`, `nom`, `prenom`, `username`, `password`, `is_admin`) VALUES (NULL,'$_POST[surname]', '$_POST[name]', '$_POST[username]', '$_POST[password]', 0);";
-		$results = mysqli_query($c,$sql);
+		$results = mysqli_query($db,$sql);
 
 		header('Location: ../index.php?page=connexion');
 	}
