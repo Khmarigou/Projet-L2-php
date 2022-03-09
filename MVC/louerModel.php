@@ -48,7 +48,7 @@ function creer_table_dvd(){
         //$sql = "INSERT INTO Dvd(titre,categorie,intrigue,duree)
         //VALUES('$titre','$categorie','$intrigue',$date)";
 
-        $sql = "INSERT INTO Dvd(titre,categorie,intrigue,duree) VALUES('$titre','$categorie','$intrigue',$date)";
+        $sql = "INSERT INTO Dvd(titre,categorie,intrigue,duree) VALUES('$titre','$categorie','$intrigue','$date')";
         var_dump($sql);
 
         mysqli_query($bdd,$sql);

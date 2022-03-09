@@ -33,7 +33,7 @@ function posterAnnonce(){
 
             <p><label>Durée location</label> <input type="date" name="location"></p><br>
 
-            <p><input type="submit" name="louer" value="Ajouter">
+            <p><input type="submit" name="louer" value="Ajouter"/>
         </form>
     </article>
 
