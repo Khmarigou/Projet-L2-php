@@ -37,10 +37,18 @@ nav a:link, nav a:visited{
 }
 
 .banniere {
-	background-color: lightcyan;
 	padding-top: 25px;
 	padding-bottom: 25px;
+    font-size: 20px;
 }
 .banniere h1 {
 	text-align: center;
+}
+
+#connection{
+    padding: 0.5em;
+    margin : 0.5em; 
+    width: auto;
+    height: 2.5em;
+    float: right;
 }
