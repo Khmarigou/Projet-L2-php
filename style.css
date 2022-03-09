@@ -82,3 +82,10 @@ article {
     height: 2.5em;
     float: right;
 }
+.img {
+    max-width: 100%;
+}
+
+div.location{
+    margin: 40px;
+}
