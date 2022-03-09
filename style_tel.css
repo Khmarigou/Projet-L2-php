@@ -1,3 +1,4 @@
+@media screen and (max-width: 1024px) {
     * {
         padding: 0px;
         margin: 0px;
@@ -43,3 +44,5 @@
     .banniere h1 {
         text-align: center;
     }
+    
+}
