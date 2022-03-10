@@ -139,17 +139,6 @@ function recup_dvd ()
 }
 
 */
-function louer($id){
-	global $c;
-	//$id = $_POST['id'];
-
-	$sql = "UPDATE Dvd SET dispo = 0 WHERE id = $id";
-// var_dump($sql);
-	$result = mysqli_query($c,$sql);
-// var_dump($result);
-	header('Location: ../index.php?page=suggestion');
-	
-}
 
 
 function afficher_dvd ($list)
@@ -168,7 +157,8 @@ function afficher_dvd ($list)
 			if ($value["dispo"]==1){
 				echo "<p id='dispo'><b>• DISPONIBLE</b></p>";
 				$id = $value['id'];
-				echo "<p><input type='submit' name='louer' value='Louer' onclick='louer($id);'></p>";
+				echo "<form method='POST' action='MVC/locationMod.php' enctype='multipart/form-data'>";
+				echo "<p><input type='submit' name='louer' value='$id'/></p></form>";
 			} else {
 				echo "<p id='indispo'><b>• INDISPONIBLE</b></p>";
 			}
