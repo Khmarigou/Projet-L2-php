@@ -55,22 +55,29 @@ nav a:link, nav a:visited{
     height: 50px;
 }
 .suggestion {
-    padding-left: 50px;
-    padding-right: 50px;
-    background-color: lightcyan;
+    padding: 2%;
 }
 
 .film {
     width: 25%;
     display: inline-block;
+    align-items: center;
 }
 article {
     margin: 2%;
     padding: 2%;
-    min-height: 200px;
+    height: 400px;
     width: 92%;
     display: inline-table;
     background-color: lightblue;
+    text-align: center;
+}
+article h2 {
+    font-size: 100%;
+}
+.img {
+    max-height: 50%;
+    max-width: 100%;
 }
 
 
@@ -80,4 +87,8 @@ article {
     width: auto;
     height: 2.5em;
     float: right;
+}
+
+div.location{
+    margin: 40px;
 }
