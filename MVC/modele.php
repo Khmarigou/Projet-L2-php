@@ -121,6 +121,7 @@ function recup_dvd ()
 
 */
 
+
 function afficher_dvd ($list)
 {
 	if ($list == null)
@@ -136,6 +137,7 @@ function afficher_dvd ($list)
 			echo "<p><b>Intrigue : </b>".$value["intrigue"]."</p></br>";
 			if ($value["dispo"]==1){
 				echo "<p id='dispo'><b>• DISPONIBLE</b></p>";
+				echo "<p><input type'submit' name='louer' value='louer' onclick=.$value['dispo']=0;></p>";
 			} else {
 				echo "<p id='indispo'><b>• INDISPONIBLE</b></p>";
 			}
