@@ -156,6 +156,7 @@ function afficher_dvd ($list)
 			echo "</section>";
 		}
 	}
+	
 }
 
 ?>
