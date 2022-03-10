@@ -120,10 +120,17 @@ function recup_dvd ()
 }
 
 */
-// function louer($list){
-// 	global $c;
+function louer($list){
+	global $c;
+	$id = $_POST['id'];
+
+	$sql = "UPDATE Dvd SET dispo = 0 WHERE idhouse = $id";
+// var_dump($sql);
+	$result = mysqli_query($c,$sql);
+// var_dump($result);
+	header('Location: ../index.php?page=suggestion');
 	
-// }
+}
 
 
 function afficher_dvd ($list)
@@ -141,7 +148,7 @@ function afficher_dvd ($list)
 			echo "<p><b>Intrigue : </b>".$value["intrigue"]."</p></br>";
 			if ($value["dispo"]==1){
 				echo "<p id='dispo'><b>• DISPONIBLE</b></p>";
-				echo "<p><input type'submit' name='louer' value='louer'></p>";
+				echo "<p><input type'submit' name='louer' value='louer' onclick='louer();'></p>";
 			} else {
 				echo "<p id='indispo'><b>• INDISPONIBLE</b></p>";
 			}
