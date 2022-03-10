@@ -120,17 +120,17 @@ function recup_dvd ()
 }
 
 */
-function louer($list){
-	global $c;
-	$id = $_POST['id'];
+// function louer($list){
+// 	global $c;
+// 	$id = $_POST['id'];
 
-	$sql = "UPDATE Dvd SET dispo = 0 WHERE idhouse = $id";
-// var_dump($sql);
-	$result = mysqli_query($c,$sql);
-// var_dump($result);
-	header('Location: ../index.php?page=suggestion');
+// 	$sql = "UPDATE Dvd SET dispo = 0 WHERE idhouse = $id";
+// // var_dump($sql);
+// 	$result = mysqli_query($c,$sql);
+// // var_dump($result);
+// 	header('Location: ../index.php?page=suggestion');
 	
-}
+// }
 
 
 function afficher_dvd ($list)
