@@ -1,7 +1,7 @@
-<section id='register'>
+<section class='connect'>
 
 	<form action="../praujet/MVC/modele.php" method="POST">
-                <h2>Connexion</h2>
+                <h2>inscription</h2>
                 
                 <label><b>Prénom</b></label>
                 <input type="text" placeholder="Entrer votre prénom" name="name" required>
