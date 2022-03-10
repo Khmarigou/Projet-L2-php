@@ -143,7 +143,7 @@ function louer(){
 	global $c;
 	$id = $_POST['id'];
 
-	$sql = "UPDATE Dvd SET dispo = 0 WHERE idhouse = $id";
+	$sql = "UPDATE Dvd SET dispo = 0 WHERE id = $id";
 // var_dump($sql);
 	$result = mysqli_query($c,$sql);
 // var_dump($result);
