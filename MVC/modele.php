@@ -130,10 +130,15 @@ function afficher_dvd ($list)
 		foreach ($list as $key => $value) {
 			echo "<section class=film>";
 			echo "<article>";
-			echo "<h2>".$value["titre"]."</h2>";
-			echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' alt='img' class='img'/>";
-			echo "<p><b>Categorie :</b> ".$value["categorie"]."</p>";
-			echo "<p><b>Intrigue : </b>".$value["intrigue"]."</p>";
+			echo "<h2>".$value["titre"]."</h2></br>";
+			echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' alt='img' class='img'/></br>";
+			echo "<p><b>Categorie :</b> ".$value["categorie"]."</p></br>";
+			echo "<p><b>Intrigue : </b>".$value["intrigue"]."</p></br>";
+			if ($value[dispo]==1){
+				echo "<p><b>DISPONIBLE</b></p>";
+			} else {
+				echo "<p><b>INDISPONIBLE</b></p>";
+			}
 			echo "</article>";
 			echo "</section>";
 		}
