@@ -52,5 +52,29 @@
         height: 2.5em;
         float: right;
     }
+
+    .recherche {
+        background-color: lightgoldenrodyellow;
+        height: 50px;
+    }
+
+    .suggestion {
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        background-color: lightcyan;
+    }
+    
+    .film {
+        width: 25%;
+        display: inline-block;
+    }
+    article {
+        margin: 2%;
+        padding: 2%;
+        min-height: 1.5em;
+        width: 92%;
+        display: inline-table;
+        background-color: lightblue;
+    }
     
 }
