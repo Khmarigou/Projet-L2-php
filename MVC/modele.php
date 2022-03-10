@@ -134,7 +134,7 @@ function afficher_dvd ($list)
 			echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' alt='img' class='img'/></br>";
 			echo "<p><b>Categorie :</b> ".$value["categorie"]."</p></br>";
 			echo "<p><b>Intrigue : </b>".$value["intrigue"]."</p></br>";
-			if ($value[dispo]==1){
+			if ($value["dispo"]==1){
 				echo "<p><b>DISPONIBLE</b></p>";
 			} else {
 				echo "<p><b>INDISPONIBLE</b></p>";
