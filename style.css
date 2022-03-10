@@ -63,7 +63,7 @@ nav a:link, nav a:visited{
     display: inline-block;
     align-items: center;
 }
-article {
+.film article {
     margin: 2%;
     padding: 2%;
     height: 400px;
@@ -72,11 +72,11 @@ article {
     background-color: lightblue;
     text-align: center;
 }
-article h2 {
+.film article h2 {
     font-size: 100%;
 }
 .img {
-    max-height: 50%;
+    height: 50%;
     max-width: 100%;
 }
 
