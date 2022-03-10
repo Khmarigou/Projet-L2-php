@@ -139,9 +139,9 @@ function recup_dvd ()
 }
 
 */
-function louer(){
+function louer($id){
 	global $c;
-	$id = $_POST['id'];
+	//$id = $_POST['id'];
 
 	$sql = "UPDATE Dvd SET dispo = 0 WHERE id = $id";
 // var_dump($sql);
@@ -167,7 +167,7 @@ function afficher_dvd ($list)
 			echo "<p><b>Intrigue : </b>".$value["intrigue"]."</p></br>";
 			if ($value["dispo"]==1){
 				echo "<p id='dispo'><b>• DISPONIBLE</b></p>";
-				echo "<p><input type='submit' name='louer' value='Louer' onclick='louer();'></p>";
+				echo "<p><input type='submit' name='louer' value='Louer' onclick='louer($value['id']);'></p>";
 			} else {
 				echo "<p id='indispo'><b>• INDISPONIBLE</b></p>";
 			}
