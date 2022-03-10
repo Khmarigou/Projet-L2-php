@@ -8,7 +8,7 @@ include_once "db.php";
 include_once "MVC/modele.php";
 
 include_once "MVC/louerModel.php";
-//include_once "MVC/locationMod.php";
+include_once "MVC/locationMod.php";
 
 
 // Controleur
