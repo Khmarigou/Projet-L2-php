@@ -139,7 +139,7 @@ function recup_dvd ()
 }
 
 */
-function louer($list){
+function louer(){
 	global $c;
 	$id = $_POST['id'];
 
@@ -167,7 +167,7 @@ function afficher_dvd ($list)
 			echo "<p><b>Intrigue : </b>".$value["intrigue"]."</p></br>";
 			if ($value["dispo"]==1){
 				echo "<p id='dispo'><b>• DISPONIBLE</b></p>";
-				echo "<p><input type='submit' name='louer' value='Louer' onclick='louer($list);'></p>";
+				echo "<p><input type='submit' name='louer' value='Louer' onclick='louer();'></p>";
 			} else {
 				echo "<p id='indispo'><b>• INDISPONIBLE</b></p>";
 			}
