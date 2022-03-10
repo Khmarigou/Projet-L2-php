@@ -1,5 +1,6 @@
 <?php
-	global $c;
+	$c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
+    mysqli_set_charset($c, "utf8");
 
 	$id = $_POST["louer"];
 	$sql = "UPDATE Dvd SET dispo = 0 WHERE id = $id";
