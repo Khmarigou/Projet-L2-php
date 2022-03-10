@@ -135,9 +135,9 @@ function afficher_dvd ($list)
 			echo "<p><b>Categorie :</b> ".$value["categorie"]."</p></br>";
 			echo "<p><b>Intrigue : </b>".$value["intrigue"]."</p></br>";
 			if ($value["dispo"]==1){
-				echo "<p><b>DISPONIBLE</b></p>";
+				echo "<p id='dispo'><b>• DISPONIBLE</b></p>";
 			} else {
-				echo "<p><b>INDISPONIBLE</b></p>";
+				echo "<p id='indispo'><b>• INDISPONIBLE</b></p>";
 			}
 			echo "</article>";
 			echo "</section>";
