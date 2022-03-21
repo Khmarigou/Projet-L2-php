@@ -24,14 +24,15 @@ if(isset($_POST["login"])){
 		$db = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
 		$username = mysqli_real_escape_string($db,htmlspecialchars($_POST['username'])); 
 		$password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password']));
-		$crypt_password=password_hash($password,PASSWORD_DEFAULT);
-		$requete = "SELECT * FROM `User` WHERE `username` = '". $username ."' AND `password` = '". $crypt_password ."' ";
+		var_dump($password);
+		$crypt_password=password_hash($password, PASSWORD_DEFAULT);
+		$correct_password=password_verify($_POST['password'], $crypt_password);
+		var_dump($correct_password);
+		$requete = "SELECT * FROM `User` WHERE `username` = '". $username ."' ";
+		var_dump($requete);
         $exec_requete = mysqli_query($db,$requete);
+		var_dump($exec_requete);
         $reponse = mysqli_fetch_assoc($exec_requete);
-		// $requete = "SELECT * FROM `User` WHERE `username` = '". $username ."' AND `password` = '". $password ."' ";
-        // $exec_requete = mysqli_query($db,$requete);
-        // $reponse = mysqli_fetch_assoc($exec_requete);
-		
 		if(!empty($reponse["username"]))
         {
 			$_SESSION["username"] = $_POST['username'];
@@ -56,15 +57,23 @@ if(isset($_POST["register"])){
 	if(!empty($_POST['username']) AND !empty($_POST['password']) AND !empty($_POST['name']) AND !empty($_POST['surname']))
 	{
 		$db = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
-		$crypt_password=password_hash($_POST["password"], PASSWORD_DEFAULT);
-		$sql = "INSERT INTO `User` (`id`, `nom`, `prenom`, `username`, `password`, `is_admin`) VALUES (NULL,'$_POST[surname]', '$_POST[name]', '$_POST[username]', '$crypt_password', 0);";
-		$results = mysqli_query($db,$sql);
+		$pseudo = "SELECT username FROM `User` WHERE `username` = '". $_POST['username'] ."' ";
+		$pseudo_exist = mysqli_query($db, $pseudo);
+		$row = mysqli_num_rows($pseudo_exist);
+		if($row == 0){
+			$crypt_password=password_hash($_POST["password"], PASSWORD_DEFAULT);
+			$sql = "INSERT INTO `user` (`id`, `nom`, `prenom`, `username`, `password`, `is_admin`) VALUES (NULL,'$_POST[surname]', '$_POST[name]', '$_POST[username]', '$crypt_password', 0);";
+			$results = mysqli_query($db,$sql);
 
-		header('Location: ../index.php?page=connexion');
+			header('Location: ../index.php?page=connexion');
+		}
+		else{
+			header('Location: ../index.php?page=inscription&error=1');	
+		}
 	}
 	else
 	{
-		header('Location: ../index.php?page=inscription&error=1');
+		header('Location: ../index.php?page=inscription&error=2');
 	}
 }
 
