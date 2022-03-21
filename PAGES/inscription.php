@@ -1,6 +1,6 @@
 <section class='connect'>
 
-	<form action="../praujet/MVC/modele.php" method="POST">
+	<form action="../praujet/MODEL/modele.php" method="POST">
                 <h2>inscription</h2>
                 
                 <label><b>Prénom</b></label>
