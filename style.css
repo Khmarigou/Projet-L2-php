@@ -66,7 +66,7 @@ nav a:link, nav a:visited{
 .film article {
     margin: 2%;
     padding: 2%;
-    height: 400px;
+    height: vh;
     width: 92%;
     display: inline-table;
     background-color: lightblue;
@@ -75,11 +75,10 @@ nav a:link, nav a:visited{
 .film article h2 {
     font-size: 100%;
 }
-.img {
+.film article .img {
     height: 50%;
     max-width: 100%;
 }
-
 
 #connection{
     padding: 0.5em;
