@@ -127,9 +127,10 @@ function recup_dvd ()
 	global $c;
 	$sql = "SELECT * FROM Dvd";
 	$result = mysqli_query($c, $sql);
-
-    while($row = mysqli_fetch_assoc($result))
-		$list[] = $row;
+	if ($result) {
+	    while($row = mysqli_fetch_assoc($result))
+			$list[] = $row;
+	}
 	if (!isset($list)) {
 		$list;
 	}
@@ -140,8 +141,10 @@ function recup_dvd_sql ($sql) {
 	global $c;
 	$result = mysqli_query($c, $sql);
 	$list = array();
-    while($row = mysqli_fetch_assoc($result))
-		$list[] = $row;
+	if ($result) {
+	    while($row = mysqli_fetch_assoc($result))
+			$list[] = $row;
+	}
 	if (!isset($list)) {
 		$list;
 	}
