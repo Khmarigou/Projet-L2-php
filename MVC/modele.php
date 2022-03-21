@@ -24,10 +24,13 @@ if(isset($_POST["login"])){
 		$db = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
 		$username = mysqli_real_escape_string($db,htmlspecialchars($_POST['username'])); 
 		$password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password']));
-		
-		$requete = "SELECT * FROM `User` WHERE `username` = '". $username ."' AND `password` = '". $password ."' ";
+		$crypt_password=password_hash($password,PASSWORD_DEFAULT);
+		$requete = "SELECT * FROM `User` WHERE `username` = '". $username ."' AND `password` = '". $crypt_password ."' ";
         $exec_requete = mysqli_query($db,$requete);
         $reponse = mysqli_fetch_assoc($exec_requete);
+		// $requete = "SELECT * FROM `User` WHERE `username` = '". $username ."' AND `password` = '". $password ."' ";
+        // $exec_requete = mysqli_query($db,$requete);
+        // $reponse = mysqli_fetch_assoc($exec_requete);
 		
 		if(!empty($reponse["username"]))
         {
@@ -48,13 +51,13 @@ if(isset($_POST["login"])){
 	}
 }
 
-
 if(isset($_POST["register"])){
 	session_start();
 	if(!empty($_POST['username']) AND !empty($_POST['password']) AND !empty($_POST['name']) AND !empty($_POST['surname']))
 	{
 		$db = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
-		$sql = "INSERT INTO `User` (`id`, `nom`, `prenom`, `username`, `password`, `is_admin`) VALUES (NULL,'$_POST[surname]', '$_POST[name]', '$_POST[username]', '$_POST[password]', 0);";
+		$crypt_password=password_hash($_POST["password"], PASSWORD_DEFAULT);
+		$sql = "INSERT INTO `User` (`id`, `nom`, `prenom`, `username`, `password`, `is_admin`) VALUES (NULL,'$_POST[surname]', '$_POST[name]', '$_POST[username]', '$crypt_password', 0);";
 		$results = mysqli_query($db,$sql);
 
 		header('Location: ../index.php?page=connexion');
@@ -64,6 +67,22 @@ if(isset($_POST["register"])){
 		header('Location: ../index.php?page=inscription&error=1');
 	}
 }
+
+// if(isset($_POST["register"])){
+// 	session_start();
+// 	if(!empty($_POST['username']) AND !empty($_POST['password']) AND !empty($_POST['name']) AND !empty($_POST['surname']))
+// 	{
+// 		$db = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
+// 		$sql = "INSERT INTO `User` (`id`, `nom`, `prenom`, `username`, `password`, `is_admin`) VALUES (NULL,'$_POST[surname]', '$_POST[name]', '$_POST[username]', '$_POST[password]', 0);";
+// 		$results = mysqli_query($db,$sql);
+
+// 		header('Location: ../index.php?page=connexion');
+// 	}
+// 	else
+// 	{
+// 		header('Location: ../index.php?page=inscription&error=1');
+// 	}
+// }
 
 
 function afficher_admin()
@@ -121,6 +140,7 @@ function recup_dvd ()
 
 */
 
+
 function afficher_dvd ($list)
 {
 	if ($list == null)
@@ -130,14 +150,23 @@ function afficher_dvd ($list)
 		foreach ($list as $key => $value) {
 			echo "<section class=film>";
 			echo "<article>";
-			echo "<h2>".$value["titre"]."</h2>";
-			echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' alt='img' class='img'/>";
-			echo "<p><b>Categorie :</b> ".$value["categorie"]."</p>";
-			echo "<p><b>Intrigue : </b>".$value["intrigue"]."</p>";
+			echo "<h2>".$value["titre"]."</h2></br>";
+			echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' alt='img' class='img'/></br>";
+			echo "<p><b>Categorie :</b> ".$value["categorie"]."</p></br>";
+			echo "<p><b>Intrigue : </b>".$value["intrigue"]."</p></br>";
+			if ($value["dispo"]==1){
+				echo "<p id='dispo'><b>• DISPONIBLE</b></p>";
+				$id = $value['id'];
+				echo "<form method='POST' action='MVC/locationMod.php' enctype='multipart/form-data'>";
+				echo "<p><input type='submit' name='louer' value='$id'/></p></form>";
+			} else {
+				echo "<p id='indispo'><b>• INDISPONIBLE</b></p>";
+			}
 			echo "</article>";
 			echo "</section>";
 		}
 	}
+	
 }
 
 ?>

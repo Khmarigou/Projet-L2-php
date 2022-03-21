@@ -88,6 +88,15 @@ nav a:link, nav a:visited{
     float: right;
 }
 
+#dispo{
+    color : green ;
+}
+
+#indispo{
+    color : red ;
+}
+
 div.location{
     margin: 40px;
 }
+

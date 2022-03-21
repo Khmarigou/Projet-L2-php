@@ -6,6 +6,7 @@
 		<title>DVD Share</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<link rel="stylesheet" type="text/css" href="style_tel.css" />
+		<link rel="stylesheet" type="text/css" href="utilisateur.css" />
 
 	</head>
 	<body>

@@ -12,6 +12,7 @@ function creer_table_dvd(){
         couverture VARCHAR(100) NOT NULL,
         intrigue VARCHAR(1000) NOT NULL,
         duree DATE DEFAULT (CURRENT_DATE),
+        dispo BOOLEAN,
         CONSTRAINT Pk_Dvd PRIMARY KEY (id) )";
         
 
@@ -59,8 +60,8 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
         move_uploaded_file($tmpName, '../IMAGES/Locations/'.$name);
 
 
-        $sql = "INSERT INTO Dvd(titre,categorie,couverture,intrigue,duree)
-        VALUES('$titre','$categorie','$name','$intrigue','$date')";
+        $sql = "INSERT INTO Dvd(titre,categorie,couverture,intrigue,duree,dispo)
+        VALUES('$titre','$categorie','$name','$intrigue','$date', 1)";
 
         mysqli_query($c,$sql);
 

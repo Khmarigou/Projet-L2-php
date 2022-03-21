@@ -2,7 +2,10 @@
     * {
         padding: 0px;
         margin: 0px;
-        background-color: purple;
+    }
+
+    header, footer{
+        background-color : gray;
     }
     
     nav ul {
@@ -65,7 +68,7 @@
     }
     
     .film {
-        width: 25%;
+        width: 100%;
         display: inline-block;
     }
     article {
