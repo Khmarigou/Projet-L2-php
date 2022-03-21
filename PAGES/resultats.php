@@ -1,9 +1,9 @@
-<!-- <section class="recherche">
+<section class="recherche">
 	<form action="./?page=resultats" method="POST">
 		<input type="text" placeholder="Titre" name="Titre">
         <input type="submit" name='recherche'  value='Rechercher'>
     </form>
-</section> -->
+</section>
 
 <section class="resultats">
 	<?php
