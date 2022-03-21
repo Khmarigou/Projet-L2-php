@@ -2,7 +2,7 @@
 <!-- Gestion connection admin -->
 <?php
 
-// global $c;
+global $c;
 // $sql = "CREATE TABLE User(
 //     id INT NOT NULL AUTO_INCREMENT,
 //     nom VARCHAR(50) NOT NULL,
@@ -21,12 +21,12 @@ if(isset($_POST["login"])){
 	session_start();
 	if(!empty($_POST['username']) AND !empty($_POST['password']))
 	{
-		$db = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
-		$username = mysqli_real_escape_string($db,htmlspecialchars($_POST['username'])); 
-		$password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password']));
+		//$c = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
+		$username = mysqli_real_escape_string($c,htmlspecialchars($_POST['username'])); 
+		$password = mysqli_real_escape_string($c,htmlspecialchars($_POST['password']));
 		$crypt_password=password_hash($password,PASSWORD_DEFAULT);
 		$requete = "SELECT * FROM `User` WHERE `username` = '". $username ."' AND `password` = '". $crypt_password ."' ";
-        $exec_requete = mysqli_query($db,$requete);
+        $exec_requete = mysqli_query($c,$requete);
         $reponse = mysqli_fetch_assoc($exec_requete);
 		// $requete = "SELECT * FROM `User` WHERE `username` = '". $username ."' AND `password` = '". $password ."' ";
         // $exec_requete = mysqli_query($db,$requete);
@@ -55,10 +55,10 @@ if(isset($_POST["register"])){
 	session_start();
 	if(!empty($_POST['username']) AND !empty($_POST['password']) AND !empty($_POST['name']) AND !empty($_POST['surname']))
 	{
-		$db = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
+		//$db = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
 		$crypt_password=password_hash($_POST["password"], PASSWORD_DEFAULT);
 		$sql = "INSERT INTO `User` (`id`, `nom`, `prenom`, `username`, `password`, `is_admin`) VALUES (NULL,'$_POST[surname]', '$_POST[name]', '$_POST[username]', '$crypt_password', 0);";
-		$results = mysqli_query($db,$sql);
+		$results = mysqli_query($c,$sql);
 
 		header('Location: ../index.php?page=connexion');
 	}
