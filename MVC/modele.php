@@ -127,9 +127,10 @@ function recup_dvd ()
 	return $list;
 }
 
-/*function recup_dvd_sql ($sql) {
+function recup_dvd_sql ($sql) {
 	global $c;
 	$result = mysqli_query($c, $sql);
+	$list = array();
     while($row = mysqli_fetch_assoc($result))
 		$list[] = $row;
 	if (!isset($list)) {
@@ -138,7 +139,7 @@ function recup_dvd ()
 	return $list;
 }
 
-*/
+
 
 
 function afficher_dvd ($list)
