@@ -62,7 +62,7 @@ if(isset($_POST["register"])){
 		$row = mysqli_num_rows($pseudo_exist);
 		if($row == 0){
 			$crypt_password=password_hash($_POST["password"], PASSWORD_DEFAULT);
-			$sql = "INSERT INTO `user` (`id`, `nom`, `prenom`, `username`, `password`, `is_admin`) VALUES (NULL,'$_POST[surname]', '$_POST[name]', '$_POST[username]', '$crypt_password', 0);";
+			$sql = "INSERT INTO `User` (`id`, `nom`, `prenom`, `username`, `password`, `is_admin`) VALUES (NULL,'$_POST[surname]', '$_POST[name]', '$_POST[username]', '$crypt_password', 0);";
 			$results = mysqli_query($db,$sql);
 
 			header('Location: ../index.php?page=connexion');
