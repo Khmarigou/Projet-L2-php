@@ -1,3 +1,3 @@
 <?php
-//$dvd = recup_dvd();
+$dvd = recup_dvd();
 ?>
