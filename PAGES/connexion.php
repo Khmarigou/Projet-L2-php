@@ -6,7 +6,7 @@ if(isset($_SESSION["username"])){
 ?>
 
     <section>
-        <form action="../praujet/MODEL/modele.php" method="POST">
+        <form action="../praujet/MODEL/connexionModel.php" method="POST">
                     <h2>Connexion</h2>
                     
                     <label><b>Nom d'utilisateur</b></label>
