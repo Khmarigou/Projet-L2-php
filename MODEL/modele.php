@@ -21,17 +21,13 @@ if(isset($_POST["login"])){
 	session_start();
 	if(!empty($_POST['username']) AND !empty($_POST['password']))
 	{
-		$db = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
+		$db = mysqli_connect("localhost:3306", "root", "", "l2_info_11");
 		$username = mysqli_real_escape_string($db,htmlspecialchars($_POST['username'])); 
 		$password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password']));
-		var_dump($password);
 		$crypt_password=password_hash($password, PASSWORD_DEFAULT);
 		$correct_password=password_verify($_POST['password'], $crypt_password);
-		var_dump($correct_password);
 		$requete = "SELECT * FROM `User` WHERE `username` = '". $username ."' ";
-		var_dump($requete);
         $exec_requete = mysqli_query($db,$requete);
-		var_dump($exec_requete);
         $reponse = mysqli_fetch_assoc($exec_requete);
 		if(!empty($reponse["username"]))
         {
@@ -56,7 +52,7 @@ if(isset($_POST["register"])){
 	session_start();
 	if(!empty($_POST['username']) AND !empty($_POST['password']) AND !empty($_POST['name']) AND !empty($_POST['surname']))
 	{
-		$db = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
+		$db = mysqli_connect("localhost:3306", "root", "", "l2_info_11");
 		$pseudo = "SELECT username FROM `User` WHERE `username` = '". $_POST['username'] ."' ";
 		$pseudo_exist = mysqli_query($db, $pseudo);
 		$row = mysqli_num_rows($pseudo_exist);
