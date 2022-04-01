@@ -66,10 +66,7 @@ if(!empty($_POST['username']) AND !empty($_POST['password']))
             header('Location: ../index.php?page=connexion&error=1');
         }
     }
-    else
-    {
-        header('Location: ../index.php?page=connexion&error=2');
-    }
+
 
 // if(isset($_POST["register"])){
 // 	session_start();
