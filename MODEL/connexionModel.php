@@ -1,6 +1,5 @@
 <?php
 
-connexion();
 
 function connexion()
 {
