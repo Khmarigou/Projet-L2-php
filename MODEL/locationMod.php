@@ -9,6 +9,6 @@ if(isset($_POST["louer"])){
 //var_dump($sql);
 	$result = mysqli_query($c,$sql);
 //var_dump($result); 
-	header('Location: ../PAGES/location.php');
+	header('Location: ../.?page=location');
 }
 ?>
