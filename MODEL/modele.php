@@ -61,8 +61,6 @@ if(isset($_POST["register"])){
 
 		//$db = mysqli_connect("localhost", "root", "", "l2_info_11");
 		$db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
-		var_dump($db);
-		exit;
 		$pseudo = "SELECT username FROM `User` WHERE `username` = '". $_POST['username'] ."' ";
 		$pseudo_exist = mysqli_query($db, $pseudo);
 		$row = mysqli_num_rows($pseudo_exist);
