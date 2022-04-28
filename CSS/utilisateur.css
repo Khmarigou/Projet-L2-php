@@ -11,6 +11,7 @@
     border: 1px solid #f1f1f1;
     background: #fff;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 10px;
 }
 .connect h1{
     width: 38%;
@@ -30,6 +31,7 @@
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    border-radius: 10px;
 }
 
 /* Set a style for all buttons */
@@ -41,10 +43,12 @@
     border: none;
     cursor: pointer;
     width: 100%;
+    border-radius: 10px;
 }
 .connect input[type=submit]:hover {
     background-color: white;
     color: #53af57;
     border: 1px solid #53af57;
+    
 }
 
