@@ -10,7 +10,7 @@ $sql = "CREATE TABLE User(
 	username VARCHAR(50) NOT NULL,
 	password VARCHAR(50) NOT NULL,
 	is_admin TINYINT,
-	points INT,
+	points INT DEFAULT(0),
 
     CONSTRAINT Pk_Dvd PRIMARY KEY (id))";
  
