@@ -97,7 +97,7 @@ function creer_utilisateur()
 {
 	global $c;
 	if($_POST['pseudo'] !== "" and $_POST['mdp'] !== ""){
-		$sql = "INSERT INTO `User` (`id`, `username`, `password`, `is_admin`, `points`) VALUES (NULL, '$_POST[username]', '$_POST[password]', 0,200);";
+		$sql = "INSERT INTO `User` (`username`, `password`, `is_admin`, `points`) VALUES ('$_POST[username]', '$_POST[password]', 0,200);";
 		$results = mysqli_query($c,$sql);
 	}
 	else{
