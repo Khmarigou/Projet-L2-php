@@ -8,6 +8,6 @@
 	$sql = "UPDATE Dvd SET dispo = 0 WHERE id = $id";
 //var_dump($sql);
 	$result = mysqli_query($c,$sql);
-var_dump($result); exit;
+//var_dump($result); exit;
 	header('Location: ../index.php?page=suggestion');
 ?>
