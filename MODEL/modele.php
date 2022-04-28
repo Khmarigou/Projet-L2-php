@@ -149,7 +149,7 @@ function afficher_dvd ($list)
 				echo "<p id='dispo'><b>• DISPONIBLE</b></p>";
 				$id = $value['id'];
 				if(isset($_SESSION["username"])){
-					echo "<form method='POST' action='modele.php' enctype='multipart/form-data'>";
+					echo "<form method='POST' action='MODEL/modele.php' enctype='multipart/form-data'>";
 					echo "<p><input type='submit' name='louer' value='$id' onclick='louer();'/></p></form>";
 				 } 
 			} else {
