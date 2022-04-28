@@ -2,10 +2,10 @@
 <!-- Gestion connection admin -->
 <?php
 
-/*
-global $c;
+
+$db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 $sql = "CREATE TABLE User(
-    id INT NOT NULL AUTO_INCREMENT,
+    idUser INT NOT NULL AUTO_INCREMENT,
     nom VARCHAR(50) NOT NULL,
 	prenom VARCHAR(50) NOT NULL,
 	username VARCHAR(50) NOT NULL,
@@ -15,8 +15,7 @@ $sql = "CREATE TABLE User(
 
     CONSTRAINT Pk_Dvd PRIMARY KEY (id))";
  
-$result = mysqli_query($c, $sql);
-*/
+$result = mysqli_query($db, $sql);
 
 
 if(isset($_POST["login"])){
@@ -38,7 +37,7 @@ if(isset($_POST["login"])){
 
 		if(!empty($reponse["username"])){
 
-			$_SESSION["id"] = $reponse['id'];
+			$_SESSION["id"] = $reponse['idUser'];
 			$_SESSION["username"] = $_POST['username'];
 			$_SESSION["password"] = $_POST['password'];
 			$_SESSION["is_admin"] = $reponse['is_admin'];
@@ -152,9 +151,11 @@ function afficher_dvd ($list)
 			echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' alt='img' class='img'/></br>";
 			echo "<p><b>Categorie :</b> ".$value["categorie"]."</p></br>";
 			echo "<p><b>Intrigue : </b>".$value["intrigue"]."</p></br>";
+
 			if ($value["dispo"]==1){
 				echo "<p id='dispo'><b>• DISPONIBLE</b></p>";
 				$id = $value['id'];
+
 				if(isset($_SESSION["username"])){
 					echo "<form method='POST' action='MODEL/locationMod.php' enctype='multipart/form-data' value='id'>";
 					echo "<p><input type='submit' name='louer' value='$id'/></p></form>";
@@ -162,6 +163,7 @@ function afficher_dvd ($list)
 			} else {
 				echo "<p id='indispo'><b>• INDISPONIBLE</b></p>";
 			}
+
 			echo "</article>";
 			echo "</section>";
 		}

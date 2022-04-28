@@ -3,28 +3,27 @@
 //cree la table
 
 
-function creer_table_dvd(){
-    global $c;
+//function creer_table_dvd(){
+
+    //global $c;
+    $db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
     $sql = "CREATE TABLE Dvd(
         id INT NOT NULL AUTO_INCREMENT,
+        proprio INT NOT NULL,
         titre VARCHAR(50) NOT NULL,
         categorie ENUM ('Action','Anime','Comedie','Documentaire','Drame','Fantastique','Horreur','Musical','Policier','SF','Autres') NOT NULL,
         couverture VARCHAR(100) NOT NULL,
         intrigue VARCHAR(1000) NOT NULL,
-        duree DATE DEFAULT (CURRENT_DATE),
-        dispo BOOLEAN,
-        CONSTRAINT Pk_Dvd PRIMARY KEY (id) )";
         
-
+        CONSTRAINT Pk_Dvd PRIMARY KEY (id),
+        CONSTRAINT Fk_Dvd_Utilisateur FOREIGN KEY (proprio) REFERENCES User(idUser))";
+        
     //var_dump($sql);
 
-    $result = mysqli_query($c, $sql);
-
-    // proprio INT NOT NULL,
-    //CONSTRAINT Fk_Dvd_Utilisateur UNIQUE (nomUtilisateur) )";
+    $result = mysqli_query($db, $sql);
 
     return $result;
-}
+//}
 
 
 //ajoute dans la table
