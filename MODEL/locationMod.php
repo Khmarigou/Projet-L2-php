@@ -1,7 +1,7 @@
 <?php
 
 //var_dump("coucou");
-if(isset($_POST["login"])){
+if(isset($_POST["louer"])){
 	global $c ;
 
 	$id = $_POST["louer"];
