@@ -162,7 +162,7 @@ function afficher_dvd ($list)
 	
 }
 function louer(){
-	global $c ;
+	//global $c ;
 
 	$id = $_POST["louer"];
 	$sql = "UPDATE Dvd SET dispo = 0 WHERE id = $id";
