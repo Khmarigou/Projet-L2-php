@@ -16,7 +16,7 @@
         intrigue VARCHAR(1000) NOT NULL,
         
         CONSTRAINT Pk_Dvd PRIMARY KEY (id),
-        CONSTRAINT Fk_Dvd_Utilisateur FOREIGN KEY (proprio) REFERENCES User(idUser))";
+        CONSTRAINT Fk_Dvd_User FOREIGN KEY (proprio) REFERENCES User(idUser))";
         
     //var_dump($sql);
 
