@@ -69,6 +69,8 @@ if(isset($_POST["register"])){
 			$crypt_password=password_hash($_POST["password"], PASSWORD_DEFAULT);
 			$sql = "INSERT INTO `User` (`id`, `nom`, `prenom`, `username`, `password`, `is_admin`, `points`) VALUES (NULL,'$_POST[surname]', '$_POST[name]', '$_POST[username]', '$crypt_password', 0, 0);";
 			$results = mysqli_query($db,$sql);
+			var_dump($result);
+			exit;
 			header('Location: ../index.php?page=connexion');
 		}else{
 			header('Location: ../index.php?page=inscription&error=1');	
