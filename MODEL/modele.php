@@ -2,7 +2,7 @@
 <!-- Gestion connection admin -->
 <?php
 
-global $c;
+/*global $c;
 $sql = "CREATE TABLE User(
     id INT NOT NULL AUTO_INCREMENT,
     nom VARCHAR(50) NOT NULL,
@@ -13,7 +13,7 @@ $sql = "CREATE TABLE User(
 
     CONSTRAINT Pk_Dvd PRIMARY KEY (id))";
  
-$result = mysqli_query($c, $sql); 
+$result = mysqli_query($c, $sql); */
 
 
 
@@ -162,7 +162,7 @@ function afficher_dvd ($list)
 	
 }
 function louer(){
-	//global $c ;
+	global $c ;
 
 	$id = $_POST["louer"];
 	$sql = "UPDATE Dvd SET dispo = 0 WHERE id = $id";
