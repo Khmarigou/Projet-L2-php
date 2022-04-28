@@ -10,7 +10,7 @@
     //$db = mysqli_connect("localhost", "root", "", "l2_info_11");
     $sql = "CREATE TABLE Dvd(
         id INT NOT NULL AUTO_INCREMENT,
-        proprio INT NOT NULL,
+        proprio INT,
         titre VARCHAR(50) NOT NULL,
         categorie ENUM ('Action','Anime','Comedie','Documentaire','Drame','Fantastique','Horreur','Musical','Policier','SF','Autres') NOT NULL,
         couverture VARCHAR(100) NOT NULL,
@@ -60,8 +60,8 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
         move_uploaded_file($tmpName, '../IMAGES/Locations/'.$name);
 
 
-        $sql = "INSERT INTO Dvd(titre,categorie,couverture,intrigue,duree,dispo)
-        VALUES('$titre','$categorie','$name','$intrigue','$date', 1)";
+        $sql = "INSERT INTO Dvd(titre,categorie,couverture,intrigue)
+        VALUES('$titre','$categorie','$name','$intrigue')";
 
         mysqli_query($c,$sql);
 
