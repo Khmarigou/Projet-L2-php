@@ -150,7 +150,7 @@ function afficher_dvd ($list)
 				$id = $value['id'];
 				if(isset($_SESSION["username"])){
 					echo "<form method='POST' action='MODEL/locationMod.php' enctype='multipart/form-data' value='id'>";
-					echo "<p><input type='submit' value='louer'/></p></form>";
+					echo "<p><input type='submit' value='$id'/></p></form>";
 				 } 
 			} else {
 				echo "<p id='indispo'><b>• INDISPONIBLE</b></p>";
