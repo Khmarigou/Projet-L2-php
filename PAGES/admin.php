@@ -6,13 +6,13 @@
 		echo "<h2 id='bonjour'>Bonjour " . $_SESSION["username"] .", vous êtes connecté.</h2>";
 		
 		
-		echo "<p>";
-		echo $p = getPoints($_SESSION['id']);
-		echo "<br>";
-		echo $p = ajoutePoints($_SESSION['id'],100);
-		echo "<br>";
-		echo $p = getPoints($_SESSION['id']);
-		echo "</p>";
+		// echo "<p>";
+		// echo $p = getPoints($_SESSION['id']);
+		// echo "<br>";
+		// echo $p = ajoutePoints($_SESSION['id'],100);
+		// echo "<br>";
+		// echo $p = getPoints($_SESSION['id']);
+		// echo "</p>";
 
 		if(count($_POST) != 0){
 			if($_POST['action'] == 'ajouter'){
