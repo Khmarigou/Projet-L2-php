@@ -14,18 +14,14 @@ $sql = "CREATE TABLE Reservation(
     $result = mysqli_query($db, $sql);
 
 
-function reserve(){
-    global $c ;
+// function reserve(){
+//     global $c ;
     $id = $_POST["louer"];
-    $sql = "SELECT * FROM Dvd WHERE id = $id";
+    $sql = "SELECT * FROM Dvd WHERE id = $id";    
+    $result = mysqli_query($db, $sql);
     while($row = mysqli_fetch_assoc($result)){
 		$list[] = $row;
     }
     afficher_dvd($list);
-    echo "<article>";
-
 }
 ?>
-
-
-}
