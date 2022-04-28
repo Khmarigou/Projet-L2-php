@@ -19,7 +19,7 @@ function reserve(){
     $id = $_POST["louer"];
     $sql = "SELECT * FROM Dvd WHERE id = $id";
     while($row = mysqli_fetch_assoc($result)){
-		$list[] = $row
+		$list[] = $row;
     }
     afficher_dvd($list);
     echo "<article>";
