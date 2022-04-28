@@ -3,6 +3,7 @@
 //var_dump("coucou");
 if(isset($_POST["louer"])){
 	global $c ;
+	var_dump($c); exit;
 
 	$id = $_POST["louer"];
 	$sql = "UPDATE Dvd SET dispo = 0 WHERE id = $id";
