@@ -6,8 +6,8 @@
 //function creer_table_dvd(){
 
     //global $c;
-    //$db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
-    $db = mysqli_connect("localhost", "root", "", "l2_info_11");
+    $db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
+    //$db = mysqli_connect("localhost", "root", "", "l2_info_11");
     $sql = "CREATE TABLE Dvd(
         id INT NOT NULL AUTO_INCREMENT,
         proprio INT NOT NULL,

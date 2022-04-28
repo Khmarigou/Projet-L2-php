@@ -2,18 +2,18 @@
 <!-- Gestion connection admin -->
 <?php
 
-$db = mysqli_connect("localhost", "root", "", "l2_info_11");
-//$db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
+//$db = mysqli_connect("localhost", "root", "", "l2_info_11");
+$db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 $sql = "CREATE TABLE User(
     idUser INT NOT NULL AUTO_INCREMENT,
     nom VARCHAR(50) NOT NULL,
 	prenom VARCHAR(50) NOT NULL,
 	username VARCHAR(50) NOT NULL,
-	password VARCHAR(50) NOT NULL,
+	password VARCHAR(500) NOT NULL,
 	is_admin TINYINT,
 	points INT DEFAULT(0),
 
-    CONSTRAINT Pk_Dvd PRIMARY KEY (id))";
+    CONSTRAINT Pk_User PRIMARY KEY (idUser))";
  
 $result = mysqli_query($db, $sql);
 
@@ -23,8 +23,8 @@ if(isset($_POST["login"])){
 	
 	if(!empty($_POST['username']) AND !empty($_POST['password'])){
 
-		$db = mysqli_connect("localhost", "root", "", "l2_info_11");
-		//$db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
+		//$db = mysqli_connect("localhost", "root", "", "l2_info_11");
+		$db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 		$username = mysqli_real_escape_string($db,htmlspecialchars($_POST['username'])); 
 		$password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password']));
 
@@ -58,8 +58,8 @@ if(isset($_POST["register"])){
 	session_start();
 	if(!empty($_POST['username']) AND !empty($_POST['password']) AND !empty($_POST['name']) AND !empty($_POST['surname'])){
 
-		$db = mysqli_connect("localhost", "root", "", "l2_info_11");
-		//$db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
+		//$db = mysqli_connect("localhost", "root", "", "l2_info_11");
+		$db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 		$pseudo = "SELECT username FROM `User` WHERE `username` = '". $_POST['username'] ."' ";
 		$pseudo_exist = mysqli_query($db, $pseudo);
 		$row = mysqli_num_rows($pseudo_exist);
