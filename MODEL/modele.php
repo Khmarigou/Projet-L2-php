@@ -2,6 +2,7 @@
 <!-- Gestion connection admin -->
 <?php
 
+/*
 global $c;
 $sql = "CREATE TABLE User(
     id INT NOT NULL AUTO_INCREMENT,
@@ -15,7 +16,7 @@ $sql = "CREATE TABLE User(
     CONSTRAINT Pk_Dvd PRIMARY KEY (id))";
  
 $result = mysqli_query($c, $sql);
-
+*/
 
 
 if(isset($_POST["login"])){
