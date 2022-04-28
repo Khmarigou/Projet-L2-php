@@ -9,5 +9,5 @@
 //var_dump($sql);
 	$result = mysqli_query($c,$sql);
 //var_dump($result); exit;
-	header('Location: index.php?page=suggestion');
+	header('Location: ../index.php?page=suggestion');
 ?>
