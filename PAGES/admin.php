@@ -1,7 +1,19 @@
 <section id='pageAdmin'>
+
 	<?php
+
 	if(isset($_SESSION["username"])){
 		echo "<h2 id='bonjour'>Bonjour " . $_SESSION["username"] .", vous êtes connecté.</h2>";
+		
+		
+		echo "<p>";
+		echo $p = getPoints($_SESSION['id']);
+		echo "<br>";
+		echo $p = ajoutePoints($_SESSION['id'],100);
+		echo "<br>";
+		echo $p = getPoints($_SESSION['id']);
+		echo "</p>";
+
 		if(count($_POST) != 0){
 			if($_POST['action'] == 'ajouter'){
 				ajouter_admin();
@@ -9,7 +21,10 @@
 			elseif($_POST['action'] == 'supprimer'){
 				delete_admin();
 			}
+
 		}
+
+
 		if($_SESSION["is_admin"] == 1){
 			echo '<section id="admin">
 			<article>';
