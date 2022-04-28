@@ -149,8 +149,8 @@ function afficher_dvd ($list)
 				echo "<p id='dispo'><b>• DISPONIBLE</b></p>";
 				$id = $value['id'];
 				if(isset($_SESSION["username"])){
-					echo "<form method='POST' action='louer()' enctype='multipart/form-data'>";
-					echo "<p><input type='submit' name='louer' value='$id'/></p></form>";
+					echo "<form method='POST' action='MODEL/modele.php' enctype='multipart/form-data'>";
+					echo "<p><input type='submit' name='louer' value='$id' onclick='louer();'/></p></form>";
 				 } 
 			} else {
 				echo "<p id='indispo'><b>• INDISPONIBLE</b></p>";
@@ -166,7 +166,7 @@ function louer(){
 
 	$id = $_POST["louer"];
 	$sql = "UPDATE Dvd SET dispo = 0 WHERE id = $id";
-var_dump($sql);
+//var_dump($sql);
 	$result = mysqli_query($c,$sql);
 //var_dump($result); exit;
 	header('Location: ../index.php?page=suggestion');
