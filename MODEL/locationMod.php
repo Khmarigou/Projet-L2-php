@@ -1,4 +1,7 @@
 <?php
+
+var_dump("coucou");
+
 function louer(){
 	global $c ;
 
