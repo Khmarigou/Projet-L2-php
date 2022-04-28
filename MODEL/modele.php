@@ -23,8 +23,8 @@ if(isset($_POST["login"])){
 	
 	if(!empty($_POST['username']) AND !empty($_POST['password'])){
 
-		//$db = mysqli_connect("localhost", "root", "", "l2_info_11");
-		$db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
+		$db = mysqli_connect("localhost", "root", "", "l2_info_11");
+		//$db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 		$username = mysqli_real_escape_string($db,htmlspecialchars($_POST['username'])); 
 		$password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password']));
 
@@ -58,15 +58,15 @@ if(isset($_POST["register"])){
 	session_start();
 	if(!empty($_POST['username']) AND !empty($_POST['password']) AND !empty($_POST['name']) AND !empty($_POST['surname'])){
 
-		//$db = mysqli_connect("localhost", "root", "", "l2_info_11");
-		$db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
+		$db = mysqli_connect("localhost", "root", "", "l2_info_11");
+		//$db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 		$pseudo = "SELECT username FROM `User` WHERE `username` = '". $_POST['username'] ."' ";
 		$pseudo_exist = mysqli_query($db, $pseudo);
 		$row = mysqli_num_rows($pseudo_exist);
 
 		if($row == 0){
 			$crypt_password=password_hash($_POST["password"], PASSWORD_DEFAULT);
-			$sql = "INSERT INTO `User` (`nom`, `prenom`, `username`, `password`, `is_admin`,`points`) VALUES ('$_POST[surname]', '$_POST[name]', '$_POST[username]', '$crypt_password', 0, 200);";
+			$sql = "INSERT INTO `User` (`id`, `nom`, `prenom`, `username`, `password`, `is_admin`) VALUES (NULL,'$_POST[surname]', '$_POST[name]', '$_POST[username]', '$crypt_password', 0);";
 			$results = mysqli_query($db,$sql);
 			header('Location: ../index.php?page=connexion');
 		}else{
@@ -97,7 +97,7 @@ function creer_utilisateur()
 {
 	global $c;
 	if($_POST['pseudo'] !== "" and $_POST['mdp'] !== ""){
-		$sql = "INSERT INTO `User` (`username`, `password`, `is_admin`, `points`) VALUES ('$_POST[username]', '$_POST[password]', 0,200);";
+		$sql = "INSERT INTO `User` (`id`, `username`, `password`, `is_admin`) VALUES (NULL, '$_POST[username]', '$_POST[password]', 0);";
 		$results = mysqli_query($c,$sql);
 	}
 	else{
