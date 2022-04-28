@@ -5,7 +5,7 @@ function posterAnnonce(){
     <article>
 
         <h2>Louer votre DVD</h2>
-        <form method="POST" action="MVC/louerModel.php" enctype="multipart/form-data">
+        <form method="POST" action="MODEL/louerModel.php" enctype="multipart/form-data">
             
             
             <p><label>Titre du film</label> <input type="text" name="titre"></p><br>
