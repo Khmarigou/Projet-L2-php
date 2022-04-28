@@ -151,6 +151,8 @@ function afficher_dvd ($list)
 			echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' alt='img' class='img'/></br>";
 			echo "<p><b>Categorie :</b> ".$value["categorie"]."</p></br>";
 			echo "<p><b>Intrigue : </b>".$value["intrigue"]."</p></br>";
+			$id = $value['id'];
+
 			if(isset($_SESSION["username"])){
 				echo "<form method='POST' action='MODEL/reservation.php' enctype='multipart/form-data' value='id'>";
 				echo "<p><input type='submit' name='louer' value='$id'/></p></form>";
