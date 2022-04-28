@@ -8,10 +8,23 @@ $sql = "CREATE TABLE Reservation(
     idLocataire INT NOT NULL,
     dateDebut DATE,
     dateFin DATE,
-
     CONSTRAINT Fk_Reservation_Dvd FOREIGN KEY (idDvd) REFERENCES Dvd(id),
     CONSTRAINT Fk_Reservation_User FOREIGN KEY (idLocataire) REFERENCES User(idUser))";
     
     $result = mysqli_query($db, $sql);
 
+
+function reserve(){
+    global $c ;
+    $sql = "SELECT * FROM Dvd WHERE id = $_POST['louer']";
+    while($row = mysqli_fetch_assoc($result)){
+		$list[] = $row
+    }
+    afficher_dvd($list);
+    echo "<article>";
+
+}
 ?>
+
+
+}
