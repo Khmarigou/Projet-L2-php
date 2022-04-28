@@ -1,8 +1,7 @@
 <?php
 
-var_dump("coucou");
+//var_dump("coucou");
 
-function louer(){
 	global $c ;
 
 	$id = $_POST["louer"];
@@ -11,5 +10,4 @@ function louer(){
 	$result = mysqli_query($c,$sql);
 var_dump($result); exit;
 	header('Location: ../index.php?page=suggestion');
-}
 ?>
