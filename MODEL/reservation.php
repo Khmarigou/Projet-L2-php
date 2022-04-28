@@ -23,5 +23,5 @@ $sql = "CREATE TABLE Reservation(
 		$list[] = $row;
     }
     afficher_dvd($list);
-}
+//}
 ?>
