@@ -16,7 +16,8 @@ $sql = "CREATE TABLE Reservation(
 
 function reserve(){
     global $c ;
-    $sql = "SELECT * FROM Dvd WHERE id = $_POST['louer']";
+    $id = $_POST["louer"];
+    $sql = "SELECT * FROM Dvd WHERE id = $id";
     while($row = mysqli_fetch_assoc($result)){
 		$list[] = $row
     }
