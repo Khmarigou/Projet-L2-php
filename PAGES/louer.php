@@ -1,5 +1,5 @@
 <?php
-    creer_table_dvd();
+   //creer_table_dvd();
     if(isset($_SESSION["username"])){
        posterAnnonce();
     }else{
