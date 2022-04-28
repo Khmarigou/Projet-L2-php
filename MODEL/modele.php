@@ -151,18 +151,10 @@ function afficher_dvd ($list)
 			echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' alt='img' class='img'/></br>";
 			echo "<p><b>Categorie :</b> ".$value["categorie"]."</p></br>";
 			echo "<p><b>Intrigue : </b>".$value["intrigue"]."</p></br>";
-
-			if ($value["dispo"]==1){
-				echo "<p id='dispo'><b>• DISPONIBLE</b></p>";
-				$id = $value['id'];
-
-				if(isset($_SESSION["username"])){
-					echo "<form method='POST' action='MODEL/reservation.php' enctype='multipart/form-data' value='id'>";
-					echo "<p><input type='submit' name='louer' value='$id'/></p></form>";
-				} 
-			} else {
-				echo "<p id='indispo'><b>• INDISPONIBLE</b></p>";
-			}
+			if(isset($_SESSION["username"])){
+				echo "<form method='POST' action='MODEL/reservation.php' enctype='multipart/form-data' value='id'>";
+				echo "<p><input type='submit' name='louer' value='$id'/></p></form>";
+			} 
 
 			echo "</article>";
 			echo "</section>";
