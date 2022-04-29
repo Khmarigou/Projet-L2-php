@@ -14,7 +14,7 @@
 	</head>
 	<body>
 
-		<!-- Page Loader 
+		<!-- Page Loader  
 		<div id="loader-wrapper">
         <div id="loader"></div>
 
