@@ -69,7 +69,6 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
     $sql = "INSERT INTO Dvd(titre,categorie,couverture,intrigue)
     VALUES('$titre','$categorie','$name','$intrigue')";
     var_dump($sql);
-    exit;
 
     mysqli_query($c,$sql);
 
