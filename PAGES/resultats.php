@@ -25,7 +25,8 @@
 <section class="resultats">
 	<?php
 	$titre = $_POST['Titre'];
-	$sql = "SELECT * FROM dvd WHERE titre LIKE '%$titre%'";
+	$categorie = "AND categorie = '".$_POST['Categorie']."'";
+	$sql = "SELECT * FROM dvd WHERE titre LIKE '%$titre%' ".$categorie;
 	$dvd = recup_dvd_sql ($sql);
 	afficher_dvd($dvd);
 	?>

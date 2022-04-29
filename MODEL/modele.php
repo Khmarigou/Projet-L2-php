@@ -75,7 +75,6 @@ if(isset($_POST["register"])){
 	}else{
 		header('Location: ../index.php?page=inscription&error=2');
 	}
-	
 }
 
 function afficher_admin()
@@ -138,7 +137,7 @@ function recup_dvd ()
 			$list[] = $row;
 	}
 	if (!isset($list)) {
-		$list;
+		$list = array();
 	}
 	return $list;
 }
@@ -198,11 +197,10 @@ function afficher_dvd ($list)
 			echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' alt='img' class='img'/></br>";
 			echo "<p><b>Categorie :</b> ".$value["categorie"]."</p></br>";
 			echo "<p><b>Intrigue : </b>".$value["intrigue"]."</p></br>";
-			$id = $value['id'];
 
 			if(isset($_SESSION["username"])){
-				echo "<form method='POST' action='MODEL/reservation.php' enctype='multipart/form-data' value='id'>";
-				echo "<p><input type='submit' name='louer' value='$id'/></p></form>";
+				echo "<form method='POST' action='PAGES/reservation.php' enctype='multipart/form-data' value='id'>";
+				echo "<p><input type='submit' name='louer' value='Reserver'/></p></form>";
 			} 
 
 			echo "</article>";
