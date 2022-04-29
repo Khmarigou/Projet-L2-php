@@ -35,17 +35,10 @@
 <section class="resultats">
 	<?php
 	$titre = $_POST['Titre'];
-	var_dump($_POST['Categorie']);
-	exit;
-	if($_POST['Categorie'] == "Catégorie"){
-		
-		$categorie = "";
-	}
-	else{
-		$categorie = "AND categorie = '".$_POST['Categorie']."'";
-	}
-	
+	$categorie = "AND categorie = '".$_POST['Categorie']."'";	
 	$sql = "SELECT * FROM Dvd WHERE titre LIKE '%$titre%' ".$categorie;
+	var_dump($sql);
+	exit;
 	$dvd = recup_dvd_sql ($sql);
 	afficher_dvd($dvd);
 	?>
