@@ -6,7 +6,8 @@
 //function creer_table_dvd(){
 
     //global $c;
-    $db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
+    $db = mysqli_connect("localhost", "l2", "L2", "l2_info_11");
+    //$db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
     //$db = mysqli_connect("localhost", "root", "", "l2_info_11");
     $sql = "CREATE TABLE Dvd(
         id INT NOT NULL AUTO_INCREMENT,
@@ -33,8 +34,9 @@
 
 if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
 
-        //$c = mysqli_connect("localhost", "root", "", "l2_info_11");
-        $c = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
+    //$c = mysqli_connect("localhost", "l2", "L2", "l2_info_11");
+    //$c = mysqli_connect("localhost", "root", "", "l2_info_11");
+    $c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 
     $titre = $_POST['titre'];
     $categorie = $_POST['genre'];
@@ -52,6 +54,8 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
     //,$proprietaire
     //$user = $_SESSION["username"];
 
+        
+
         $tmpName = $_FILES['file']['tmp_name'];
         $name = $_FILES['file']['name'];
         $size = $_FILES['file']['size'];
@@ -59,9 +63,13 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
 
         move_uploaded_file($tmpName, '../IMAGES/Locations/'.$name);
 
+        $idProprio = $_SESSION["id"];
+        var_dump($idProprio);
 
-        $sql = "INSERT INTO Dvd(titre,categorie,couverture,intrigue)
-        VALUES('$titre','$categorie','$name','$intrigue')";
+
+        $sql = "INSERT INTO Dvd(proprio,titre,categorie,couverture,intrigue)
+        VALUES('$idProprio','$titre','$categorie','$name','$intrigue')";
+        var_dump($sql);
 
         mysqli_query($c,$sql);
 

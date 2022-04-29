@@ -31,8 +31,6 @@ function posterAnnonce(){
 
             <p><label for="file">Fichier</label><input type="file" name="file"></p><br>
 
-            <p><label>Durée location</label> <input type="date" name="location"></p><br>
-
             <p><input type="submit" name="louer" value="Ajouter"/></p>
         </form>
     </article>

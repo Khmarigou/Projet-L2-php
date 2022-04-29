@@ -2,8 +2,8 @@
 <!-- Gestion connection admin -->
 <?php
 
-//$db = mysqli_connect("localhost", "root", "", "l2_info_11");
-$db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
+//$c = mysqli_connect("localhost", "root", "", "l2_info_11");
+$c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 $sql = "CREATE TABLE User(
     idUser INT NOT NULL AUTO_INCREMENT,
     nom VARCHAR(50) NOT NULL,
@@ -15,7 +15,7 @@ $sql = "CREATE TABLE User(
 
     CONSTRAINT Pk_User PRIMARY KEY (idUser))";
  
-$result = mysqli_query($db, $sql);
+$result = mysqli_query($c, $sql);
 
 
 if(isset($_POST["login"])){
@@ -23,16 +23,16 @@ if(isset($_POST["login"])){
 	
 	if(!empty($_POST['username']) AND !empty($_POST['password'])){
 
-		//$db = mysqli_connect("localhost", "root", "", "l2_info_11");
-		$db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
-		$username = mysqli_real_escape_string($db,htmlspecialchars($_POST['username'])); 
-		$password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password']));
+		//$c = mysqli_connect("localhost", "root", "", "l2_info_11");
+		$c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
+		$username = mysqli_real_escape_string($c,htmlspecialchars($_POST['username'])); 
+		$password = mysqli_real_escape_string($c,htmlspecialchars($_POST['password']));
 
 		$crypt_password=password_hash($password, PASSWORD_DEFAULT);
 		$correct_password=password_verify($_POST['password'], $crypt_password);
 
 		$requete = "SELECT * FROM `User` WHERE `username` = '". $username ."' ";
-        $exec_requete = mysqli_query($db,$requete);
+        $exec_requete = mysqli_query($c,$requete);
         $reponse = mysqli_fetch_assoc($exec_requete);
 
 		if(!empty($reponse["username"])){
@@ -58,16 +58,16 @@ if(isset($_POST["register"])){
 	session_start();
 	if(!empty($_POST['username']) AND !empty($_POST['password']) AND !empty($_POST['name']) AND !empty($_POST['surname'])){
 
-		//$db = mysqli_connect("localhost", "root", "", "l2_info_11");
-		$db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
+		//$c = mysqli_connect("localhost", "root", "", "l2_info_11");
+		$c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 		$pseudo = "SELECT username FROM `User` WHERE `username` = '". $_POST['username'] ."' ";
-		$pseudo_exist = mysqli_query($db, $pseudo);
+		$pseudo_exist = mysqli_query($c, $pseudo);
 		$row = mysqli_num_rows($pseudo_exist);
 
 		if($row == 0){
 			$crypt_password=password_hash($_POST["password"], PASSWORD_DEFAULT);
 			$sql = "INSERT INTO `User` (`idUser`, `nom`, `prenom`, `username`, `password`, `is_admin`) VALUES (NULL,'$_POST[surname]', '$_POST[name]', '$_POST[username]', '$crypt_password', 0);";
-			$results = mysqli_query($db,$sql);
+			$results = mysqli_query($c,$sql);
 			header('Location: ../index.php?page=connexion');
 		}else{
 			header('Location: ../index.php?page=inscription&error=1');	
