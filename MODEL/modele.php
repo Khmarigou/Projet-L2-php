@@ -181,6 +181,10 @@ function afficher_dvd ($list)
 						$id = $value["id"];
 						echo "<a href='index.php?page=reservation&id=$id'>Réserver</a>";
 					} 
+					if(($_SESSION["is_admin"]==1)){
+						$id = $value["id"];
+						echo "<a href='index.php?page=suppression&id=$id'>Supprimer</a>";
+					} 
                     echo '<span>9,906 likes</span>';
                 echo '</div>';
             echo '</div>';
@@ -205,7 +209,13 @@ function afficher_dvd ($list)
 			if(isset($_SESSION["username"])){
 				echo "<form method='POST' action='PAGES/reservation.php' enctype='multipart/form-data' value='id'>";
 				echo "<p><input type='submit' name='louer' value='Reserver'/></p></form>";
+
 			} 
+			if(isset($_SESSION["isAdmin"]==1)){
+						$id = $value["id"];
+						echo "<input type="button" value="Supprimer">";
+						echo "<a href='index.php?page=supression&id=$id'>Supression</a>";
+					} 
 
 			echo "</article>";
 			echo "</section>";
