@@ -6,7 +6,7 @@ $sql= "DELETE FROM 'Reservation' WHERE idDvd=$id";
 $sql2= "DELETE FROM 'Dvd' WHERE idDvd=$id";
 $result = mysqli_query($db,$sql);
 $result2 = mysqli_query($db,$sql2);
-header('Location: ../index.php?page=suggestion');
+header('Location: ../praujet/index.php?page=suggestion');
 
 /*if(isset($_POST["location"])){
     $deb = $_POST['debut'];
