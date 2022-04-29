@@ -166,7 +166,7 @@ function afficher_dvd ($list)
 	} else {
 		echo '<div class="row tm-mb-90 tm-gallery">';
 		foreach ($list as $key => $value) {
-        	echo '<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5" style"border: solid 3px yellow;">';
+        	echo '<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">';
                 echo '<figure class="effect-ming tm-video-item">';
 		
                    	echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' class='img-fluid'>";
