@@ -52,6 +52,8 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
     //,$proprietaire
     //$user = $_SESSION["username"];
 
+        $idProprio = $_SESSION["id"];
+
         $tmpName = $_FILES['file']['tmp_name'];
         $name = $_FILES['file']['name'];
         $size = $_FILES['file']['size'];
@@ -60,8 +62,8 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
         move_uploaded_file($tmpName, '../IMAGES/Locations/'.$name);
 
 
-        $sql = "INSERT INTO Dvd(titre,categorie,couverture,intrigue)
-        VALUES('$titre','$categorie','$name','$intrigue')";
+        $sql = "INSERT INTO Dvd(proprio,titre,categorie,couverture,intrigue)
+        VALUES('$idProprio','$titre','$categorie','$name','$intrigue')";
 
         mysqli_query($c,$sql);
 
