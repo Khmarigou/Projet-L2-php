@@ -10,7 +10,7 @@ function posterAnnonce(){
             
             <p><label>Titre du film</label> <input type="text" name="titre"></p><br>
 
-            <p><label>Catégorie</label>
+            <p><label>Catégorie</label><br>
                 <select name="genre">
                     <option value="">--Choisir une option--</option>
                     <option value="Action">Action</option>
@@ -27,7 +27,8 @@ function posterAnnonce(){
 
                 </select></p><br>
 
-            <p><label>Résumé</label> <textarea id="resume" name="resume" rows="5" cols="33"> </textarea></p><br>
+            <p><label>Résumé</label><br>
+            <textarea id="resume" name="resume" rows="5" cols="33"> </textarea></p><br>
 
             <p><label for="file">Fichier</label><input type="file" name="file"></p><br>
 
