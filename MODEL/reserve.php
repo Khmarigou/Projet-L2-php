@@ -11,5 +11,4 @@ if(isset($_POST["location"])){
         var_dump($sql);var_dump($result);
     }
     
-}
 ?>
