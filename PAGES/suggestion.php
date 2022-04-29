@@ -11,6 +11,16 @@
 				}
 			?>
             <input class="form-control tm-search-input" aria-label="Search" id='Titre' type='text' placeholder='Titre' name='Titre'>
+			<select name='Categorie' id='Categorie'>
+        <option value=''>Catégorie</option>
+        <?php
+            $sql = "SELECT DISTINCT categorie FROM dvd";
+            $listeCategorie = recup_dvd_sql($sql);
+            foreach ($listeCategorie as $key => $value) {
+                echo "<option value='".$value["categorie"]."'> ".$value["categorie"]." </option>";
+            }
+        ?>
+        </select>
             <button class="btn btn-outline-success tm-search-btn" type="submit" class="autocomplete">
                 <i class="fas fa-search"></i>
             </button>
