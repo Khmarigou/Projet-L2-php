@@ -105,7 +105,7 @@ function creer_admin()
 	global $c;
 	$username = $_POST['username'];
 	if($username !== ""){
-		$sql = "UPDATE user SET is_admin = 1 WHERE username = '$username'";
+		$sql = "UPDATE User SET is_admin = 1 WHERE username = '$username'";
 		$results = mysqli_query($c,$sql);
 	}
 	else{
