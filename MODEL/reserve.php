@@ -1,9 +1,9 @@
 
 <?php
-session_start();
 
 $db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 if(isset($_POST["location"])){
+    session_start();
     $deb = $_POST['debut'];
     $fin = $_POST['fin'];
     $idDvd = $_POST['idDvd'];
