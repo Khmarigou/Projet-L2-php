@@ -165,8 +165,33 @@ function afficher_dvd ($list)
 	{
 		echo "<article><h2>Aucun résultat ne correspond à votre recherche.</h2></article>";
 	} else {
+		echo '<div class="row tm-mb-90 tm-gallery">';
 		foreach ($list as $key => $value) {
-			echo "<section class=film>";
+        	echo '<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">';
+                echo '<figure class="effect-ming tm-video-item">';
+                   echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' class='img-fluid'>";
+                   echo '<figcaption class="d-flex align-items-center justify-content-center">';
+                       echo '<h2>'.$value["titre"].'</h2>';
+                        echo '<a href="photo-detail.html">View more</a>';
+                    echo '</figcaption>';                 
+                echo '</figure>';
+                echo '<div class="d-flex justify-content-between tm-text-gray">';
+                    echo '<span class="tm-text-gray-light">Disponible</span>';
+                    echo '<span>9,906 likes</span>';
+                echo '</div>';
+            echo '</div>';
+		}
+		echo '</div>'; 
+	}
+	
+}
+
+?>
+
+
+
+<!--
+		echo "<section class=film>";
 			echo "<article>";
 			echo "<h2>".$value["titre"]."</h2></br>";
 			echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' alt='img' class='img'/></br>";
@@ -180,9 +205,5 @@ function afficher_dvd ($list)
 
 			echo "</article>";
 			echo "</section>";
-		}
-	}
-	
-}
 
-?>
+		-->
