@@ -10,7 +10,7 @@ if(isset($_POST["location"])){
         var_dump($deb); var_dump($fin);
         var_dump($sql);var_dump($result);
     }
-    header('Location: ../index.php');
+    header('Location: ../index.php?page=suggestion');
     
     
 ?>
