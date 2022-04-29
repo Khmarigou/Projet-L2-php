@@ -137,7 +137,7 @@ function recup_dvd ()
 			$list[] = $row;
 	}
 	if (!isset($list)) {
-		$list;
+		$list = array();
 	}
 	return $list;
 }
