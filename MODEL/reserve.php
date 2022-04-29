@@ -6,6 +6,7 @@ if(isset($_POST["location"])){
     $fin = $_POST['fin'];
     $sql = "INSERT INTO Reservation (idDvd, idLocataire, dateDebut, dateFin) VALUES (1,2,'$deb','$fin')";
     $result = mysqli_query($db, $sql);
+    var_dump($deb); var_dump($fin);
     var_dump($sql);var_dump($result);
 }
 ?>
