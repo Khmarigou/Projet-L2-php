@@ -13,15 +13,14 @@ $sql = "CREATE TABLE Reservation(
     CONSTRAINT Fk_Reservation_User FOREIGN KEY (idLocataire) REFERENCES User(idUser))";
     
     $result = mysqli_query($db, $sql);
-    reserve();
 
-    function reserve(){
+if(isset($_POST["louer"])){
         echo "<form method='POST' action='MODEL/reservation.php' enctype='multipart/form-data' value='id'>";
         echo "<label>Date de début : </label>";
         echo "<input type='date'/>";
 		echo "<p><input type='submit' name='louer' value='Reserver'/></p></form>";
-   }
 
+}
     $sql = "INSERT INTO Reservation (idDvd, idLocataire, dateDebut, dateFin) VALUES "
 
 ?>
