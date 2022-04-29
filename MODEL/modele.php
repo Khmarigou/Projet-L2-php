@@ -168,7 +168,7 @@ function afficher_dvd ($list)
 		foreach ($list as $key => $value) {
         	echo '<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">';
                 echo '<figure class="effect-ming tm-video-item">';
-                   echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' class='img-fluid'>";
+                   echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' class='img-fluid' height='150px' >";
                    echo '<figcaption class="d-flex align-items-center justify-content-center">';
                        echo '<h2>'.$value["titre"].' </br><p><b>Categorie :</b> '.$value["categorie"].'</p><br><br><br></h2>';
 					   
