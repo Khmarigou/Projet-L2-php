@@ -8,7 +8,7 @@ include_once "db.php";
 include_once "MODEL/modele.php";
 
 include_once "MODEL/louerModel.php";
-include_once "MODEL/locationMod.php";
+include_once "MODEL/reserve.php";
 include_once "MODEL/points.php";
 include_once "MODEL/reservation.php";
 
