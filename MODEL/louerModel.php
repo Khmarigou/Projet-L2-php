@@ -66,8 +66,7 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
     $sql = "INSERT INTO Dvd(proprio,titre,categorie,couverture,intrigue)
     VALUES($idProprio,'$titre','$categorie','$name','$intrigue')";
     mysqli_query($c,$sql);
-    ajoutePoints ($idProprio, 1);
-    
+    ajoutePointsLocation ($idProprio);
 
 
     header('Location: ../index.php?page=suggestion');
