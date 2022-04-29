@@ -33,7 +33,7 @@
 //ajoute dans la table
 
     
-$id = $_SESSION;
+global $id = $_SESSION;
 var_dump($id);
 
 if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
