@@ -2,7 +2,7 @@
 function posterAnnonce(){
 ?>
 
-    <article>
+    <article class="connect">
 
         <h2>Louer votre DVD</h2>
         <form method="POST" action="MODEL/louerModel.php" enctype="multipart/form-data">
