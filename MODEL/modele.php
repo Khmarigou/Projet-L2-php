@@ -188,6 +188,20 @@ function afficher_dvd ($list)
 	}
 	
 }
+function afficher_film ($film){
+	if ($film == null)
+	{
+		echo "<article><h2>Erreur.</h2></article>";
+	} else {
+		foreach ($film as $key => $value) {
+			echo "<div class ='row tm-mb-90 tm-gallery'>
+			<img src ='./IMAGES/Locations/".$value["couverture"]."' class='img-fluid'>
+			<article> Titre : ".$value["titre"]." </article>
+			<article> Intrigue ; ".$value["intrigue"]." </article>
+			";
+		}
+	}
+}
 
 ?>
 
