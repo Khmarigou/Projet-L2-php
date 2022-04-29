@@ -166,7 +166,7 @@ function afficher_dvd ($list)
 	} else {
 		echo '<div class="row tm-mb-90 tm-gallery">';
 		foreach ($list as $key => $value) {
-        	echo '<div class="col-xl-6 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">';
+        	echo '<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">';
                 echo '<figure class="effect-ming tm-video-item">';
 		
                    	echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' class='img-fluid'>";
@@ -180,10 +180,6 @@ function afficher_dvd ($list)
 					if(isset($_SESSION["username"])){
 						$id = $value["id"];
 						echo "<a href='index.php?page=reservation&id=$id'>Réserver</a>";
-					} 
-					if(($_SESSION["is_admin"]==1)){
-						$id = $value["id"];
-						echo "<a href='index.php?page=suppression&id=$id'>Supprimer</a>";
 					} 
                     echo '<span>9,906 likes</span>';
                 echo '</div>';
@@ -209,13 +205,7 @@ function afficher_dvd ($list)
 			if(isset($_SESSION["username"])){
 				echo "<form method='POST' action='PAGES/reservation.php' enctype='multipart/form-data' value='id'>";
 				echo "<p><input type='submit' name='louer' value='Reserver'/></p></form>";
-
 			} 
-			if(isset($_SESSION["isAdmin"]==1)){
-						$id = $value["id"];
-						echo "<input type="button" value="Supprimer">";
-						echo "<a href='index.php?page=supression&id=$id'>Supression</a>";
-					} 
 
 			echo "</article>";
 			echo "</section>";
