@@ -1,7 +1,7 @@
 <?php
 
 
-
+include_once "points.php";
 //cree la table
 
 //function creer_table_dvd(){
@@ -65,12 +65,14 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
 
     $sql = "INSERT INTO Dvd(proprio,titre,categorie,couverture,intrigue)
     VALUES($idProprio,'$titre','$categorie','$name','$intrigue')";
-
     mysqli_query($c,$sql);
+    ajoutePoints ($idProprio, 1);
+    
+
 
     header('Location: ../index.php?page=suggestion');
         
 
-}    
+}
 
 ?>
