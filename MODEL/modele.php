@@ -174,7 +174,7 @@ function afficher_dvd ($list)
 			echo "<p><b>Intrigue : </b>".$value["intrigue"]."</p></br>";
 
 			if(isset($_SESSION["username"])){
-				echo "<form method='POST' action='MODEL/reservation.php' enctype='multipart/form-data' value='id'>";
+				echo "<form method='POST' action='PAGES/reservation.php' enctype='multipart/form-data' value='id'>";
 				echo "<p><input type='submit' name='louer' value='Reserver'/></p></form>";
 			} 
 
