@@ -93,6 +93,28 @@ function afficher_admin()
 	}
 }
 
+function supprimer_utilisateur(){
+	
+	global $c;
+	$username = $_POST['username'];
+	$sql= "DELETE FROM `User` WHERE `username` = '$username'";
+	mysqli_query($c,$sql);
+}
+
+function creer_admin()
+{
+	global $c;
+	if($_POST['pseudo'] !== "" and $_POST['mdp'] !== ""){
+		$password = mysqli_real_escape_string($c,htmlspecialchars($_POST['mdp']));
+		$crypt_password=password_hash($password, PASSWORD_DEFAULT);
+		$sql = "INSERT INTO `user` (`nom`, `prenom`, `username`, `password`, `is_admin`) VALUES ('','','$_POST[pseudo]', '$crypt_password', 1);";
+		$results = mysqli_query($c,$sql);
+	}
+	else{
+		echo("champ vide.");
+	}
+}
+
 function creer_utilisateur()
 {
 	global $c;
