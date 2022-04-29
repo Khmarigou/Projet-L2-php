@@ -183,7 +183,6 @@ function afficher_dvd ($list)
 					} 
 					if($_SESSION["is_admin"]==1){
 						$id = $value["id"];
-						var_dump($id);exit;
 						echo "<a href='index.php?page=supression&id=$id'>Supprimer</a>";
 					} 
                     echo '<span>9,906 likes</span>';

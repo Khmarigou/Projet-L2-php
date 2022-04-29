@@ -2,7 +2,6 @@
 
 $db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 $id=$_GET['$id'];
-var_dump($id);exit;
 $sql= "DELETE FROM 'Reservation' WHERE idDvd=$id";
 $sql2= "DELETE FROM 'Dvd' WHERE idDvd=$id";
 $result = mysqli_query($db,$sql);
