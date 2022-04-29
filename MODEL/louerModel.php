@@ -35,7 +35,6 @@ session_start();
 
     
 $id = $_SESSION;
-var_dump($id);
 
 if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
 
@@ -71,8 +70,6 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
     VALUES($idProprio,'$titre','$categorie','$name','$intrigue')";
 
     mysqli_query($c,$sql);
-    var_dump($sql);
-    exit;
 
     header('Location: ../index.php?page=suggestion');
         
