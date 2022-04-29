@@ -7,9 +7,9 @@
 
     //global $c;
     //$c = mysqli_connect("localhost", "l2", "L2", "l2_info_11");
-    //$c = mysqli_connect("localhost", "root", "", "l2_info_11");
+    $c = mysqli_connect("localhost", "root", "", "l2_info_11");
 
-    $c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
+    //$c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
     
     $sql = "CREATE TABLE Dvd(
         id INT NOT NULL AUTO_INCREMENT,
@@ -37,8 +37,8 @@
 if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
 
     //$c = mysqli_connect("localhost", "l2", "L2", "l2_info_11");
-    //$c = mysqli_connect("localhost", "root", "", "l2_info_11");
-    $c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
+    $c = mysqli_connect("localhost", "root", "", "l2_info_11");
+    //$c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 
     $titre = $_POST['titre'];
     $categorie = $_POST['genre'];

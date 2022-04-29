@@ -1,4 +1,4 @@
-<section id='pageAdmin'>
+<section class='pageAdmin'>
 
 	<?php
 
@@ -26,7 +26,7 @@
 
 
 		if($_SESSION["is_admin"] == 1){
-			echo '<section id="admin">
+			echo '<div id="admin" class="container-fluid tm-container-content tm-mt-60">
 			<article>';
 			afficher_admin();
 			echo '<h3>Ajout d\'un administrateur</h3>
@@ -52,10 +52,9 @@
 				<p><input type="submit" name="action" value="supprimer">
 			</form>
 			</article>
-			</section>';
+			</div>';
 		}
 	}
 ?>
-	
-<a id= "deco" href='index.php?page=deconnexion'>Déconnexion</a>
+
 </section>
