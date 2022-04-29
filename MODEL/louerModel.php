@@ -56,28 +56,28 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
     //,$proprietaire
     //$user = $_SESSION["username"];
 
+    $tmpName = $_FILES['file']['tmp_name'];
+    $name = $_FILES['file']['name'];
+    $size = $_FILES['file']['size'];
+    $error = $_FILES['file']['error'];
+
+    move_uploaded_file($tmpName, '../IMAGES/Locations/'.$name);
+
+    $idProprio = $_SESSION["id"];
+    var_dump($idProprio);
+    
+
+
+    $sql = "INSERT INTO Dvd(proprio,titre,categorie,couverture,intrigue)
+    VALUES($idProprio,'$titre','$categorie','$name','$intrigue')";
+    var_dump($sql);
+    exit;
+
+    mysqli_query($c,$sql);
+
+    header('Location: ../index.php?page=suggestion');
         
 
-        $tmpName = $_FILES['file']['tmp_name'];
-        $name = $_FILES['file']['name'];
-        $size = $_FILES['file']['size'];
-        $error = $_FILES['file']['error'];
-
-        move_uploaded_file($tmpName, '../IMAGES/Locations/'.$name);
-
-        $idProprio = $_SESSION["id"];
-        var_dump($idProprio);
-
-
-        $sql = "INSERT INTO Dvd(proprio,titre,categorie,couverture,intrigue)
-        VALUES($idProprio,'$titre','$categorie','$name','$intrigue')";
-        var_dump($sql);
-
-        mysqli_query($c,$sql);
-
-        header('Location: ../index.php?page=suggestion');
-        
-
-    }    
+}    
 
 ?>
