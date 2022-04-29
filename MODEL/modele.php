@@ -179,7 +179,7 @@ function afficher_dvd ($list)
                     echo '<span class="tm-text-gray-light">Disponible</span>';
 					if(isset($_SESSION["username"])){
 						$id = $value["id"];
-						echo "<a href='index.php?page=reservation.php&id=$id'>Réserver</a>";
+						echo "<a href='index.php?page=reservation&id=$id'>Réserver</a>";
 					} 
                     echo '<span>9,906 likes</span>';
                 echo '</div>';
