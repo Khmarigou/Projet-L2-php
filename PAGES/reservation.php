@@ -16,7 +16,6 @@ $sql = "CREATE TABLE Reservation(
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];
-    var_dump($id); exit;
         echo "<form method='POST' action='MODEL/reserve.php' enctype='multipart/form-data' value='id'>";
         echo "<input type='text' name='idDvd' value='$id' disabled='disabled'/></br>";
         echo "<label>Date de début : </label>";
