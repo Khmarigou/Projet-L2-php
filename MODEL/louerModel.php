@@ -1,14 +1,17 @@
 <?php
 
-//cree la table
 
+
+//cree la table
 
 //function creer_table_dvd(){
 
     //global $c;
-    $db = mysqli_connect("localhost", "l2", "L2", "l2_info_11");
-    //$db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
-    //$db = mysqli_connect("localhost", "root", "", "l2_info_11");
+    //$c = mysqli_connect("localhost", "l2", "L2", "l2_info_11");
+    //$c = mysqli_connect("localhost", "root", "", "l2_info_11");
+
+    $c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
+    
     $sql = "CREATE TABLE Dvd(
         id INT NOT NULL AUTO_INCREMENT,
         proprio INT,
@@ -22,7 +25,7 @@
         
     //var_dump($sql);
 
-    $result = mysqli_query($db, $sql);
+    $result = mysqli_query($c, $sql);
 
     //return $result;
 //}
@@ -30,49 +33,44 @@
 
 //ajoute dans la table
 
-    
 
 if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
 
+    //pour pouvoir utiliser le $_SESSION
+    session_start();
+
     //$c = mysqli_connect("localhost", "l2", "L2", "l2_info_11");
-        //$c = mysqli_connect("localhost", "root", "", "l2_info_11");
-        $c = mysqli_connect("localhost:3306", "l2_info_11", "Mei9shoh", "l2_info_11");
+    //$c = mysqli_connect("localhost", "root", "", "l2_info_11");
+    $c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
+
+    $idProprio = $_SESSION["id"];
+    var_dump($idProprio);
 
     $titre = $_POST['titre'];
+    $titre = addslashes($titre);
+    
     $categorie = $_POST['genre'];
 
-    //$titre = addslashes($titre);
+    
     
     $intrigue = $_POST['resume'];
-    //$intrigue = .json_encode($intrigue);
-    //$intrigue = addslashes($intrigue);
+    $intrigue = addslashes($intrigue);
 
-    $date = $_POST['location'];
+    $tmpName = $_FILES['file']['tmp_name'];
+    $name = $_FILES['file']['name'];
+    $size = $_FILES['file']['size'];
+    $error = $_FILES['file']['error'];
 
-    //$proprietaire = 3;
-    //,proprio
-    //,$proprietaire
-    //$user = $_SESSION["username"];
+    move_uploaded_file($tmpName, '../IMAGES/Locations/'.$name);
 
-        $idProprio = $_SESSION["id"];
-        var_dump($idProprio);
+    $sql = "INSERT INTO Dvd(proprio,titre,categorie,couverture,intrigue)
+    VALUES($idProprio,'$titre','$categorie','$name','$intrigue')";
 
-        $tmpName = $_FILES['file']['tmp_name'];
-        $name = $_FILES['file']['name'];
-        $size = $_FILES['file']['size'];
-        $error = $_FILES['file']['error'];
+    mysqli_query($c,$sql);
 
-        move_uploaded_file($tmpName, '../IMAGES/Locations/'.$name);
-
-
-        $sql = "INSERT INTO Dvd(proprio,titre,categorie,couverture,intrigue)
-        VALUES('$idProprio','$titre','$categorie','$name','$intrigue')";
-
-        mysqli_query($c,$sql);
-
-        header('Location: ../index.php?page=suggestion');
+    header('Location: ../index.php?page=suggestion');
         
 
-    }    
+}    
 
 ?>
