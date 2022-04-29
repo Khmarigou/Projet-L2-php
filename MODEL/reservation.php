@@ -14,15 +14,13 @@ $sql = "CREATE TABLE Reservation(
     
     $result = mysqli_query($db, $sql);
 
+    function reserve(){
+        echo "<form method='POST' action='MODEL/reservation.php' enctype='multipart/form-data' value='id'>";
+        echo "<label>Date de début : </label>";
+        echo "<input type='date'/>";
+		echo "<p><input type='submit' name='louer' value='Reserver'/></p></form>";
+   }
 
-// // function reserve(){
-// //     global $c ;
-//     $id = $_POST["louer"];
-//     $sql = "SELECT * FROM Dvd WHERE id = $id";    
-//     $result = mysqli_query($db, $sql);
-//     while($row = mysqli_fetch_assoc($result)){
-// 		$list[] = $row;
-//     }
-//     afficher_dvd($list);
-// //}
+    $sql = "INSERT INTO Reservation (idDvd, idLocataire, dateDebut, dateFin) VALUES "
+
 ?>
