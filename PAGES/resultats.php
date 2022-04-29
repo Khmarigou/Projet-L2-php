@@ -35,10 +35,7 @@
 <section class="resultats">
 	<?php
 	$titre = $_POST['Titre'];
-	var_dump($_POST['Categorie']);
-	exit;
-	if($_POST['Categorie'] == "Catégorie"){
-		
+	if($_POST['Categorie'] == ""){
 		$categorie = "";
 	}
 	else{
