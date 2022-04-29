@@ -178,8 +178,8 @@ function afficher_dvd ($list)
                 echo '<div class="d-flex justify-content-between tm-text-gray">';
                     echo '<span class="tm-text-gray-light">Disponible</span>';
 					if(isset($_SESSION["username"])){
-						echo "<form method='POST' action='PAGES/reservation.php' enctype='multipart/form-data' value='id'>";
-						echo "<p><input type='submit' name='louer' value='Reserver'/></p></form>";
+						$id = $value["id"];
+						echo "<a href='index.php?page=reservation&id=$id'>Réserver</a>";
 					} 
                     echo '<span>9,906 likes</span>';
                 echo '</div>';
