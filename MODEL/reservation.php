@@ -17,7 +17,9 @@ $sql = "CREATE TABLE Reservation(
 if(isset($_POST["louer"])){
         echo "<form method='POST' action='MODEL/reservation.php' enctype='multipart/form-data' value='id'>";
         echo "<label>Date de début : </label>";
-        echo "<input type='date'/>";
+        echo "<input type='date' name='debut'/></br>";
+        echo "<label>Date de Fin : </label>";
+        echo "<input type='date' name='fin'/></br>";
 		echo "<p><input type='submit' name='louer' value='Reserver'/></p></form>";
 
 }
