@@ -2,6 +2,7 @@
 <!-- Gestion connection admin -->
 <?php
 
+//$db = mysqli_connect("localhost", "l2", "L2", "l2_info_11");
 //$db = mysqli_connect("localhost", "root", "", "l2_info_11");
 $db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 $sql = "CREATE TABLE User(
@@ -23,6 +24,7 @@ if(isset($_POST["login"])){
 	
 	if(!empty($_POST['username']) AND !empty($_POST['password'])){
 
+		//$db = mysqli_connect("localhost", "l2", "L2", "l2_info_11");
 		//$db = mysqli_connect("localhost", "root", "", "l2_info_11");
 		$db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 		$username = mysqli_real_escape_string($db,htmlspecialchars($_POST['username'])); 
@@ -58,6 +60,7 @@ if(isset($_POST["register"])){
 	session_start();
 	if(!empty($_POST['username']) AND !empty($_POST['password']) AND !empty($_POST['name']) AND !empty($_POST['surname'])){
 
+		//$db = mysqli_connect("localhost", "l2", "L2", "l2_info_11");
 		//$db = mysqli_connect("localhost", "root", "", "l2_info_11");
 		$db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 		$pseudo = "SELECT username FROM `User` WHERE `username` = '". $_POST['username'] ."' ";
