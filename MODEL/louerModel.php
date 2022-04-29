@@ -53,6 +53,7 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
     //$user = $_SESSION["username"];
 
         $idProprio = $_SESSION["id"];
+        var_dump($idProprio);
 
         $tmpName = $_FILES['file']['tmp_name'];
         $name = $_FILES['file']['name'];
