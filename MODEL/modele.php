@@ -171,6 +171,8 @@ function afficher_dvd ($list)
                    echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' class='img-fluid'>";
                    echo '<figcaption class="d-flex align-items-center justify-content-center">';
                        echo '<h2>'.$value["titre"].'</h2>';
+					   echo "<p><b>Categorie :</b> ".$value["categorie"]."</p></br>";
+					   echo "<p><b>Intrigue : </b>".$value["intrigue"]."</p></br>";
                     echo '</figcaption>';                 
                 echo '</figure>';
                 echo '<div class="d-flex justify-content-between tm-text-gray">';
