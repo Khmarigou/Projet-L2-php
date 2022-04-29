@@ -13,6 +13,7 @@ $sql = "CREATE TABLE Reservation(
     CONSTRAINT Fk_Reservation_User FOREIGN KEY (idLocataire) REFERENCES User(idUser))";
     
     $result = mysqli_query($db, $sql);
+    reserve();
 
     function reserve(){
         echo "<form method='POST' action='MODEL/reservation.php' enctype='multipart/form-data' value='id'>";
