@@ -68,8 +68,8 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
     
 
 
-    $sql = "INSERT INTO Dvd(proprio,titre,categorie,couverture,intrigue)
-    VALUES($idProprio,'$titre','$categorie','$name','$intrigue')";
+    $sql = "INSERT INTO Dvd(titre,categorie,couverture,intrigue)
+    VALUES('$titre','$categorie','$name','$intrigue')";
     var_dump($sql);
     exit;
 
