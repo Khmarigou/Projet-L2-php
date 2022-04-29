@@ -20,9 +20,14 @@ if(isset($_POST["louer"])){
         echo "<input type='date' name='debut'/></br>";
         echo "<label>Date de Fin : </label>";
         echo "<input type='date' name='fin'/></br>";
-		echo "<p><input type='submit' name='louer' value='Reserver'/></p></form>";
-
+		echo "<p><input type='submit' name='location' value='location'/></p></form>";
 }
-    $sql = "INSERT INTO Reservation (idDvd, idLocataire, dateDebut, dateFin) VALUES "
+
+if(isset($_POST["location"])){
+    $deb = $_POST['debut'];
+    $fin = $_POST['fin'];
+    $sql = "INSERT INTO Reservation (idDvd, idLocataire, dateDebut, dateFin) VALUES (1,2,$deb,$fin)";
+    mysqli_query($db, $sql);
+}
 
 ?>
