@@ -14,7 +14,7 @@
 	</head>
 	<body>
 
-		<!-- Page Loader 
+		<!-- Page Loader --> 
 		<div id="loader-wrapper">
         <div id="loader"></div>
 
@@ -22,7 +22,7 @@
         <div class="loader-section section-right"></div>
 
    		</div>
-		-->
+		
 		<header>
 
 		<nav class="navbar navbar-expand-lg">
