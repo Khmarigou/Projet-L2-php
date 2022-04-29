@@ -6,9 +6,11 @@
 //function creer_table_dvd(){
 
     //global $c;
-    $db = mysqli_connect("localhost", "l2", "L2", "l2_info_11");
-    //$db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
-    //$db = mysqli_connect("localhost", "root", "", "l2_info_11");
+    //$c = mysqli_connect("localhost", "l2", "L2", "l2_info_11");
+    //$c = mysqli_connect("localhost", "root", "", "l2_info_11");
+
+    $c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
+    
     $sql = "CREATE TABLE Dvd(
         id INT NOT NULL AUTO_INCREMENT,
         proprio INT,
@@ -22,7 +24,7 @@
         
     //var_dump($sql);
 
-    $result = mysqli_query($db, $sql);
+    $result = mysqli_query($c, $sql);
 
     //return $result;
 //}
