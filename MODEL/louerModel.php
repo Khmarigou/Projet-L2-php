@@ -33,7 +33,7 @@
 //ajoute dans la table
 
     
-global $id = $_SESSION;
+$id = $_SESSION;
 var_dump($id);
 
 if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
@@ -42,6 +42,7 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
     //$c = mysqli_connect("localhost", "root", "", "l2_info_11");
     $c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 
+    global $id;
     $idProprio = $id["id"];
     var_dump($idProprio);
 
