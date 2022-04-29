@@ -75,7 +75,6 @@ if(isset($_POST["register"])){
 	}else{
 		header('Location: ../index.php?page=inscription&error=2');
 	}
-	
 }
 
 function afficher_admin()
