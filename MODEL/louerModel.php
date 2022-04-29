@@ -49,8 +49,6 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
     //$intrigue = .json_encode($intrigue);
     //$intrigue = addslashes($intrigue);
 
-    $date = $_POST['location'];
-
     //$proprietaire = 3;
     //,proprio
     //,$proprietaire
@@ -63,7 +61,7 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
 
     move_uploaded_file($tmpName, '../IMAGES/Locations/'.$name);
 
-    $idProprio = $_SESSION["id"];
+    $idProprio = $_SESSION['id'];
     var_dump($idProprio);
     
 
