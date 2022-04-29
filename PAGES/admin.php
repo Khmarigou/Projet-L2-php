@@ -16,10 +16,10 @@
 
 		if(count($_POST) != 0){
 			if($_POST['action'] == 'ajouter'){
-				ajouter_admin();
+				creer_admin();
 			}
 			elseif($_POST['action'] == 'supprimer'){
-				delete_admin();
+				supprimer_utilisateur();
 			}
 
 		}
@@ -33,11 +33,11 @@
 			<form action="index.php?page=admin" method="post">
 			<div class="form">
 				<label for="username">Pseudo </label>
-				<input type="string" name="username">
+				<input type="string" name="pseudo">
 			</div>
 			<div class="form">
 				<label for="password">Mot de passe </label>
-				<input type="int" name="password">
+				<input type="int" name="mdp">
 			</div>
 				<input type="submit" name="action" value="ajouter">
 			</div>
@@ -45,10 +45,10 @@
 			</article>';
 			
 			echo '<article>
-			<h3>Suppression d\'un administrateur</h3>
+			<h3>Suppression d\'un utilisateur</h3>
 			<form method="post" action="index.php?page=admin">
 
-				<p><label>Pseudo de l\'administrateur à supprimer</label><input type="text" name="username" placeholder="Nom"></p><br>
+				<p><label>Pseudo de l\'utilisateur à supprimer</label><input type="text" name="username" placeholder="Nom"></p><br>
 				<p><input type="submit" name="action" value="supprimer">
 			</form>
 			</article>
