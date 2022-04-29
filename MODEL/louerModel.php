@@ -43,6 +43,7 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
     $c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 
     $idProprio = $id["id"];
+    var_dump($idProprio);
 
     $titre = $_POST['titre'];
     $categorie = $_POST['genre'];
