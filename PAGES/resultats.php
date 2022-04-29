@@ -4,7 +4,7 @@
 	<div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll" data-image-src="./IMAGES/banniere.jpg">
         <form class="d-flex tm-search-form" action="./?page=resultats" method="POST" autocomplete="off">
 			<?php
-				$sql = "SELECT titre FROM dvd";
+				$sql = "SELECT titre FROM Dvd";
 				$listeTitres = recup_dvd_sql ($sql);
 				foreach ($listeTitres as $key => $value) {
 					$Titres[] = $value['titre'];
@@ -36,7 +36,7 @@
 	<?php
 	$titre = $_POST['Titre'];
 	$categorie = "AND categorie = '".$_POST['Categorie']."'";
-	$sql = "SELECT * FROM dvd WHERE titre LIKE '%$titre%' ".$categorie;
+	$sql = "SELECT * FROM Dvd WHERE titre LIKE '%$titre%' ".$categorie;
 	$dvd = recup_dvd_sql ($sql);
 	afficher_dvd($dvd);
 	?>
