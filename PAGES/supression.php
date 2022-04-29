@@ -17,6 +17,6 @@ header('Location: ../index.php?page=suggestion');
         $result = mysqli_query($db, $sql);
         var_dump($deb); var_dump($fin);
         var_dump($sql);var_dump($result);*/
-    }
+
 
 ?>
