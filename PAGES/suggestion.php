@@ -60,11 +60,13 @@
 		<select name='Categorie' id='Categorie'>
 	    <option value=''>Catégorie</option>
 	    <?php
+		/*
 	    $sql = "SELECT DISTINCT categorie FROM dvd";
 	    $listeCategorie = recup_dvd_sql($sql);
 		foreach ($listeCategorie as $key => $value) {
 			echo "<option value='".$value["categorie"]."'> ".$value["categorie"]." </option>";
 		}
+		*/
 		?>
 		</select>
         <input type="submit" name='recherche'  value='Rechercher'>

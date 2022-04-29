@@ -2,8 +2,8 @@
 <!-- Gestion connection admin -->
 <?php
 
-$c = mysqli_connect("localhost", "root", "", "l2_info_11");
-//$c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
+//$c = mysqli_connect("localhost", "root", "", "l2_info_11");
+$c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 $sql = "CREATE TABLE User(
     idUser INT NOT NULL AUTO_INCREMENT,
     nom VARCHAR(50) NOT NULL,
@@ -23,8 +23,8 @@ if(isset($_POST["login"])){
 	
 	if(!empty($_POST['username']) AND !empty($_POST['password'])){
 
-		$c = mysqli_connect("localhost", "root", "", "l2_info_11");
-		//$c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
+		//$c = mysqli_connect("localhost", "root", "", "l2_info_11");
+		$c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 		$username = mysqli_real_escape_string($c,htmlspecialchars($_POST['username'])); 
 		$password = mysqli_real_escape_string($c,htmlspecialchars($_POST['password']));
 
@@ -58,8 +58,8 @@ if(isset($_POST["register"])){
 	session_start();
 	if(!empty($_POST['username']) AND !empty($_POST['password']) AND !empty($_POST['name']) AND !empty($_POST['surname'])){
 
-		$c = mysqli_connect("localhost", "root", "", "l2_info_11");
-		//$c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
+		//$c = mysqli_connect("localhost", "root", "", "l2_info_11");
+		$c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 		$pseudo = "SELECT username FROM `User` WHERE `username` = '". $_POST['username'] ."' ";
 		$pseudo_exist = mysqli_query($c, $pseudo);
 		$row = mysqli_num_rows($pseudo_exist);
