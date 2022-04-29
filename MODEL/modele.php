@@ -180,8 +180,6 @@ function afficher_dvd ($list)
 					if(isset($_SESSION["username"])){
 						$id = $value["id"];
 						echo "<a href='index.php?page=reservation&id=$id'>Réserver</a>";
-					} 
-					if(isset($_SESSION)){
 						if($_SESSION["is_admin"]==1){
 							$id = $value["id"];
 							echo "<a href='index.php?page=supression&id=$id'>Supprimer</a>";
