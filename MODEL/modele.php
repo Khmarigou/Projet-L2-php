@@ -80,7 +80,7 @@ if(isset($_POST["register"])){
 function afficher_admin()
 {	
 	global $c;
-	$sql = "SELECT * FROM `User`";
+	$sql = "SELECT * FROM `User` WHERE is_admin = 1";
 	$results = mysqli_query($c,$sql);
 	$row = mysqli_fetch_assoc($results);
 	echo "<h2>Liste des administrateurs :</h2>";
@@ -95,7 +95,7 @@ function afficher_admin()
 function supprimer_utilisateur(){
 	
 	global $c;
-	$username = $_POST['username'];
+	$username = $_POST['Username'];
 	$sql= "DELETE FROM `User` WHERE `username` = '$username'";
 	mysqli_query($c,$sql);
 }
@@ -103,10 +103,9 @@ function supprimer_utilisateur(){
 function creer_admin()
 {
 	global $c;
-	if($_POST['pseudo'] !== "" and $_POST['mdp'] !== ""){
-		$password = mysqli_real_escape_string($c,htmlspecialchars($_POST['mdp']));
-		$crypt_password=password_hash($password, PASSWORD_DEFAULT);
-		$sql = "INSERT INTO `User` (`nom`, `prenom`, `username`, `password`, `is_admin`) VALUES ('','','$_POST[pseudo]', '$crypt_password', 1);";
+	$username = $_POST['username'];
+	if($username !== ""){
+		$sql = "UPDATE user SET is_admin = 1 WHERE username = '$username'";
 		$results = mysqli_query($c,$sql);
 	}
 	else{

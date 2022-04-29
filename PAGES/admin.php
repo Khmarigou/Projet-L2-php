@@ -15,10 +15,10 @@
 		// echo "</p>";
 
 		if(count($_POST) != 0){
-			if($_POST['action'] == 'ajouter'){
+			if($_POST['action'] == 'Ajouter'){
 				creer_admin();
 			}
-			elseif($_POST['action'] == 'supprimer'){
+			elseif($_POST['action'] == 'Supprimer'){
 				supprimer_utilisateur();
 			}
 
@@ -32,14 +32,17 @@
 			echo '<h3>Ajout d\'un administrateur</h3>
 			<form action="index.php?page=admin" method="post">
 			<div class="form">
-				<label for="username">Pseudo </label>
-				<input type="string" name="pseudo">
-			</div>
-			<div class="form">
-				<label for="password">Mot de passe </label>
-				<input type="int" name="mdp">
-			</div>
-				<input type="submit" name="action" value="ajouter">
+				<p><select name="username" id="username">
+
+	        	<option value="">--Selectionner L\'utilisateur--</option>';
+	            $sql = "SELECT * FROM `User` WHERE is_admin = 0";
+	            $listeUser = recup_dvd_sql($sql);
+	            foreach ($listeUser as $key => $value) {
+	                echo "<option value='".$value["username"]."'> ".$value["username"]." </option>";
+	            }
+				echo '</p>
+				</select></br>
+				<p><input type="submit" name="action" value="Ajouter"></p>
 			</div>
 			</form>
 			</article>';
@@ -47,9 +50,16 @@
 			echo '<article>
 			<h3>Suppression d\'un utilisateur</h3>
 			<form method="post" action="index.php?page=admin">
-
-				<p><label>Pseudo de l\'utilisateur à supprimer</label><input type="text" name="username" placeholder="Nom"></p><br>
-				<p><input type="submit" name="action" value="supprimer">
+				<p><select name="Username" id="Username">
+        		<option value="">--Selectionner L\'utilisateur--</option>';
+            $sql = "SELECT * FROM `User` WHERE is_admin = 1";
+            $listeAdmin = recup_dvd_sql($sql);
+            foreach ($listeAdmin as $key => $value) {
+                echo "<option value='".$value["username"]."'> ".$value["username"]." </option>";
+            }
+			echo '</p>
+			</select></br>
+			<p><input type="submit" name="action" value="Supprimer"></p>
 			</form>
 			</article>
 			</div>';
