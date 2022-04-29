@@ -35,6 +35,8 @@
 
 
 if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
+
+    //pour pouvoir utiliser le $_SESSION
     session_start();
 
     //$c = mysqli_connect("localhost", "l2", "L2", "l2_info_11");
@@ -45,18 +47,14 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
     var_dump($idProprio);
 
     $titre = $_POST['titre'];
+    $titre = addslashes($titre);
+    
     $categorie = $_POST['genre'];
 
-    //$titre = addslashes($titre);
+    
     
     $intrigue = $_POST['resume'];
-    //$intrigue = .json_encode($intrigue);
-    //$intrigue = addslashes($intrigue);
-
-    //$proprietaire = 3;
-    //,proprio
-    //,$proprietaire
-    //$user = $_SESSION["username"];
+    $intrigue = addslashes($intrigue);
 
     $tmpName = $_FILES['file']['tmp_name'];
     $name = $_FILES['file']['name'];
