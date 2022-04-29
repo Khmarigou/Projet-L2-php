@@ -170,8 +170,7 @@ function afficher_dvd ($list)
                 echo '<figure class="effect-ming tm-video-item">';
                    echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' class='img-fluid'>";
                    echo '<figcaption class="d-flex align-items-center justify-content-center">';
-                       echo '<h2>'.$value["titre"].'</h2>';
-					   echo "<p><b>Categorie :</b> ".$value["categorie"]."</p></br>";
+                       echo '<h2>'.$value["titre"].' </br><p><b>Categorie :</b> ".$value["categorie"]."</p></br>"</h2>';
 					   
                     echo '</figcaption>';                 
                 echo '</figure>';
