@@ -64,9 +64,11 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
     move_uploaded_file($tmpName, '../IMAGES/Locations/'.$name);
 
     $sql = "INSERT INTO Dvd(proprio,titre,categorie,couverture,intrigue)
-    VALUES($idProprio,'$titre','$categorie','$name','$intrigue')";
+    VALUES('$idProprio','$titre','$categorie','$name','$intrigue')";
 
     mysqli_query($c,$sql);
+    var_dump($sql);
+    exit;
 
     header('Location: ../index.php?page=suggestion');
         
