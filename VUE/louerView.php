@@ -27,7 +27,7 @@ function posterAnnonce(){
 
                 </select></p><br>
 
-            <p><label>Résumé</label> <input type="text" name="resume"></p><br>
+            <p><label>Résumé</label> <textarea id="resume" name="resume" rows="5" cols="33"> </textarea></p><br>
 
             <p><label for="file">Fichier</label><input type="file" name="file"></p><br>
 
