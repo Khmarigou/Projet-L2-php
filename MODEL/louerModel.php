@@ -33,14 +33,16 @@
 //ajoute dans la table
 
     
-$idProprio = $_SESSION['id'];
-var_dump($idProprio);
+$id = $_SESSION["id"];
+var_dump($id);
 
 if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
 
     //$c = mysqli_connect("localhost", "l2", "L2", "l2_info_11");
     //$c = mysqli_connect("localhost", "root", "", "l2_info_11");
     $c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
+
+    $idProprio = $id;
 
     $titre = $_POST['titre'];
     $categorie = $_POST['genre'];
@@ -64,7 +66,7 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
     move_uploaded_file($tmpName, '../IMAGES/Locations/'.$name);
 
     $sql = "INSERT INTO Dvd(proprio,titre,categorie,couverture,intrigue)
-    VALUES('$idProprio','$titre','$categorie','$name','$intrigue')";
+    VALUES($idProprio,'$titre','$categorie','$name','$intrigue')";
 
     mysqli_query($c,$sql);
     var_dump($sql);
