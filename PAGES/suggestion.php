@@ -1,7 +1,7 @@
 <section class="recherche">
 	<script type = "text/javascript" src="./JS/recherche.js"></script> 	
 	
-	<div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll" data-image-src="./IMAGES/banniere.jpg">
+	<div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll" data-image-src="./IMAGES/hero.jpg">
         <form class="d-flex tm-search-form" action="./?page=resultats" method="POST" autocomplete="off">
 			<?php
 				$sql = "SELECT titre FROM Dvd";
