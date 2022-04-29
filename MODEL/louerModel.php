@@ -1,8 +1,8 @@
 <?php
 
-session_start();
-//cree la table
 
+
+//cree la table
 
 //function creer_table_dvd(){
 
@@ -33,16 +33,15 @@ session_start();
 
 //ajoute dans la table
 
-    
-$id = $_SESSION;
 
 if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
+    session_start();
 
     //$c = mysqli_connect("localhost", "l2", "L2", "l2_info_11");
     //$c = mysqli_connect("localhost", "root", "", "l2_info_11");
     $c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 
-    $idProprio = $id["id"];
+    $idProprio = $_SESSION["id"];
     var_dump($idProprio);
 
     $titre = $_POST['titre'];
