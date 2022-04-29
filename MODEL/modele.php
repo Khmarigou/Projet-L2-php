@@ -107,7 +107,7 @@ function creer_admin()
 	if($_POST['pseudo'] !== "" and $_POST['mdp'] !== ""){
 		$password = mysqli_real_escape_string($c,htmlspecialchars($_POST['mdp']));
 		$crypt_password=password_hash($password, PASSWORD_DEFAULT);
-		$sql = "INSERT INTO `user` (`nom`, `prenom`, `username`, `password`, `is_admin`) VALUES ('','','$_POST[pseudo]', '$crypt_password', 1);";
+		$sql = "INSERT INTO `User` (`nom`, `prenom`, `username`, `password`, `is_admin`) VALUES ('','','$_POST[pseudo]', '$crypt_password', 1);";
 		$results = mysqli_query($c,$sql);
 	}
 	else{
