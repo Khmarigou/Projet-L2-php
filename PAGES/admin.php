@@ -52,7 +52,7 @@
 			<form method="post" action="index.php?page=admin">
 				<p><select name="Username" id="Username">
         		<option value="">--Selectionner L\'utilisateur--</option>';
-            $sql = "SELECT * FROM `User` WHERE is_admin = 1";
+            $sql = "SELECT * FROM `User`";
             $listeAdmin = recup_dvd_sql($sql);
             foreach ($listeAdmin as $key => $value) {
                 echo "<option value='".$value["username"]."'> ".$value["username"]." </option>";
