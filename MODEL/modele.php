@@ -154,7 +154,7 @@ function afficher_suppr_membres() {
 			<form method="post" action="index.php?page=admin">
 				<p><select name="username" id="username">
         		<option value="">--Selectionner L\'utilisateur--</option>';
-            $sql = "SELECT * FROM `User` WHERE username != '".$_SESSION['username']."'";
+            $sql = "SELECT * FROM `User` WHERE is_admin = 0 AND username != '".$_SESSION['username']."'";
             $listeMembres = recup_dvd_sql($sql);
             foreach ($listeMembres as $key => $value) {
                 echo "<option value='".$value["username"]."'> ".$value["username"]." </option>";
