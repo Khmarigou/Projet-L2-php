@@ -83,7 +83,7 @@ function afficher_admin()
 	$sql = "SELECT * FROM `User` WHERE is_admin = 1";
 	$results = mysqli_query($c,$sql);
 	$row = mysqli_fetch_assoc($results);
-	echo "<h2>Liste des administrateurs :</h2>";
+	//echo "<h2>Liste des administrateurs :</h2>";
 	while($row != null) {
 		echo "<article>\n";
 		echo "<p>Pseudo : ".$row["username"]."</p>\n";
@@ -98,13 +98,72 @@ function afficher_membres ()
 	$sql = "SELECT * FROM User WHERE is_admin = 0";
 	$results = mysqli_query($c,$sql);
 	$row = mysqli_fetch_assoc($results);
-	echo "<h2>Liste des membres :</h2>";
+	//echo "<h2>Liste des membres :</h2>";
 	while($row != null) {
 		echo "<article>\n";
 		echo "<p>Pseudo : ".$row["username"]."</p>\n";
 		echo "</article>\n";
 		$row = mysqli_fetch_assoc($results);
 	}
+}
+
+function afficher_ajout_admin()
+{
+	echo '<article>
+			<h3>Ajouter un role administrateur</h3>
+			<form action="index.php?page=admin" method="post">
+			<div class="form">
+				<p><select name="username" id="username">
+
+	        	<option value="">--Selectionner L\'utilisateur--</option>';
+	            $sql = "SELECT * FROM `User` WHERE is_admin = 0";
+	            $listeUser = recup_dvd_sql($sql);
+	            foreach ($listeUser as $key => $value) {
+	                echo "<option value='".$value["username"]."'> ".$value["username"]." </option>";
+	            }
+				echo '</p>
+				</select></br>
+				<p><input type="submit" name="action" value="Ajouter"></p>
+			</div>
+			</form>
+			</article>';
+}
+
+function afficher_suppr_admin() 
+{
+	echo '<article>
+			<h3>Enlever un role administrateur</h3>
+			<form method="post" action="index.php?page=admin">
+				<p><select name="username" id="username">
+        		<option value="">--Selectionner L\'utilisateur--</option>';
+            $sql = "SELECT * FROM `User` WHERE is_admin = 1 AND username != '".$_SESSION['username']."'";
+            $listeAdmin = recup_dvd_sql($sql);
+            foreach ($listeAdmin as $key => $value) {
+                echo "<option value='".$value["username"]."'> ".$value["username"]." </option>";
+            }
+			echo '</p>
+			</select></br>
+			<p><input type="submit" name="action" value="Enlever"></p>
+			</form>
+			</article>';
+}
+
+function afficher_suppr_membres() {
+	echo '<article>
+			<h3>Suppression d\'un utilisateur</h3>
+			<form method="post" action="index.php?page=admin">
+				<p><select name="username" id="username">
+        		<option value="">--Selectionner L\'utilisateur--</option>';
+            $sql = "SELECT * FROM `User` WHERE username != '".$_SESSION['username']."'";
+            $listeMembres = recup_dvd_sql($sql);
+            foreach ($listeMembres as $key => $value) {
+                echo "<option value='".$value["username"]."'> ".$value["username"]." </option>";
+            }
+			echo '</p>
+			</select></br>
+			<p><input type="submit" name="action" value="Supprimer"></p>
+			</form>
+			</article>';
 }
 
 function supprimer_utilisateur(){
