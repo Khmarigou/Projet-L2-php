@@ -16,13 +16,16 @@ $sql = "CREATE TABLE Reservation(
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];
-        echo "<form method='POST' action='MODEL/reserve.php' enctype='multipart/form-data' value='id'>";
-        echo "<input type='hidden' name='idDvd' value='$id' /></br>";//disabled='disabled'
-        echo "<label>Date de début : </label>";
-        echo "<input type='date' name='debut'/></br>";
-        echo "<label>Date de Fin : </label>";
-        echo "<input type='date' name='fin'/></br>";
-		echo "<p><input type='submit' name='location' value='location'/></p></form>";
+    $sql = "SELECT * FROM Dvd WHERE id = $id";
+    $film = recup_dvd_sql($sql);
+    afficher_film($film);
+    echo "<form method='POST' action='MODEL/reserve.php' enctype='multipart/form-data' value='id'>";
+    echo "<input type='hidden' name='idDvd' value='$id' /></br>";//disabled='disabled'
+    echo "<label>Date de début : </label>";
+    echo "<input type='date' name='debut'/></br>";
+    echo "<label>Date de Fin : </label>";
+    echo "<input type='date' name='fin'/></br>";
+	echo "<p><input type='submit' name='location' value='location'/></p></form>";
 }
 
 

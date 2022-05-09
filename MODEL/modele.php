@@ -92,10 +92,25 @@ function afficher_admin()
 	}
 }
 
+function afficher_membres ()
+{
+	global $c;
+	$sql = "SELECT * FROM User WHERE is_admin = 0";
+	$results = mysqli_query($c,$sql);
+	$row = mysqli_fetch_assoc($results);
+	echo "<h2>Liste des membres :</h2>";
+	while($row != null) {
+		echo "<article>\n";
+		echo "<p>Pseudo : ".$row["username"]."</p>\n";
+		echo "</article>\n";
+		$row = mysqli_fetch_assoc($results);
+	}
+}
+
 function supprimer_utilisateur(){
 	
 	global $c;
-	$username = $_POST['Username'];
+	$username = $_POST['username'];	
 	$sql= "DELETE FROM `User` WHERE `username` = '$username'";
 	mysqli_query($c,$sql);
 }
@@ -106,6 +121,19 @@ function creer_admin()
 	$username = $_POST['username'];
 	if($username !== ""){
 		$sql = "UPDATE User SET is_admin = 1 WHERE username = '$username'";
+		$results = mysqli_query($c,$sql);
+	}
+	else{
+		echo("champ vide.");
+	}
+}
+
+function enlever_admin()
+{
+	global $c;
+	$username = $_POST['username'];
+	if($username !== ""){
+		$sql = "UPDATE User SET is_admin = 0 WHERE username = '$username'";
 		$results = mysqli_query($c,$sql);
 	}
 	else{
