@@ -2,6 +2,7 @@
 
 
 include_once "points.php";
+include_once "logs.php";
 //cree la table
 
 //function creer_table_dvd(){
@@ -65,13 +66,16 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
 
     $sql = "INSERT INTO Dvd(proprio,titre,categorie,couverture,intrigue)
     VALUES($idProprio,'$titre','$categorie','$name','$intrigue')";
-    mysqli_query($c,$sql);
+    $ajout = mysqli_query($c,$sql);
     ajoutePointsLocation ($idProprio);
+
+    if($ajout){
+        $message = "Vous avez mis en location le film : ".$titre;
+        $add = ajoutLog($_SESSION["id"], $message);
+    }
 
 
     header('Location: ../index.php?page=suggestion');
-        
 
 }
-
 ?>

@@ -14,12 +14,44 @@ $c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 $sql = "CREATE TABLE Logs(
     idLog INT NOT NULL AUTO_INCREMENT,
     utilisateur INT NOT NULL,
-    jour DATETIME DEFAULT CURRENT DATETIME,
-    evenement VARCHAR(500),
+    jour DATETIME DEFAULT CURRENT_TIMESTAMP,
+    activite VARCHAR(500),
 
-    CONSTRAINT Pk_Logs PRIMARY KEY(idLog),
-    CONSTRAINT Fk_Logs_User FOREIGN KEY (utilisateur) REFERENCES User(idUser))";
+    CONSTRAINT Pk_Logs PRIMARY KEY (idLog),
+    CONSTRAINT Fk_Logs_User FOREIGN KEY (utilisateur) REFERENCES User(idUser))
+";
+
 
 $result = mysqli_query($c,$sql);
+
+
+function ajoutLog($idUser,$log){
+
+    global $c;
+
+    $log = addslashes($log);
+
+    $sql = "INSERT INTO Logs(utilisateur,activite) VALUES ($idUser,'$log')";
+    $result = mysqli_query($c,$sql);
+
+    return $result;
+
+}
+
+function afficheLog($idUser){
+    global $c;
+
+    $sql = "SELECT jour, activite FROM Logs WHERE utilisateur = $idUser";
+    $res = mysqli_query($c,$sql);
+    $row = mysqli_fetch_assoc($res);
+
+    if($row == null){
+        
+    }
+
+}
+
+
+
 
 ?>
