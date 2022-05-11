@@ -745,3 +745,8 @@ table {
     table-layout: fixed;
 
 }
+
+
+.image-resize{
+    width: auto;
+}
