@@ -48,7 +48,7 @@
     
 				<?php
 					if(isset($_SESSION["username"])){
-						echo "<li class='nav-item'><a  class='nav-link nav-link-5' href='index.php?page=admin'>Mon compte</a></li>";
+						echo "<li class='nav-item'><a  class='nav-link nav-link-5' href='index.php?page=profil'>Mon compte</a></li>";
 						echo "<li class='nav-item'><a  class='nav-link nav-link-6' href='index.php?page=deconnexion'>Déconnexion</a></li>";
 					}
 					else{
