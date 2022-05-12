@@ -739,3 +739,14 @@ opacity: 1; /* Firefox */
 
 .tm-social-links li { margin-right: 3px; }
 }
+
+table {
+    width : 100%;
+    table-layout: fixed;
+
+}
+
+
+.image-resize{
+    width: auto;
+}

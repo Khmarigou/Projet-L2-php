@@ -83,7 +83,7 @@ function afficher_admin()
 	$sql = "SELECT * FROM `User` WHERE is_admin = 1";
 	$results = mysqli_query($c,$sql);
 	$row = mysqli_fetch_assoc($results);
-	echo "<h2>Liste des administrateurs :</h2>";
+	//echo "<h2>Liste des administrateurs :</h2>";
 	while($row != null) {
 		echo "<article>\n";
 		echo "<p>Pseudo : ".$row["username"]."</p>\n";
@@ -98,13 +98,72 @@ function afficher_membres ()
 	$sql = "SELECT * FROM User WHERE is_admin = 0";
 	$results = mysqli_query($c,$sql);
 	$row = mysqli_fetch_assoc($results);
-	echo "<h2>Liste des membres :</h2>";
+	//echo "<h2>Liste des membres :</h2>";
 	while($row != null) {
 		echo "<article>\n";
 		echo "<p>Pseudo : ".$row["username"]."</p>\n";
 		echo "</article>\n";
 		$row = mysqli_fetch_assoc($results);
 	}
+}
+
+function afficher_ajout_admin()
+{
+	echo '<article>
+			<h3>Ajouter un role administrateur</h3>
+			<form action="index.php?page=admin" method="post">
+			<div class="form">
+				<p><select name="username" id="username">
+
+	        	<option value="">--Selectionner L\'utilisateur--</option>';
+	            $sql = "SELECT * FROM `User` WHERE is_admin = 0";
+	            $listeUser = recup_dvd_sql($sql);
+	            foreach ($listeUser as $key => $value) {
+	                echo "<option value='".$value["username"]."'> ".$value["username"]." </option>";
+	            }
+				echo '</p>
+				</select></br>
+				<p><input type="submit" name="action" value="Ajouter"></p>
+			</div>
+			</form>
+			</article>';
+}
+
+function afficher_suppr_admin() 
+{
+	echo '<article>
+			<h3>Enlever un role administrateur</h3>
+			<form method="post" action="index.php?page=admin">
+				<p><select name="username" id="username">
+        		<option value="">--Selectionner L\'utilisateur--</option>';
+            $sql = "SELECT * FROM `User` WHERE is_admin = 1 AND username != '".$_SESSION['username']."'";
+            $listeAdmin = recup_dvd_sql($sql);
+            foreach ($listeAdmin as $key => $value) {
+                echo "<option value='".$value["username"]."'> ".$value["username"]." </option>";
+            }
+			echo '</p>
+			</select></br>
+			<p><input type="submit" name="action" value="Enlever"></p>
+			</form>
+			</article>';
+}
+
+function afficher_suppr_membres() {
+	echo '<article>
+			<h3>Suppression d\'un utilisateur</h3>
+			<form method="post" action="index.php?page=admin">
+				<p><select name="username" id="username">
+        		<option value="">--Selectionner L\'utilisateur--</option>';
+            $sql = "SELECT * FROM `User` WHERE is_admin = 0 AND username != '".$_SESSION['username']."'";
+            $listeMembres = recup_dvd_sql($sql);
+            foreach ($listeMembres as $key => $value) {
+                echo "<option value='".$value["username"]."'> ".$value["username"]." </option>";
+            }
+			echo '</p>
+			</select></br>
+			<p><input type="submit" name="action" value="Supprimer"></p>
+			</form>
+			</article>';
 }
 
 function supprimer_utilisateur(){
@@ -197,10 +256,11 @@ function afficher_dvd ($list)
         	echo '<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">';
                 echo '<figure class="effect-ming tm-video-item">';
 		
-                   	echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' class='img-fluid'>";
+                   	echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' class='img-fluid image-resize'>";
                    	echo '<figcaption class="d-flex align-items-center justify-content-center">';
                     echo '<h2>'.$value["titre"].' </br><p><b>Categorie :</b> '.$value["categorie"].'</p><br><br><br></h2>';
-					   
+					$id = $value["id"];
+					echo "<a href='index.php?page=dvd_detail&id=$id'>View more</a>";
                     echo '</figcaption>';                 
                 echo '</figure>';
                 echo '<div class="d-flex justify-content-between tm-text-gray">';
@@ -232,6 +292,71 @@ function afficher_film ($film){
 			<article> Titre : ".$value["titre"]." </article>
 			<article> Intrigue ; ".$value["intrigue"]." </article>
 			";
+		}
+	}
+}
+
+function afficher_film_similaire($list){
+	echo '<div class="row mb-3 tm-gallery">';
+	echo '<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">';
+	echo '<figure class="effect-ming tm-video-item">';
+	echo '<img src="img/img-01.jpg" alt="Image" class="img-fluid">';
+	echo '<figcaption class="d-flex align-items-center justify-content-center">';
+	echo '<h2>Hangers</h2>';
+	echo '<a href="#">View more</a>';
+	echo '</figcaption>';    
+	echo '</figure>';
+	echo '<div class="d-flex justify-content-between tm-text-gray">';
+	echo '<span class="tm-text-gray-light">16 Oct 2020</span>';
+	echo '<span>12,460 views</span>';
+	echo '</div></div></div>';
+}
+
+//test pour page de reservation 
+//alexandre
+function afficher_film_test ($film, $id){
+	if ($film == null)
+	{
+		echo "<article><h2>Erreur.</h2></article>";
+	} else {
+		foreach ($film as $key => $value) {
+
+			
+			echo '<div class="row tm-mb-90"> ';       
+			echo '<div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">';
+			echo "<img src='./IMAGES/Locations/".$value["couverture"]."' alt='Image' class='img-fluid'>";
+			echo '</div>';
+			echo '<div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">';
+			echo '<div class="tm-bg-gray tm-video-details">';
+			echo '<div class="text-center mb-5">';
+			echo '</div>';                 
+			echo '<h3 class="tm-text-gray-dark mb-3">Titre : '.$value["titre"].'</h3>';
+			echo '<div class="mb-4"><br>';
+			echo '<h3 class="tm-text-gray-dark mb-3">Résumé</h3>';
+			echo $value["intrigue"];
+			echo '</div>';
+			echo '<div class="mr-4 mb-2">';
+			echo '<span class="tm-text-gray-dark">Categorie: </span><span class="tm-text-primary">'.$value["categorie"].'</span>';
+			echo '</div>';
+			echo '<br><h3 class="tm-text-gray-dark mb-3">Louer ce film</h3>';
+			echo "<form method='POST' action='MODEL/reserve.php' enctype='multipart/form-data' value='id' class='text-center mb-5'>";
+			echo "<input type='hidden' name='idDvd' value='$id' /></br>";//disabled='disabled'
+			echo "<label>Date de début : </label>";
+			echo "<input type='date' name='debut'/></br>";
+			echo "<label>Date de Fin : </label>";
+			echo "<input type='date' name='fin'/></br>";
+			echo "<p><input type='submit' name='location' value='location' class='btn btn-primary tm-btn-big'/></p></form>";
+			echo '<div>';
+			echo '<h3 class="tm-text-gray-dark mb-3">Tags</h3>';
+			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Cloud</a>';
+			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Bluesky</a>';
+			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Nature</a>';
+			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Background</a>';
+			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Timelapse</a>';
+			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Night</a>';
+			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Real Estate</a>';
+			echo '</div></div></div></div>';
+			
 		}
 	}
 }

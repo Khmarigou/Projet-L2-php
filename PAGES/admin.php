@@ -32,62 +32,28 @@
 
 
 		if($_SESSION["is_admin"] == 1){
-			echo '<div id="admin" class="container-fluid tm-container-content tm-mt-60">
-			<article>';
-			afficher_membres();
-			afficher_admin();
+			//echo '<div id="admin" class="container-fluid tm-container-content tm-mt-60">';
+			echo"</br><table id='table'><tr><td><h2>Liste des membres :</h2></td>";
+			echo "<td><h2>Liste des administrateurs :</h2></td></tr>"; 
+			echo'<tr><td>';
+					afficher_membres();
+					echo '</td><td>';
+					afficher_admin();
+					echo '</td></tr>';
+					echo'<tr><td>';
+					afficher_suppr_membres();
+					echo '</td><td>';
+					afficher_ajout_admin();
+					echo '</td></tr>';
+					echo '<tr><td></td><td>';
+					afficher_suppr_admin();
+					echo '</td></tr></table>';
 
-			echo '<h3>Ajouter un role administrateur</h3>
-			<form action="index.php?page=admin" method="post">
-			<div class="form">
-				<p><select name="username" id="username">
-
-	        	<option value="">--Selectionner L\'utilisateur--</option>';
-	            $sql = "SELECT * FROM `User` WHERE is_admin = 0";
-	            $listeUser = recup_dvd_sql($sql);
-	            foreach ($listeUser as $key => $value) {
-	                echo "<option value='".$value["username"]."'> ".$value["username"]." </option>";
-	            }
-				echo '</p>
-				</select></br>
-				<p><input type="submit" name="action" value="Ajouter"></p>
-			</div>
-			</form>
-			</article>';
 			
-			echo '<article>
-			<h3>Enlever un role administrateur</h3>
-			<form method="post" action="index.php?page=admin">
-				<p><select name="username" id="username">
-        		<option value="">--Selectionner L\'utilisateur--</option>';
-            $sql = "SELECT * FROM `User` WHERE is_admin = 1 AND username != '".$_SESSION['username']."'";
-            $listeAdmin = recup_dvd_sql($sql);
-            foreach ($listeAdmin as $key => $value) {
-                echo "<option value='".$value["username"]."'> ".$value["username"]." </option>";
-            }
-			echo '</p>
-			</select></br>
-			<p><input type="submit" name="action" value="Enlever"></p>
-			</form>
-			</article>';
 
-			echo '<article>
-			<h3>Suppression d\'un utilisateur</h3>
-			<form method="post" action="index.php?page=admin">
-				<p><select name="username" id="username">
-        		<option value="">--Selectionner L\'utilisateur--</option>';
-            $sql = "SELECT * FROM `User` WHERE username != '".$_SESSION['username']."'";
-            $listeMembres = recup_dvd_sql($sql);
-            foreach ($listeMembres as $key => $value) {
-                echo "<option value='".$value["username"]."'> ".$value["username"]." </option>";
-            }
-			echo '</p>
-			</select></br>
-			<p><input type="submit" name="action" value="Supprimer"></p>
-			</form>
-			</article>
+			
 
-			</div>';
+			echo '</div>';
 		}
 	}
 ?>
