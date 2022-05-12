@@ -41,7 +41,7 @@ if(isset($_POST["login"])){
 			$_SESSION["username"] = $_POST['username'];
 			$_SESSION["password"] = $_POST['password'];
 			$_SESSION["is_admin"] = $reponse['is_admin'];
-			header('Location: ../index.php?page=admin');
+			header('Location: ../index.php?page=profil');
 			
 
         }else{

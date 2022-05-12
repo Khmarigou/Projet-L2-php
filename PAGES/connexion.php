@@ -1,7 +1,7 @@
 <section class='connect'>
 <?php
 if(isset($_SESSION["username"])){
-	header('Location: ./index.php?page=admin');
+	header('Location: ../index.php?page=profil');
 }
 ?>
 

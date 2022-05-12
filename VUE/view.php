@@ -42,9 +42,11 @@
                 <li class="nav-item">
                     <a class="nav-link nav-link-2" href=".?page=louer">Louer</a>
                 </li>
-                <li class="nav-item">
+
+
+                <!-- <li class="nav-item">
                     <a class="nav-link nav-link-3" href=".?page=demander">Demander</a>
-                </li>
+                </li> -->
     
 				<?php
 					if(isset($_SESSION["username"])){
@@ -77,7 +79,7 @@
 	                <a href=".?page=demander"><li>Demander</li></a>
 					<?php
 					if(isset($_SESSION["username"])){
-						echo "<a href='index.php?page=admin'><li>Mon compte</li></a>";
+						echo "<a href='index.php?page=profil'><li>Mon compte</li></a>";
 						echo "<a href='index.php?page=deconnexion'><li>Déconnexion</li></a>";
 					}
 					?>
