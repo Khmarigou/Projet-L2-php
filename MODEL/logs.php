@@ -35,7 +35,6 @@ function ajoutLog($idUser,$log){
     $result = mysqli_query($c,$sql);
 
     return $result;
-
 }
 
 function recupereLogs($idUser){
@@ -52,9 +51,9 @@ function recupereLogs($idUser){
         }
     }
 
-    return $liste;
-    
-    }
+    return $liste;    
+}
+
 
 function afficheLogs($idUser){
 
@@ -71,7 +70,6 @@ function afficheLogs($idUser){
     }
 
     echo "</di>";
-
 }
 
-?>
+?>  
