@@ -2,8 +2,11 @@
 
 	<?php
 
+	include_once "MODEL/logs.php";
+
 	if(isset($_SESSION["username"])){
 		echo "<h2 id='bonjour'>Bonjour " . $_SESSION["username"] .", vous êtes connecté.</h2>";
+		afficheLogs($_SESSION["id"]);
 		
 
 		
