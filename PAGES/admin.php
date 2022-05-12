@@ -8,8 +8,6 @@
 		echo "<h2 id='bonjour'>Bonjour " . $_SESSION["username"] .", vous êtes connecté.</h2>";
 		afficheLogs($_SESSION["id"]);
 		
-
-		
 		// echo "<p>";
 		// echo $p = getPoints($_SESSION['id']);
 		// echo "<br>";
