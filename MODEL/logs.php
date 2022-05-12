@@ -74,7 +74,4 @@ function afficheLogs($idUser){
 
 }
 
-
-
-
 ?>
