@@ -70,7 +70,7 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
     ajoutePointsLocation ($idProprio);
 
     if($ajout){
-        $message = "Vous avez mis en location le film ".$titre.".";
+        $message = "Vous avez mis en location le film \"".$titre." \".";
         $add = ajoutLog($_SESSION["id"], $message);
     }
 

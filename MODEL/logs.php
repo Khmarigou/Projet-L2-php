@@ -38,24 +38,36 @@ function ajoutLog($idUser,$log){
 
 }
 
-function afficheLogs($idUser){
+function recupereLogs($idUser){
     global $c;
+
+    $liste = array();
 
     $sql = "SELECT jour, activite FROM Logs WHERE utilisateur = $idUser";
     $res = mysqli_query($c,$sql);
+
+    if($res){
+        while($row = mysqli_fetch_assoc($res)){
+            $liste[] = $row;
+        }
+    }
+
+    return $liste;
     
+    }
+
+function afficheLogs($idUser){
+
+    $liste = recupereLogs($idUser);
+
     echo "<div>";
 
-    while($row = mysqli_fetch_assoc($res)){
- 
-        echo $row['jour'];
-        echo " : " . $row['activite'];
-        echo "<br>";
-        
-    }
-        
-    if($row == null){
+    if($liste == null){
         echo "Vous n'avez aucune activité. </br>";
+    }else{
+        foreach($liste as $key => $value){
+            echo $value['jour'] . " : " . $value['activite'] . "</br>";
+        }
     }
 
     echo "</di>";
