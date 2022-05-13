@@ -352,13 +352,13 @@ function afficher_film_test ($film, $id){
 			}
 			echo '<div>';
 			echo '<h3 class="tm-text-gray-dark mb-3">Tags</h3>';
-			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Cloud</a>';
-			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Bluesky</a>';
-			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Nature</a>';
-			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Background</a>';
-			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Timelapse</a>';
-			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Night</a>';
-			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Real Estate</a>';
+			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">tag1</a>';
+			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">tag</a>';
+			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">tag</a>';
+			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">tag</a>';
+			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">tag</a>';
+			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">tag</a>';
+			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">tag Estate</a>';
 			echo '</div></div></div></div>';
 			
 		}
