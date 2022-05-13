@@ -44,6 +44,24 @@
 	
 	$sql = "SELECT * FROM Dvd WHERE titre LIKE '%$titre%' ".$categorie;
 	$dvd = recup_dvd_sql ($sql);
-	afficher_dvd($dvd);
 	?>
+	<div class="container-fluid tm-container-content tm-mt-60">
+        <div class="row mb-4">
+            <h2 class="col-6 tm-text-primary">
+			<?php 
+			if($_POST['Categorie'] == ""){
+				echo "résultat pour : " . "$titre ";	
+			}
+			else{
+				echo "résultat pour : <span style='font-style: italic; font-weight: bold;'>" . "$titre ". "</span> dans la catégorie <span style='font-style: italic;font-weight: bold;'>". $_POST['Categorie']."</span>";
+			}	
+			?>
+                 
+            </h2>
+        </div>
+        <?php
+			afficher_dvd($dvd);
+		?>
+        
+    </div> 
 </section>

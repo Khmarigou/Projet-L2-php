@@ -253,7 +253,7 @@ function afficher_dvd ($list)
 	} else {
 		echo '<div class="row tm-mb-90 tm-gallery">';
 		foreach ($list as $key => $value) {
-        	echo '<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">';
+        	echo '<div class="col-xl-2 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">';
                 echo '<figure class="effect-ming tm-video-item">';
 		
                    	echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' class='img-fluid image-resize'>";
@@ -323,10 +323,10 @@ function afficher_film_test ($film, $id){
 
 			
 			echo '<div class="row tm-mb-90"> ';       
-			echo '<div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">';
+			echo '<div class="col-xl-4 col-lg-7 col-md-6 col-sm-12">';
 			echo "<img src='./IMAGES/Locations/".$value["couverture"]."' alt='Image' class='img-fluid'>";
 			echo '</div>';
-			echo '<div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">';
+			echo '<div class="col-xl-8 col-lg-5 col-md-6 col-sm-12">';
 			echo '<div class="tm-bg-gray tm-video-details">';
 			echo '<div class="text-center mb-5">';
 			echo '</div>';                 

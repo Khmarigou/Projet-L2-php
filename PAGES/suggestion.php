@@ -43,7 +43,7 @@
 			afficher_dvd($dvd);
 		?>
         
-    </div> <!-- container-fluid, tm-container-content -->
+    </div> 
 	
 </section>
 
