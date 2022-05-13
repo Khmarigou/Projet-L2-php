@@ -266,8 +266,6 @@ function afficher_dvd ($list)
                 echo '<div class="d-flex justify-content-between tm-text-gray">';
                     echo '<span class="tm-text-gray-light">Disponible</span>';
 					if(isset($_SESSION["username"])){
-						$id = $value["id"];
-						echo "<a href='index.php?page=reservation&id=$id'>Réserver</a>";
 						if($_SESSION["is_admin"]==1){
 							$id = $value["id"];
 							echo "<a href='index.php?page=supression&id=$id'>Supprimer</a>";
@@ -339,13 +337,19 @@ function afficher_film_test ($film, $id){
 			echo '<span class="tm-text-gray-dark">Categorie: </span><span class="tm-text-primary">'.$value["categorie"].'</span>';
 			echo '</div>';
 			echo '<br><h3 class="tm-text-gray-dark mb-3">Louer ce film</h3>';
-			echo "<form method='POST' action='MODEL/reserve.php' enctype='multipart/form-data' value='id' class='text-center mb-5'>";
-			echo "<input type='hidden' name='idDvd' value='$id' /></br>";//disabled='disabled'
-			echo "<label>Date de début : </label>";
-			echo "<input type='date' name='debut'/></br>";
-			echo "<label>Date de Fin : </label>";
-			echo "<input type='date' name='fin'/></br>";
-			echo "<p><input type='submit' name='location' value='location' class='btn btn-primary tm-btn-big'/></p></form>";
+			if(isset($_SESSION["username"])){
+				echo "<form method='POST' action='MODEL/reserve.php' enctype='multipart/form-data' value='id' class='text-center mb-5'>";
+				echo "<input type='hidden' name='idDvd' value='$id' /></br>";//disabled='disabled'
+				echo "<label>Date de début : </label>";
+				echo "<input type='date' name='debut'/></br>";
+				echo "<label>Date de Fin : </label>";
+				echo "<input type='date' name='fin'/></br>";
+				echo "<p><input type='submit' name='location' value='location' class='btn btn-primary tm-btn-big'/></p></form>";
+			}
+			else{
+				echo "<div class='text-center mb-5'><p>Connectez vous pour louer ce film</p>";
+				echo "<p><a href='.?page=connexion' class='btn btn-primary tm-btn-big'/>Connexion</a></p></div>";
+			}
 			echo '<div>';
 			echo '<h3 class="tm-text-gray-dark mb-3">Tags</h3>';
 			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">Cloud</a>';
