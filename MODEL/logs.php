@@ -69,7 +69,7 @@ function afficheLogs($idUser){
         }
     }
 
-    echo "</di>";
+    echo "</div>";
 }
 
 ?>  

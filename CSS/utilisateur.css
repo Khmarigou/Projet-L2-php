@@ -36,7 +36,7 @@
 
 /* Set a style for all buttons */
 .connect input[type=submit] {
-    background-color: #53af57;
+    background-color: #3399CC;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -47,8 +47,8 @@
 }
 .connect input[type=submit]:hover {
     background-color: white;
-    color: #53af57;
-    border: 1px solid #53af57;
+    color: #3399CC;
+    border: 1px solid #3399CC;
     
 }
 

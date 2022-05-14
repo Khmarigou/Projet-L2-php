@@ -9,7 +9,16 @@
 		<link rel="stylesheet" type="text/css" href="CSS/utilisateur.css" />
 		<link rel="stylesheet" href="CSS/bootstrap.min.css">
     	<link rel="stylesheet" href="fontawesome/css/all.min.css">
-		
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+        
+
+        <!--
+        <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+        <link rel="stylesgeet" href="https://rawgit.com/creativetimofficial/material-kit/master/assets/css/material-kit.css">
+-->
 
 	</head>
 	<body>
@@ -25,70 +34,44 @@
 		-->
 		<header>
 
-		<nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href=".?page=suggestion">
-                <i class="fas fa-film mr-2"></i>
-                DVD Share
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link nav-link-1 active" aria-current="page" href=".?page=suggestion">Explorer</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-link-2" href=".?page=louer">Louer</a>
-                </li>
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href=".?page=suggestion">
+                        <i class="fas fa-film mr-2"></i>
+                        DVD Share
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-1 active" aria-current="page" href=".?page=suggestion">Explorer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-2" href=".?page=louer">Louer</a>
+                        </li>
 
 
-                <!-- <li class="nav-item">
-                    <a class="nav-link nav-link-3" href=".?page=demander">Demander</a>
-                </li> -->
-    
-				<?php
-					if(isset($_SESSION["username"])){
-						echo "<li class='nav-item'><a  class='nav-link nav-link-5' href='index.php?page=profil'>Mon compte</a></li>";
-						echo "<li class='nav-item'><a  class='nav-link nav-link-6' href='index.php?page=deconnexion'>Déconnexion</a></li>";
-					}
-					else{
-						echo "<li class='nav-item'><a  class='nav-link nav-link-4' href='index.php?page=connexion'>Connexion</a></li>";
-					}
-					?>
-            </ul>
-            </div>
-        </div>
-    </nav>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link nav-link-3" href=".?page=demander">Demander</a>
+                        </li> -->
+            
+                        <?php
+                            if(isset($_SESSION["username"])){
+                                echo "<li class='nav-item'><a  class='nav-link nav-link-5' href='index.php?page=profil'>Mon compte</a></li>";
+                                echo "<li class='nav-item'><a  class='nav-link nav-link-6' href='index.php?page=deconnexion'>Déconnexion</a></li>";
+                            }
+                            else{
+                                echo "<li class='nav-item'><a  class='nav-link nav-link-4' href='index.php?page=connexion'>Connexion</a></li>";
+                            }
+                            ?>
+                    </ul>
+                    </div>
+                </div>
+            </nav>
 
-
-
-	<!--
-			<div class="banniere">
-				<a href=".?page=connexion"><img alt="connection" src="IMAGES/CONNECT.svg" id="connection"/></a>
-				<h2>La location de DVD du futur</h2>
-				<h1>DVD Share</h1>
-				
-
-			</div>
-			<nav class="menu">
-	            <ul>
-	                <a href=".?page=suggestion"><li>Explorer</li></a>
-	                <a href=".?page=louer"><li>Louer</li></a>
-	                <a href=".?page=demander"><li>Demander</li></a>
-					<?php
-					if(isset($_SESSION["username"])){
-						echo "<a href='index.php?page=profil'><li>Mon compte</li></a>";
-						echo "<a href='index.php?page=deconnexion'><li>Déconnexion</li></a>";
-					}
-					?>
-            	</ul>
-        	</nav>
-
-				-->
-
-		</header>
+	    </header>
 		<?php 
 			if (isset($_GET['page'])) {
 				include "PAGES/".$_GET['page'].".php";
