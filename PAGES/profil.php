@@ -55,12 +55,16 @@
                                   Mes activités
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
-                                  <i class="material-icons">favorite</i>
-                                    Modération
-                                </a>
-                            </li>
+                            
+                            <?php if($_SESSION["is_admin"] == 1){
+                                echo '<li class="nav-item">';
+                                echo '<a class="nav-link" href="#favorite" role="tab" data-toggle="tab">';
+                                echo '<i class="material-icons">favorite</i>';
+                                echo 'Modération';
+                                echo '</a>';
+                                echo '</li>';
+                            }
+                            ?>    
                           </ul>
                         </div>
     	    	</div>
