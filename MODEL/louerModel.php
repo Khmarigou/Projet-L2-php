@@ -1,8 +1,10 @@
+
 <?php
 
-
-include_once "points.php";
 include_once "logs.php";
+include_once "points.php";
+
+
 //cree la table
 
 //function creer_table_dvd(){
@@ -29,10 +31,6 @@ include_once "logs.php";
 
     //return $result;
 //}
-
-
-//ajoute dans la table
-
 
 if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
 
@@ -70,11 +68,9 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
 
     if($ajout){
         $message = "Vous avez mis en location le film \"".$titre." \".";
-
-        $add = ajoutLog($_SESSION["id"], $message);
-
-        $message = "Votre film \" " . $titre . " \" a bien été ajouté.";
-        alert($message);
+        ajoutLog($_SESSION["id"], $message);
+                
+        printPHP("Votre film a bien été ajouté.");
     }
 
 

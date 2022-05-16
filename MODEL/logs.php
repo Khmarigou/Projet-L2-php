@@ -1,6 +1,6 @@
 <?php
 
-function alert($message){
+function printPHP($message){
 
     $texte = addslashes($message);
 
