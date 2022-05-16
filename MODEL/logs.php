@@ -1,6 +1,6 @@
 <?php
 
-function afficheErreur($message){
+function alert($message){
 
     $texte = addslashes($message);
 
