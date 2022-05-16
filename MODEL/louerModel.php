@@ -73,7 +73,7 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
 
         $add = ajoutLog($_SESSION["id"], $message);
 
-        $message = "Votre film \" " . $titre . " \" " "a bien été ajouté.";
+        $message = "Votre film \" " . $titre . " \" a bien été ajouté.";
         alert($message);
     }
 
