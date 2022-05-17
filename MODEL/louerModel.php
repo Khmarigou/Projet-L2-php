@@ -21,6 +21,8 @@ include_once "points.php";
         categorie ENUM ('Action','Anime','Comedie','Documentaire','Drame','Fantastique','Horreur','Musical','Policier','SF','Autres') NOT NULL,
         couverture VARCHAR(100) NOT NULL,
         intrigue VARCHAR(1000) NOT NULL,
+        nbNote INT,
+        note INT,
         
         CONSTRAINT Pk_Dvd PRIMARY KEY (id),
         CONSTRAINT Fk_Dvd_User FOREIGN KEY (proprio) REFERENCES User(idUser))";
