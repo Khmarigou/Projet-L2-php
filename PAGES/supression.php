@@ -1,12 +1,29 @@
 <?php
 
+include_once "../praujet/MODEL/logs.php";
+
 $db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 $id = $_GET['id'];
+
+
+$sql3="SELECT titre FROM Dvd WHERE id=$id";
+$result3 = mysqli_query($db,$sql3);
+$row = mysqli_fetch_assoc($result3);
+$titre = $row["titre"];
+
+
 $sql= "DELETE FROM Reservation WHERE idDvd=$id";
 $sql2= "DELETE FROM Dvd WHERE id=$id";
+
 $result = mysqli_query($db,$sql);
 $result2 = mysqli_query($db,$sql2);
 header('Location: ../praujet/index.php?page=suggestion');
+
+if($result){
+    
+    $message = "Vous avez supprimé le film \"".$titre." \".";
+    ajoutLog($_SESSION["id"], $message);
+}
 
 /*if(isset($_POST["location"])){
     $deb = $_POST['debut'];

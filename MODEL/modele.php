@@ -272,7 +272,12 @@ function afficher_dvd ($list)
 							echo "<a href='index.php?page=supression&id=$id'>Supprimer</a>";
 						} 
 					}
-                    echo '<span>9,906 likes</span>';
+					if($value['nbNote'] == 0){
+                    	echo '<span>Pas de note</span>';
+					}else {
+						$moy = round($value['note']/$value['nbNote'],1);
+						echo '<span>Note : '.$moy.' ★ </span>';
+					}
                 echo '</div>';
             echo '</div>';
 		}
@@ -360,6 +365,11 @@ function afficher_film_test ($film, $id){
 			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">tag</a>';
 			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">tag</a>';
 			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">tag Estate</a>';
+			echo '</div>';
+/*************** */
+			echo '</br><div>';
+			echo '<h3 class="tm-text-gray-dark mb-3">Noter le Film</h3>';
+			star();
 			echo '</div></div></div></div>';
 			
 		}

@@ -1075,6 +1075,14 @@ img.rounded {
     opacity: .5;
 }
 
+.star{
+    padding : 2px;
+    font-size : 30px;
+}
+
+.starhover{
+    color:rgb(255,196,0);
+}
 
 
 

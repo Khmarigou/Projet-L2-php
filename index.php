@@ -11,7 +11,11 @@ include_once "MODEL/logs.php";
 
 include_once "MODEL/louerModel.php";
 include_once "MODEL/reserve.php";
+
 include_once "MODEL/compte.php";
+
+include_once "MODEL/notation.php";
+
 
 
 // Controleur
