@@ -29,14 +29,18 @@ if(isset($_POST["login"])){
 		$username = mysqli_real_escape_string($c,htmlspecialchars($_POST['username'])); 
 		$password = mysqli_real_escape_string($c,htmlspecialchars($_POST['password']));
 
-		$crypt_password=password_hash($password, PASSWORD_DEFAULT);
-		$correct_password=password_verify($_POST['password'], $crypt_password);
-
+		
+		
+		
 		$requete = "SELECT * FROM `User` WHERE `username` = '". $username ."' ";
         $exec_requete = mysqli_query($c,$requete);
         $reponse = mysqli_fetch_assoc($exec_requete);
 
-		if(!empty($reponse["username"])){
+		$crypt_password = $reponse['password'];
+		$correct_password=password_verify($_POST['password'], $crypt_password);
+
+
+		if(!empty($reponse["username"]) AND $correct_password){
 
 			$_SESSION["id"] = $reponse['idUser'];
 			$_SESSION["username"] = $_POST['username'];
