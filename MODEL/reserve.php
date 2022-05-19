@@ -62,8 +62,15 @@ C:\wamp64\www\WEB\praujet\CONTROLER\reserveControler.php:11:string '2022-05-10' 
 
 */
 
-// getAnne(date), getJour(date), getMois(date)
+// getAnne(date), getJour(date), getMois(date) -> plus besoin
 // estPlusGrandDate( date1, date2)
 
-    
+//prend deux dates en string, et renvoit si la première est plus grande que la deuxième
+function isBiggerDate($date1,$date2){
+    $d1 = strtotime($date1);
+    $d2 = strtotime($date2);
+
+    return $d1 > $d2;
+
+}
 ?>
