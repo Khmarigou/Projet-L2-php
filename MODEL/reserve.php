@@ -13,19 +13,32 @@ $sql = "CREATE TABLE Reservation(
     
 $result = mysqli_query($db, $sql);
 
-if(isset($_POST["location"])){
-    session_start();
-    $deb = $_POST['debut'];
-    $fin = $_POST['fin'];
-    $idDvd = $_POST['idDvd'];
-    $idUser = $_SESSION['id'];
-        $sql = "INSERT INTO Reservation (idDvd, idLocataire, dateDebut, dateFin) VALUES ($idDvd,$idUser,'$deb','$fin')";
-        $result = mysqli_query($db, $sql);
-        var_dump($deb); var_dump($fin);
-        var_dump($sql);var_dump($result);
-        header('Location: ../index.php?page=suggestion');
-    }
-    
-    
+
+
+//test :
+
+/* C:\wamp64\www\WEB\praujet\CONTROLER\reserveControler.php:10:string '2022-05-03' (length=10)
+
+C:\wamp64\www\WEB\praujet\CONTROLER\reserveControler.php:11:string '2022-05-10' (length=10) */
+
+/* fonctions necessaires :
+
+- affichage des réservations
+
+- date fin > date début
+- pas de reservation si c ton dvd
+- pas de reserrvation si tu as déjà un dvd de réserver sur ces dates
+- pas de reservation si un autre a plus de points
+
+- possibilité de réserver si l'autre à moins de points
+- il faut réserver deux jour à l'avance minimum (date début => date ajourd'hui + 2 jours) 
+
+- si tu réserves par dessus la réservation de quelqu'un qui a moins de points, celui qui en a le moins gagne des points
+- plus la durée de réservation est longue, plus tu perds des points
+    - resa < 4 jours = perd 0pt
+    - resa > 6 jours = perd 2 pts
+    - resa > 14 jours = perd 4 pts
+
+
     
 ?>

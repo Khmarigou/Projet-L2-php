@@ -272,7 +272,7 @@ function afficher_dvd ($list)
 							echo "<a href='index.php?page=supression&id=$id'>Supprimer</a>";
 						} 
 					}
-					if($value['nbNote'] == 0){
+					elseif($value['nbNote'] == 0){ 
                     	echo '<span>Pas de note</span>';
 					}else {
 						$moy = round($value['note']/$value['nbNote'],1);
@@ -325,7 +325,6 @@ function afficher_film_test ($film, $id){
 	} else {
 		foreach ($film as $key => $value) {
 
-			
 			echo '<div class="row tm-mb-90"> ';       
 			echo '<div class="col-xl-4 col-lg-7 col-md-6 col-sm-12">';
 			echo "<img src='./IMAGES/Locations/".$value["couverture"]."' alt='Image' class='img-fluid'>";
@@ -344,7 +343,7 @@ function afficher_film_test ($film, $id){
 			echo '</div>';
 			echo '<br><h3 class="tm-text-gray-dark mb-3">Louer ce film</h3>';
 			if(isset($_SESSION["username"])){
-				echo "<form method='POST' action='MODEL/reserve.php' enctype='multipart/form-data' value='id' class='text-center mb-5'>";
+				echo "<form method='POST' action='CONTROLER/reserveControler.php' enctype='multipart/form-data' value='id' class='text-center mb-5'>";
 				echo "<input type='hidden' name='idDvd' value='$id' /></br>";//disabled='disabled'
 				echo "<label>Date de début : </label>";
 				echo "<input type='date' name='debut'/></br>";

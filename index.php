@@ -17,6 +17,7 @@ include_once "MODEL/notation.php";
 
 // Controleur
 include_once "CONTROLER/action.php";
+include_once "CONTROLER/reserveControler.php";
 
 // Vue
 include_once "VUE/louerView.php";
