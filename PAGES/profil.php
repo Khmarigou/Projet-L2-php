@@ -30,14 +30,11 @@
 	                        </div>
 	                        <div class="name text-center">
                                 <?php
-	                            echo '<h3 class="title">'. $_SESSION["username"] .'</h3>';
+	                            echo '<h3 class="title">Bonjour '. $_SESSION["username"] .'</h3>';
                                 ?>
 	                        </div>
 	                    </div>
     	            </div>
-                </div>
-                <div class="description text-center">
-                    <p>description a mettre ici ou autre chose. </p>
                 </div>
 				<div class="row">
 					<div class="col-md-6 ml-auto mr-auto">
