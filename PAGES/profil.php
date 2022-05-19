@@ -1,8 +1,5 @@
-
-<section class='pageProfil'>
-
-    <?php
-    /*
+ <?php
+    
     if(isset($_SESSION["username"])){
 
         echo "<h2 id='bonjour'>Bonjour " . $_SESSION["username"] .", vous êtes connecté.</h2>";
@@ -17,8 +14,11 @@
     }else{
         echo "Vous devez être connecté(e).";
     }
-    */
+    
     ?>
+<section class='pageProfil'>
+
+   
 
 		<div class="profile-content">
             <div class="container">
@@ -70,7 +70,7 @@
     	    	</div>
             </div>
         
-            <div class="tab-content tab-space">
+        <div class="tab-content tab-space">
 
             <div class="tab-pane text-center gallery" id="works">
                 <?php
@@ -80,8 +80,44 @@
                 ?>
   			</div>
             <div class="tab-pane active text-center gallery" id="studio">
+                <?php
+                    affichePoint();
+                    ?>
+                    <li class="nav-item">
+                            <a class="nav-link" href="#nmdp" role="tab" data-toggle="tab">
+                                  <!--<i class="material-icons">camera</i> -->
+                            Nouveau mot de passe
+                        </a>
+                    </li>
+
+                    <div class="tab-pane text-center gallery" id="nmdp">
+                
+                
+            <section class='connect'>
+                <form action="../praujet/MODEL/compte.php" method="POST">
+
+                    <label><b>Mot de passe actuel</b></label>
+                        <input type="text" placeholder="Entrer votre mot de passe" name="Mot de passe actuel" required>
+
+                    <label><b>Nouveau mot de passe</b></label>
+                    <input type="password" placeholder="Entrer le nouveau mot de passe" name="New password" required>
+
+               
+
+                <input type="submit" name='changement'>
+
+              </form>
+        </section>
+
+                
+            </div>
+                
+  			
+            </div>
+        </div>
         
-  			</div>
+
+
             
             <div class="tab-pane text-center gallery" id="favorite">
                 <?php
