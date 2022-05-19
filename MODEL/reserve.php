@@ -75,9 +75,30 @@ function isBiggerDate($date1,$date2){
 }
 
 //fonction qui dit si la date en entrée et au moins 2jours de plus qu'aujourd'hui
-function twoDaysBefore($dateDebut){
+function isTwoDaysAfter($dateDebut){
     $d = strtotime($dateDebut);
-    $ajdPlus2j = time() + (2 * 24 * 60 * 60) ;
+
+    echo $dateDebut . " : ". $d . "<br>";
+
+    $mtn = time();
+    $ajdPlus2j = $mtn + (2 * 24 * 60 * 60) ;
+
+    echo "maintenant : ". $mtn . "<br>";
+    
+    echo "Deux jours après ajd : " . $ajdPlus2j. "<br>";
+
+    $dateExacte = date("H:i:s", $ajdPlus2j);
+    $trop = strtotime($dateExacte);
+
+    $ajdPlus2j = $ajdPlus2j -  $trop ;
+
+    echo $dateExacte ." : ". $trop ."<br>";
+
+    $j2 = date("Y-m-d",$ajdPlus2j);
+
+    
+    echo "J+2 parfait : " . $ajdPlus2j . "<br>";
+    echo "J+2 parfait : " . $j2. "<br>";
 
     return $d >= $ajdPlus2j;
 }
