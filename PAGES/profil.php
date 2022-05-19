@@ -36,9 +36,6 @@
 	                    </div>
     	            </div>
                 </div>
-                <div class="description text-center">
-                    <p>description a mettre ici ou autre chose. </p>
-                </div>
 				<div class="row">
 					<div class="col-md-6 ml-auto mr-auto">
                         <div class="profile-tabs">
@@ -80,7 +77,41 @@
                 ?>
   			</div>
             <div class="tab-pane active text-center gallery" id="studio">
-        
+                <div class="section">
+                    <p>Retrouvez et modifiez toutes les informations qui vous concernent.</p>
+                    <div class="row">
+                        <p> Mes Points : </p>        
+                    </div>
+                    <p>&nbsp;</p>
+                    <h5>Modification du mot de passe</h5>
+                    <form method="post">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="old-password" type="password" class="validate" name="ancien_mot_de_passe">
+                                <label for="old-password">Ancien mot de passe</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="password" type="password" class="validate" name="mot_de_passe">
+                                <label for="password">Nouveau mot de passe</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="confirmation" type="password" class="validate" name="confirmation">
+                                <label for="confirmation">Confirmation du nouveau mot de passe</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="center">
+                                <button class="modal-action modal-close btn waves-effect waves-light" type="submit" name="password_update">
+                                    Modifier le mot de passe
+                                </button>
+                            </p>
+                        </div>
+                    </form>
+                </div>
   			</div>
             
             <div class="tab-pane text-center gallery" id="favorite">
