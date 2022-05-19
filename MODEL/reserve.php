@@ -18,7 +18,6 @@ $result = mysqli_query($db, $sql);
 //test :
 
 /* C:\wamp64\www\WEB\praujet\CONTROLER\reserveControler.php:10:string '2022-05-03' (length=10)
-
 C:\wamp64\www\WEB\praujet\CONTROLER\reserveControler.php:11:string '2022-05-10' (length=10) */
 
 /* fonctions necessaires :
@@ -62,6 +61,9 @@ C:\wamp64\www\WEB\praujet\CONTROLER\reserveControler.php:11:string '2022-05-10' 
                                                 - réservé mais on peut réservé par dessus
 
 */
+
+// getAnne(date), getJour(date), getMois(date)
+// estPlusGrandDate( date1, date2)
 
     
 ?>
