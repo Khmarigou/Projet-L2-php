@@ -23,8 +23,8 @@ C:\wamp64\www\WEB\praujet\CONTROLER\reserveControler.php:11:string '2022-05-10' 
 /* fonctions necessaires :
 
 
-- date fin > date début
-- il faut réserver deux jour à l'avance minimum (date début => date ajourd'hui + 2 jours)
+c fait : - date fin > date début
+c fait : - il faut réserver deux jour à l'avance minimum (date début => date ajourd'hui + 2 jours)
 
 
 - fonction dates dispos :
@@ -103,4 +103,6 @@ function isTwoDaysAfter($dateDebut){
 
     return $d >= $ajdPlus2j;
 }
+
+
 ?>
