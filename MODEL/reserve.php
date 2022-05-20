@@ -65,6 +65,8 @@ C:\wamp64\www\WEB\praujet\CONTROLER\reserveControler.php:11:string '2022-05-10' 
 // getAnne(date), getJour(date), getMois(date) -> plus besoin
 // estPlusGrandDate( date1, date2)
 
+date_default_timezone_set("Europe/Paris");
+
 //prend deux dates en string, et renvoit si la première est plus grande que la deuxième
 function isBiggerDate($date1,$date2){
     $d1 = strtotime($date1);
@@ -76,29 +78,23 @@ function isBiggerDate($date1,$date2){
 
 //fonction qui dit si la date en entrée et au moins 2jours de plus qu'aujourd'hui
 function isTwoDaysAfter($dateDebut){
-    $d = strtotime($dateDebut);
 
-    echo $dateDebut . " : ". $d . "<br>";
+    $d = strtotime($dateDebut);
 
     $mtn = time();
     $ajdPlus2j = $mtn + (2 * 24 * 60 * 60) ;
 
-    echo "maintenant : ". $mtn . "<br>";
-    
-    echo "Deux jours après ajd : " . $ajdPlus2j. "<br>";
+    $heureTrop = date("H:i:s", $ajdPlus2j);
+    $tempsTrop = explode(":",$heureTrop);
 
-    $dateExacte = date("H:i:s", $ajdPlus2j);
-    $trop = strtotime($dateExacte);
+    $heure = intval($tempsTrop[0]) * 60 * 60;
+    $min = intval($tempsTrop[1]) * 60;
+    $sec = intval($tempsTrop[2]);
+
+    $trop = $heure + $min+ $sec;
 
     $ajdPlus2j = $ajdPlus2j -  $trop ;
 
-    echo $dateExacte ." : ". $trop ."<br>";
-
-    $j2 = date("Y-m-d",$ajdPlus2j);
-
-    
-    echo "J+2 parfait : " . $ajdPlus2j . "<br>";
-    echo "J+2 parfait : " . $j2. "<br>";
 
     return $d >= $ajdPlus2j;
 }
