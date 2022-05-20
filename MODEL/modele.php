@@ -471,23 +471,3 @@ function afficher_film_test ($film, $id){
 
 
 ?>
-
-
-
-<!--
-		echo "<section class=film>";
-			echo "<article>";
-			echo "<h2>".$value["titre"]."</h2></br>";
-			echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' alt='img' class='img'/></br>";
-			echo "<p><b>Categorie :</b> ".$value["categorie"]."</p></br>";
-			echo "<p><b>Intrigue : </b>".$value["intrigue"]."</p></br>";
-
-			if(isset($_SESSION["username"])){
-				echo "<form method='POST' action='PAGES/reservation.php' enctype='multipart/form-data' value='id'>";
-				echo "<p><input type='submit' name='louer' value='Reserver'/></p></form>";
-			} 
-
-			echo "</article>";
-			echo "</section>";
-
-		-->
