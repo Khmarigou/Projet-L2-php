@@ -248,6 +248,7 @@ function recup_dvd_sql ($sql) {
 
 function afficher_dvd ($list)
 {
+	global $c;
 	if ($list == null)
 	{
 		echo "<article><h2>Aucun résultat ne correspond à votre recherche.</h2></article>";
@@ -272,11 +273,20 @@ function afficher_dvd ($list)
 							echo "<a href='index.php?page=supression&id=$id'>Supprimer</a>";
 						} 
 					}
-					if($value['nbNote'] == 0){
-                    	echo '<span>Pas de note</span>';
+					$id = $value["id"];
+					$sql = "SELECT COUNT(*) FROM Notation WHERE idDvd = $id";
+					$result = mysqli_query($c, $sql);
+					$row =  mysqli_fetch_assoc($result);
+					$nbNote = intval($row['COUNT(*)']);
+					if($nbNote == 0){
+                    	echo '<span>Pas de notes</span>';
 					}else {
-						$moy = round($value['note']/$value['nbNote'],1);
-						echo '<span>Note : '.$moy.' ★ </span>';
+						$sql = "SELECT SUM(note) FROM Notation WHERE idDvd = $id";
+						$result = mysqli_query($c, $sql);
+						$row =  mysqli_fetch_assoc($result);
+						$noteCumul = intval($row['SUM(note)']);
+						$moy = round($noteCumul / $nbNote,1) ;
+						echo '<span>Note : '.$moy.'/5 </span>';
 					}
                 echo '</div>';
             echo '</div>';
@@ -319,6 +329,7 @@ function afficher_film_similaire($list){
 //test pour page de reservation 
 //alexandre
 function afficher_film_test ($film, $id){
+	global $c;
 	if ($film == null)
 	{
 		echo "<article><h2>Erreur.</h2></article>";
@@ -367,10 +378,31 @@ function afficher_film_test ($film, $id){
 			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">tag Estate</a>';
 			echo '</div>';
 /*************** */
-			echo '</br><div>';
-			echo '<h3 class="tm-text-gray-dark mb-3">Noter le Film</h3>';
-			star();
-			echo '</div></div></div></div>';
+//Emilien -> Notation
+			//var_dump($_SESSION['id']); exit;
+			if(isset($_SESSION["username"])){
+				$idUser = $_SESSION['id'];
+				$idDvd = $value['id'];
+				$sql = "SELECT idUs, idDvd FROM Notation WHERE idUs=$idUser AND idDvd = $idDvd";
+				$result = mysqli_query($c,$sql);
+				//var_dump($result); exit;
+				echo '</br><div>';
+				echo '<h3 class="tm-text-gray-dark mb-3">Noter le Film</h3>';
+				//if($result["lenghts"]==NULL){
+					//$note = 0 ;
+					star();
+					//echo '<script><?php';
+					//echo "var jsvar ='$note';";
+					/*echo '?></script>';*/
+					//var_dump(getNote());
+					//$sql = "INSERT INTO Notation(idUs, idDvd, isnote) VALUES ($idUser,$idDvd, 1)";
+					//$result = mysqli_query($c,$sql);
+				//}else{
+					//echo '<p> Vous avez déjà noté ce film'; 
+				//}
+				echo '</div>';
+			}
+			echo '</div></div></div>';	
 			
 		}
 	}
