@@ -62,9 +62,6 @@ c fait : - il faut réserver deux jour à l'avance minimum (date début => date 
 
 */
 
-// getAnne(date), getJour(date), getMois(date) -> plus besoin
-// estPlusGrandDate( date1, date2)
-
 date_default_timezone_set("Europe/Paris");
 
 //prend deux dates en string, et renvoit si la première est plus grande que la deuxième
@@ -113,9 +110,8 @@ function isYourDvd($idUser,$idDvd){
     var_dump($sql);
     
     while(($row = mysqli_fetch_assoc($res)) && !$trouve){
-        $id = $row['id'];
-        var_dump($id);
-        if($id == $idDvd){
+        
+        if($row['id'] == $idDvd){
             $trouve = true;
         }
     }
@@ -123,6 +119,7 @@ function isYourDvd($idUser,$idDvd){
     return $trouve;
 
 }
+
 
 //fonction qui prend trois dates en entrées, et dis si la premère et entre les deux autres
 function isDateIn($date, $dateInf, $dateSupp){

@@ -10,10 +10,8 @@
 
         $d2 = "2022-05-22";
 
-        $t1 = isTwoDaysAfter($d2);
-
-        $t2 = isYourDvd(2,1);
-        var_dump($t2);
+        $t = isDateIn("2022-05-22","2022-05-20","2022-05-23");
+        var_dump($t);
 
 
 
