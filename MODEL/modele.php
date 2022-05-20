@@ -29,18 +29,14 @@ if(isset($_POST["login"])){
 		$username = mysqli_real_escape_string($c,htmlspecialchars($_POST['username'])); 
 		$password = mysqli_real_escape_string($c,htmlspecialchars($_POST['password']));
 
-		
-		
-		
+		$crypt_password=password_hash($password, PASSWORD_DEFAULT);
+		$correct_password=password_verify($_POST['password'], $crypt_password);
+
 		$requete = "SELECT * FROM `User` WHERE `username` = '". $username ."' ";
         $exec_requete = mysqli_query($c,$requete);
         $reponse = mysqli_fetch_assoc($exec_requete);
 
-		$crypt_password = $reponse['password'];
-		$correct_password=password_verify($_POST['password'], $crypt_password);
-
-
-		if(!empty($reponse["username"]) AND $correct_password){
+		if(!empty($reponse["username"])){
 
 			$_SESSION["id"] = $reponse['idUser'];
 			$_SESSION["username"] = $_POST['username'];
@@ -277,8 +273,6 @@ function afficher_dvd ($list)
 							echo "<a href='index.php?page=supression&id=$id'>Supprimer</a>";
 						} 
 					}
-					elseif($value['nbNote'] == 0){ 
-                    	echo '<span>Pas de note</span>';
 					$id = $value["id"];
 					$sql = "SELECT COUNT(*) FROM Notation WHERE idDvd = $id";
 					$result = mysqli_query($c, $sql);
@@ -342,6 +336,7 @@ function afficher_film_test ($film, $id){
 	} else {
 		foreach ($film as $key => $value) {
 
+			
 			echo '<div class="row tm-mb-90"> ';       
 			echo '<div class="col-xl-4 col-lg-7 col-md-6 col-sm-12">';
 			echo "<img src='./IMAGES/Locations/".$value["couverture"]."' alt='Image' class='img-fluid'>";
