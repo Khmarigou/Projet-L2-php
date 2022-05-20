@@ -112,6 +112,7 @@ function isYourDvd($idUser,$idDvd){
     $res = mysqli_query($c,$sql);
     
     while($row = mysqli_fetch_assoc($res) && !$trouve){
+        var_dump($row['id']);
         if($row['id'] == $idDvd){
             $trouve = true;
         }
