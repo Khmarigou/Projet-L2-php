@@ -78,12 +78,16 @@ function isBiggerDate($date1,$date2){
 
 //fonction qui dit si la date en entrée et au moins 2jours de plus qu'aujourd'hui
 function isTwoDaysAfter($dateDebut){
-
+    //on met la date en entré en temps
     $d = strtotime($dateDebut);
 
+    //on crée le temps, qui est l'heure actuelle, mais en enlevant 
+    //les heures, les mins et les sec en trop
+    // on veut j+2 à 00:00:00 heure
     $mtn = time();
     $ajdPlus2j = $mtn + (2 * 24 * 60 * 60) ;
 
+    //on récupère le temps en trop
     $heureTrop = date("H:i:s", $ajdPlus2j);
     $tempsTrop = explode(":",$heureTrop);
 
@@ -93,6 +97,7 @@ function isTwoDaysAfter($dateDebut){
 
     $trop = $heure + $min+ $sec;
 
+    //on met à jour j+2 avec le temps en trop
     $ajdPlus2j = $ajdPlus2j -  $trop ;
 
 
