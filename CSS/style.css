@@ -61,7 +61,8 @@
 }
 
 div.location{
-    margin: 40px;
+    margin: 50px;
+    
 }
 
 
@@ -106,6 +107,30 @@ input[type=submit] {
   /*when navigating through the items using the arrow keys:*/
   background-color: DodgerBlue !important;
   color: #ffffff;
+}
+
+
+.bouton_location{
+    background-color: #3498db;
+    border-radius: 10px;
+    border: solid;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    display: block;
+    margin-right: 35%;
+    margin-left: 35%;
+    list-style-type: none;
+}
+
+.bouton_location:hover{
+    background-color: white;
+    transition-duration: 0.2s;
+    color: #3498db;
 }
 
 
