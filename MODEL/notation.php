@@ -12,7 +12,6 @@ function cree_table_notation(){
         CONSTRAINT fk_dvd_film FOREIGN KEY (idDvd) REFERENCES Dvd (id)
         )";
     $result = mysqli_query($c, $sql);
-    var_dump($result);exit;
 }
 
 function star(){
