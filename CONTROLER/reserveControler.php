@@ -2,11 +2,10 @@
 
 
 
-
 if(isset($_POST["location"])){
 
-    include_once "../praujet/MODEL/reserve.php";
     
+
     session_start();
     $deb = $_POST['debut'];
     $fin = $_POST['fin'];

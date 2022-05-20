@@ -1,13 +1,14 @@
 <?php
 
-function printPHP($message){
+// marche pas
+/* function printPHP($message){
 
     $texte = addslashes($message);
 
     echo "<script>";
     echo "alert('$texte');"; 
     echo "</script>";
-}
+} */
 
 $c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 
