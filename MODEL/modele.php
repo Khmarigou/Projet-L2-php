@@ -301,7 +301,6 @@ function afficher_dvd ($list){
                     echo '</figcaption>';                 
                 echo '</figure>';
                 echo '<div class="d-flex justify-content-between tm-text-gray">';
-                    echo '<span class="tm-text-gray-light">Disponible</span>';
 					if(isset($_SESSION["username"])){
 						if($_SESSION["is_admin"]==1){
 							$id = $value["id"];
