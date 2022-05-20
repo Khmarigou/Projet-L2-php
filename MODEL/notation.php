@@ -8,7 +8,7 @@ function cree_table_notation(){
         idDvd INT,
         note INT,
         CONSTRAINT pk_notation PRIMARY KEY (idNote),
-        CONSTRAINT fk_user_film FOREIGN KEY (idUs) REFERENCES user (idUser),
+        CONSTRAINT fk_user_film FOREIGN KEY (idUs) REFERENCES User (idUser),
         CONSTRAINT fk_dvd_film FOREIGN KEY (idDvd) REFERENCES Dvd (id)
         )";
     $result = mysqli_query($c, $sql);
