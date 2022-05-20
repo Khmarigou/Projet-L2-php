@@ -124,7 +124,15 @@ function isYourDvd($idUser,$idDvd){
 
 }
 
+//fonction qui prend trois dates en entrées, et dis si la premère et entre les deux autres
+function isDateIn($date, $dateInf, $dateSupp){
+    $d = strtotime($date);
+    $dI = strtotime($dateInf);
+    $dS = strtotime($dateSupp); 
 
+    return ($d >= $dI) && ($d <= $dS);
+
+}
 
 //fonction qui supprime la reservation d'un utilisateur
 function supprimeReservation($user, $film){
