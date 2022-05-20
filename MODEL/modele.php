@@ -301,10 +301,11 @@ function afficher_dvd ($list){
                     echo '</figcaption>';                 
                 echo '</figure>';
                 echo '<div class="d-flex justify-content-between tm-text-gray">';
+                    
 					if(isset($_SESSION["username"])){
 						if($_SESSION["is_admin"]==1){
 							$id = $value["id"];
-							echo "<a href='index.php?page=supression&id=$id'>Supprimer</a>";
+							echo "<a class='btn_supprimer' href='index.php?page=supression&id=$id'>Supprimer</a>";
 						} 
 					}
 					$id = $value["id"];
