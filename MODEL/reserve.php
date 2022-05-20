@@ -156,18 +156,18 @@ if(isset($_POST["location"])){
 
 
     if(isBiggerDate($deb,$fin)){
-        $message = "Impossible de réserver : les dâtes ne sont pas cohérentes." ;
-        printPHP($message);
+        /* $message = "Impossible de réserver : les dâtes ne sont pas cohérentes." ;
+        printPHP($message); */
         header('Location: ../index.php?page=dvd_detail&id='.$idDvd);
 
     }elseif(!isTwoDaysAfter($deb)){
-        $message = "Impossible de réserver : vous devez réserver au moins deux jour à l'avance." ;
-        printPHP($message);
+        /* $message = "Impossible de réserver : vous devez réserver au moins deux jour à l'avance." ;
+        printPHP($message); */
         header('Location: ../index.php?page=dvd_detail&id='.$idDvd);
 
     }elseif(isYourDvd($idUser,$idDvd)){
-        $message = "Impossible de réserver : vous ne pouvez pas réserver votre propre DVD." ;
-        printPHP($message);
+        /* $message = "Impossible de réserver : vous ne pouvez pas réserver votre propre DVD." ;
+        printPHP($message); */
         header('Location: ../index.php?page=dvd_detail&id='.$idDvd);
 
     }else{
