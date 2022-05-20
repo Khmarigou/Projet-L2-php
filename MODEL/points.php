@@ -41,4 +41,14 @@ function ajoutePointsLocation ($user) {
     return $modif;
 }
 
+function affichePoints($user){
+    global $c;
+    $sql = "SELECT `points` FROM User WHERE idUser = $user";
+    $result = mysqli_query($c, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $res = $row['points'];
+    
+    return $res;
+}
+
 ?>
