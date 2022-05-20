@@ -63,9 +63,20 @@ $db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
     </div>
     
     <?php
-    afficher_dvd($dvd);
-    //afficher_film_similaire($list);
+    $dvdsim = recup_dvd_similaire();
+    afficher_dvd($dvdsim);
     ?>
+
+    <!-- <div class="row mb-4">
+        <h2 class="col-12 tm-text-primary">
+            Films les mieux notés
+        </h2>
+    </div>
+    
+    <?php
+    $dvdbest = recup_dvd_best();
+    afficher_dvd($dvdbest);
+    ?> -->
 
 </div> <!-- container-fluid, tm-container-content -->
 
