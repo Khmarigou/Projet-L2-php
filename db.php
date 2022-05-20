@@ -2,7 +2,7 @@
 
 
 //Base local Emilien 
-//$c = mysqli_connect("localhost", "l2", "L2", "l2_info_11");
+//$c = mysqli_connect("localhost", "root", "L2", "l2_info_11");
 
 
 //Base Serveur
