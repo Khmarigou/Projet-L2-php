@@ -435,16 +435,7 @@ function afficher_film_test ($film, $id){
 				echo "<div class='text-center mb-5'><p>Connectez vous pour louer ce film</p>";
 				echo "<p><a href='.?page=connexion' class='btn btn-primary tm-btn-big'/>Connexion</a></p></div>";
 			}
-			echo '<div>';
-			echo '<h3 class="tm-text-gray-dark mb-3">Tags</h3>';
-			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">tag1</a>';
-			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">tag</a>';
-			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">tag</a>';
-			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">tag</a>';
-			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">tag</a>';
-			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">tag</a>';
-			echo '<a href="#" class="tm-text-primary mr-4 mb-2 d-inline-block">tag Estate</a>';
-			echo '</div>';
+		
 /*************** */
 //Emilien -> Notation
 			//var_dump($_SESSION['id']); exit;
