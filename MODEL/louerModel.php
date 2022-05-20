@@ -70,7 +70,7 @@ if ( isset( $_POST['louer']) && $_POST['louer'] == 'Ajouter'){
         $message = "Vous avez mis en location le film \"".$titre." \".";
         ajoutLog($_SESSION["id"], $message);
                 
-        printPHP("Votre film a bien été ajouté.");
+        //printPHP("Votre film a bien été ajouté.");
     }
 
 
