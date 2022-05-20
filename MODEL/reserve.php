@@ -103,4 +103,14 @@ function isTwoDaysAfter($dateDebut){
 
     return $d >= $ajdPlus2j;
 }
+
+
+//fonction qui supprime la reservation d'un utilisateur
+function supprimeReservation($user, $film){
+    global $c;
+    $sql = "DELETE FROM `reservation` WHERE `idDvd`= $film AND `idLocataire` = $user";
+    $res = mysqli_query($c, $sql);
+
+    return $res;
+}
 ?>
