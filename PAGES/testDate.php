@@ -11,7 +11,9 @@
         $d2 = "2022-05-22";
 
         $t1 = isTwoDaysAfter($d2);
-        var_dump($t1);
+
+        $t2 = !true;
+        var_dump($t2);
 
 
 

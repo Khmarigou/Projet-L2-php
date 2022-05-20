@@ -104,5 +104,22 @@ function isTwoDaysAfter($dateDebut){
     return $d >= $ajdPlus2j;
 }
 
+function isYourDvd($idUser,$idDvd){
+    global $c;
+    $trouve = false;
+
+    $sql = "SELECT id FROM Dvd WHERE proprio=$idUser";
+    $res = mysqli_query($c,$sql);
+    
+    while($row = mysqli_fetch_assoc($res) && !$trouve){
+        if($row['id'] == $idDvd){
+            $trouve = true;
+        }
+    }
+
+    return $trouve;
+
+}
+
 
 ?>
