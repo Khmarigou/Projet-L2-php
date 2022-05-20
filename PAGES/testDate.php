@@ -12,7 +12,7 @@
 
         $t1 = isTwoDaysAfter($d2);
 
-        $t2 = isYourDvd(1,3);
+        $t2 = isYourDvd(2,1);
         var_dump($t2);
 
 

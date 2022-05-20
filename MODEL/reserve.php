@@ -110,10 +110,12 @@ function isYourDvd($idUser,$idDvd){
 
     $sql = "SELECT id FROM Dvd WHERE proprio=$idUser";
     $res = mysqli_query($c,$sql);
+    var_dump($sql);
     
-    while($row = mysqli_fetch_assoc($res) && !$trouve){
-        var_dump($row['id']);
-        if($row['id'] == $idDvd){
+    while(($row = mysqli_fetch_assoc($res)) && !$trouve){
+        $id = $row['id'];
+        var_dump($id);
+        if($id == $idDvd){
             $trouve = true;
         }
     }
