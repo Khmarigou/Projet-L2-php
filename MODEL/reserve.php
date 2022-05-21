@@ -234,6 +234,7 @@ function getResaFilm($idFilm){
     return $tab;
 }
 
+
 //fonction qui renvoit une liste de réservation avec des conflits
 function getConflitResa($idFilm,$debut,$fin){
 
@@ -254,6 +255,7 @@ function getConflitResa($idFilm,$debut,$fin){
     }
     return $conflits;
 }
+
 
 //fonction qui di si un utilisateur à plus de points que l'autre
 // user 1 a t-il plus de points
@@ -276,17 +278,20 @@ function haveMorePoints($user1,$user2){
     return $pt1 > $pt2;
 }
 
+
 //fonction qui dit si la reservation est en cours
 // $debut < (date de blockage = ajd +2j) < $fin
 function isInProcess($debut,$fin){
 
-    $j2 = time() +(2 * 24 * 60 * 60);
+    $jour = time() + (2 * 24 * 60 * 60);
+    $j2 = jourExacte($jour);
     
     $d = strtotime($debut);
     $f = strtotime($fin);
 
     return ($d <= $j2) && ($f >= $j2); 
 }
+
 
 // fonction qui prend en paramètre les dates de début et de fin d'une réservation
 // et dit si il est possible de réserver
@@ -299,6 +304,7 @@ function isDateReservable($idFilm,$iduser,$debut,$fin){
     if(!empty($conflits)){
         $reservable = false;
     }
+    
     return $reservable;
 }
 
