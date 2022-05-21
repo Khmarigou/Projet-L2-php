@@ -11,7 +11,8 @@ $result3 = mysqli_query($db,$sql3);
 $row = mysqli_fetch_assoc($result3);
 $titre = $row["titre"];
 
-
+$sql="DELETE FROM Notation WHERE idDvd = $id";
+$result = mysqli_query($db,$sql);
 $sql= "DELETE FROM Reservation WHERE idDvd=$id";
 $sql2= "DELETE FROM Dvd WHERE id=$id";
 

@@ -73,10 +73,10 @@ $db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
         </h2>
     </div>
     
-    <?php
+     <?php
     $dvdbest = recup_dvd_best();
     afficher_dvd($dvdbest);
-    ?> -->
+    ?> --> 
 
 </div> <!-- container-fluid, tm-container-content -->
 
