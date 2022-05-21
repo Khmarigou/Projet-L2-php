@@ -192,12 +192,13 @@ function isDateIn($date, $dateInf, $dateSupp){
 //(pour ne pas réserver plusieurs fois d'affilé)
 function isAlreadyReserved($idUser){
 
-    $isReserved = false;
+    $isReserved = true;
     global $c;
 
     $sql = "SELECT * FROM Reservation WHERE idLocataire = $idUser ORDER BY dateFin DESC";
     $res = mysqli_query($c,$sql);
-    $row = mysqli_fetch_assoc($res)
+    $row = mysqli_fetch_assoc($res);
+    var_dump($row);
 
     if(isset($row)){
 
@@ -207,7 +208,7 @@ function isAlreadyReserved($idUser){
         $ajd = time();
 
         if($dt < $ajd){
-            $isReserved = true;
+            $isReserved = false;
         }
     }
     return $isReserved;
@@ -250,6 +251,13 @@ if(isset($_POST["location"])){
 
         header('Location: ../index.php?page=dvd_detail&id='.$idDvd);
 
+
+    }elseif(isAlreadyReserved($idUser)){
+
+        $message = "Impossible de réserver : vous avez déjà réservé ce DVD dans les prochains jours." ;
+        $_SESSION['error'] = $message;
+
+        header('Location: ../index.php?page=dvd_detail&id='.$idDvd);
 
     }elseif(isBiggerDate($deb,$fin)){
 
