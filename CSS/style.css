@@ -939,7 +939,14 @@ img.rounded {
     }
 }
 
+.log{
+    padding-left: 30%;
+    text-align:left;
+    
+}
 
-
+.log p{
+    font-size: 1em;
+}
 
 

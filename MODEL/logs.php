@@ -34,7 +34,7 @@ function recupereLogs($idUser){
 
     $liste = array();
 
-    $sql = "SELECT jour, activite FROM Logs WHERE utilisateur = $idUser";
+    $sql = "SELECT jour, activite FROM Logs WHERE utilisateur = $idUser ORDER BY jour DESC LIMIT 15";
     $res = mysqli_query($c,$sql);
 
     if($res){
@@ -51,13 +51,13 @@ function afficheLogs($idUser){
 
     $liste = recupereLogs($idUser);
 
-    echo "<div>";
+    echo '<div class="log">';
 
     if($liste == null){
-        echo "Vous n'avez aucune activité. </br>";
+        echo "<p>Tiens c'est calme par ici, commence à louer des Dvd ou à mettre les tiens en locations </p></br>";
     }else{
         foreach($liste as $key => $value){
-            echo $value['jour'] . " : " . $value['activite'] . "</br>";
+            echo "<p>" . $value['jour'] . " : " . $value['activite'] . "</p>";
         }
     }
 

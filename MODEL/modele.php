@@ -335,7 +335,7 @@ function afficher_dvd ($list){
 function affiche_mes_films ($list){
 	global $c;
 	echo '<div class="row tm-mb-90 tm-gallery">';
-	echo "<article><h2>Mes DVD en location.</h2></article>";
+	echo "<article><h2>Mes DVD en location</h2></article>";
 	foreach ($list as $key => $value) {
 		echo '<div class="col-xl-4 col-lg-4 col-md- col-sm-6 col-12 mb-5">';
 			echo '<figure class="effect-ming tm-video-item">';
