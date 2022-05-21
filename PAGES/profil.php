@@ -78,9 +78,8 @@ if(isset($_SESSION["username"])){
           </div>
         <div class="tab-pane active text-center gallery connect"  id="studio">
             <div class="section">
-                <p>Retrouvez et modifiez toutes les informations qui vous concernent.</p>
                 <div class="row">
-                    <p> Mes Points : <?php echo affichePoints($_SESSION["id"]); ?></p>        
+                    <p class="nbpoints"> Mes Points : <?php echo affichePoints($_SESSION["id"]); ?></p>        
                 </div>
                 <p>&nbsp;</p>
                 <h5>Modification du mot de passe</h5>
