@@ -76,7 +76,7 @@ if(isset($_SESSION["username"])){
 
             ?>
           </div>
-        <div class="tab-pane active text-center gallery" id="studio">
+        <div class="tab-pane active text-center gallery connect"  id="studio">
             <div class="section">
                 <p>Retrouvez et modifiez toutes les informations qui vous concernent.</p>
                 <div class="row">
@@ -84,30 +84,31 @@ if(isset($_SESSION["username"])){
                 </div>
                 <p>&nbsp;</p>
                 <h5>Modification du mot de passe</h5>
+                <br>
                 <form method="post">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="old-password" type="password" class="validate" name="ancien_mot_de_passe">
                             <label for="old-password">Ancien mot de passe</label>
+                            <input id="old-password" type="password" class="validate" name="ancien_mot_de_passe">
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="password" type="password" class="validate" name="mot_de_passe">
                             <label for="password">Nouveau mot de passe</label>
+                            <input id="password" type="password" class="validate" name="mot_de_passe">
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="confirmation" type="password" class="validate" name="confirmation">
                             <label for="confirmation">Confirmation du nouveau mot de passe</label>
+                            <input id="confirmation" type="password" class="validate" name="confirmation">
                         </div>
                     </div>
                     <div class="row">
                         <p class="center">
-                            <button class="modal-action modal-close btn waves-effect waves-light" type="submit" name="password_update">
-                                Modifier le mot de passe
-                            </button>
+                            <input class="modal-action modal-close btn waves-effect waves-light" type="submit" name="password_update" value="modifier mon mot de passe">
+                                
+                            </input>
                         </p>
                     </div>
                 </form>
