@@ -77,19 +77,11 @@ function isBiggerDate($date1,$date2){
 
 }
 
-//fonction qui dit si la date en entrée et au moins 2jours de plus qu'aujourd'hui
-function isTwoDaysAfter($dateDebut){
-    //on met la date en entré en temps
-    $d = strtotime($dateDebut);
-
-    //on crée le temps, qui est l'heure actuelle, mais en enlevant 
-    //les heures, les mins et les sec en trop
-    // on veut j+2 à 00:00:00 heure
-    $mtn = time();
-    $ajdPlus2j = $mtn + (2 * 24 * 60 * 60) ;
-
+//fonction qui prend un temps representant un jour
+// et renvoit ce même jour mais àl'heure 00:00:00
+function jourExacte($time){
     //on récupère le temps en trop
-    $heureTrop = date("H:i:s", $ajdPlus2j);
+    $heureTrop = date("H:i:s", $time);
     $tempsTrop = explode(":",$heureTrop);
 
     $heure = intval($tempsTrop[0]) * 60 * 60;
@@ -98,11 +90,20 @@ function isTwoDaysAfter($dateDebut){
 
     $trop = $heure + $min+ $sec;
 
-    //on met à jour j+2 avec le temps en trop
-    $ajdPlus2j = $ajdPlus2j -  $trop ;
+    $res = $time - $trop;
+    return $res;
+}
 
+//fonction qui dit si la date en entrée et au moins 2jours de plus qu'aujourd'hui
+function isTwoDaysAfter($dateDebut){
+    //on met la date en entré en temps
+    $d = strtotime($dateDebut);
 
-    return $d >= $ajdPlus2j;
+    $ajdPlus2j = time() + (2 * 24 * 60 * 60);
+
+    $jExacte = jourExacte($ajdPlus2j);
+
+    return $d >= $jExacte;
 }
 
 function isYourDvd($idUser,$idDvd){
@@ -121,16 +122,6 @@ function isYourDvd($idUser,$idDvd){
 
     return $trouve;
 
-}
-
-
-//fonction qui supprime la reservation d'un utilisateur
-function supprimeReservation($user, $film){
-    global $c;
-    $sql = "DELETE FROM `reservation` WHERE `idDvd`= $film AND `idLocataire` = $user";
-    $res = mysqli_query($c, $sql);
-
-    return $res;
 }
 
 
@@ -195,8 +186,9 @@ function isAlreadyReserved($idUser){
         $dt = strtotime($dateFin);
 
         $ajd = time();
+        $jour = jourExacte($ajd);
 
-        if($dt < $ajd){
+        if($dt < $jour){
             $isReserved = false;
         }
     }
@@ -219,16 +211,18 @@ function getResaFilm($idFilm){
 
     global $c;
     $tab = array();
-    //on peut pas réserver plus de 20 jours.
-    //il est donc pas necessaire de récupérer les dvd
-    // dont la date de fin est inférieure à aujourd'hui -20
+    //Pour ne pas réserver par dessus quelqu'un dont la réservation est en cours,
+    //on sélectionne toute les dates où la dates de fin est supérieure à aujourd'hui + 2 jours.
 
-    //sachant qu'on doit réserver deux jours à l'avance, on peut sélectionner
-    // les films avec une date de début supérieure ou égale à aujourd'hui -18
-    $jMoins18 = time() - (18 * 24 * 60 * 60);
-    $date = date("Y-m-d",$jMoins18);
+    //ensuite il reste un cas parmis toutes ces dates,
+    //le cas où la date de début est avant aujourd'hui + 2jours à voir dans les fonctions qui suivent
 
-    $sql = "SELECT idLocataire, points, dateDebut, dateFin FROM User INNER JOIN Reservation ON idUser = idLocataire WHERE idDvd = $idFilm AND dateDebut > \"$date\" ";
+    $fin = time() + (2 * 24 * 60 * 60);
+    $dateFin = jourExacte($fin);
+
+    $date = date("Y-m-d",$dateFin);
+
+    $sql = "SELECT idLocataire, dateDebut, dateFin FROM Reservation WHERE idDvd = $idFilm AND dateFin > \"$date\" ";
     $res = mysqli_query($c,$sql);
 
     if($res){
@@ -240,19 +234,21 @@ function getResaFilm($idFilm){
     return $tab;
 }
 
+
 //fonction qui renvoit une liste de réservation avec des conflits
 function getConflitResa($idFilm,$debut,$fin){
 
     $conflits = array();
     $reservations = getResaFilm($idFilm);
-    var_dump($reservations);
  
     if(!empty($reservations)){
         foreach($reservations as &$resa){
+
             $d = $resa['dateDebut'];
             $f = $resa['dateFin'];
-            
-            if(isDateIn($debut,$d,$f) || isDateIn($fin,$d,$f)){
+        
+            //on regarde si la potentielle reservation est dans une autre, ou si elle est par dessus
+            if(isDateIn($debut,$d,$f) || isDateIn($fin,$d,$f) || isDateIn($d,$debut,$fin) || isDateIn($f,$debut,$fin)){
                 $conflits[] = $resa;
             }
         }
@@ -261,12 +257,72 @@ function getConflitResa($idFilm,$debut,$fin){
 }
 
 
+//fonction qui di si un utilisateur à plus de points que l'autre
+// user 1 a t-il plus de points
+function haveMorePoints($user1,$user2){
+
+    global $c;
+
+    $sql = "SELECT idUser, points FROM User WHERE idUser = $user1 OR idUser = $user2";
+    $res = mysqli_query($c,$sql);
+
+    while($row = mysqli_fetch_assoc($res)){
+
+        if($row["idUser"] == $user1){
+            $pt1 = $row["points"];
+        }elseif($row["idUser"] == $user2){
+            $pt2 = $row["points"];
+        }
+    }
+    return $pt1 > $pt2;
+}
+
+
+//fonction qui dit si la reservation est en cours
+// $debut < (date de blockage = ajd +2j) < $fin
+function isInProcess($debut,$fin){
+
+    $jour = time() + (2 * 24 * 60 * 60);
+    $j2 = jourExacte($jour);
+    
+    $d = strtotime($debut);
+    $f = strtotime($fin);
+
+    return ($d <= $j2) && ($f >= $j2); 
+}
+
 
 // fonction qui prend en paramètre les dates de début et de fin d'une réservation
 // et dit si il est possible de réserver
 // (on peut réserver, si il n'y a personne sur ces dates, ou si l'utlisateur à plus de points)
-function isDateReservable($idFilm,$iduser,$debut,$fin){
+function isDateReservable($idFilm,$idUser,$debut,$fin){
 
+    $conflits = getConflitResa($idFilm,$debut,$fin);
+
+    if(empty($conflits)){
+        $res = true;
+    }else{
+        //on regarde si chaque resa en conflit peuvent être
+        //réservé par dessus sinon on arrête
+        $res = true;
+        $i = 0;
+        while( ($i < sizeof($conflits)) && ($res) ){
+
+            $id = $conflits[$i]["idLocataire"];
+            var_dump($id);
+
+            $d = $conflits[$i]["dateDebut"];
+            var_dump($d);
+            $f = $conflits[$i]["dateFin"];
+            var_dump($f);
+
+            if( (!haveMorePoints($idUser,$id)) || (isInProcess($d,$f))){
+                $res = false;
+            }
+            $i++;
+        }
+    }
+    return $res;
 }
 
 
