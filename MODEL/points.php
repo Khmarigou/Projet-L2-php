@@ -14,7 +14,13 @@ function ajoutePoints($user,$points){
     $sql = "UPDATE User u SET points = u.points + $points WHERE idUser=$user";
 
     $res = mysqli_query($c,$sql);
-
+    if($points == 1){
+        $message = "Vous avez gagné " . $points . " point.";
+    }
+    else{
+       $message = "Vous avez gagné " . $points . " points.";
+    }
+    ajoutLog($user, $message);
 
     $modif = true;
 
@@ -34,9 +40,9 @@ function ajoutePointsLocation ($user) {
     $row = mysqli_fetch_assoc($result);
     $nbReservation = intval($row['COUNT(*)']);
     if ($nbReservation == 0) {
-        $modif = ajoutePoints($user, 5);
+        $modif = ajoutePoints($user, 50);
     } else {
-        $modif = ajoutePoints ($user, 1);
+        $modif = ajoutePoints ($user, 10);
     }
     return $modif;
 }
