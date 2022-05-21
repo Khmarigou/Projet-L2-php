@@ -1,6 +1,8 @@
 <?php
 
-include_once "logs.php";
+    include_once "reserve.php";
+    include_once "logs.php";
+
 /**
     Modifie le nombre de points d'un utilisateur.
     @param $user : l'id de l'utilisateur.
@@ -56,6 +58,12 @@ function affichePoints($user){
     $res = $row['points'];
     
     return $res;
+}
+
+function inactif($user){
+    recupereLogs($user);
+    var_dump($value['jour']);
+    exit;
 }
 
 ?>

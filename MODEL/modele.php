@@ -2,6 +2,8 @@
 <!-- Gestion connection admin -->
 <?php
 
+include_once "points.php";
+
 //$c = mysqli_connect("localhost", "root", "", "l2_info_11");
 $c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 
@@ -38,11 +40,12 @@ if(isset($_POST["login"])){
 		$correct_password=password_verify($password, $passwordbdd);
 
 		if(!empty($reponse["username"]) AND $correct_password){
-
+			
 			$_SESSION["id"] = $reponse['idUser'];
 			$_SESSION["username"] = $_POST['username'];
 			$_SESSION["password"] = $_POST['password'];
 			$_SESSION["is_admin"] = $reponse['is_admin'];
+			inactif($_SESSION["id"]);
 			header('Location: ../index.php?page=profil');
 			
 
