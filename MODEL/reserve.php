@@ -77,6 +77,12 @@ function isBiggerDate($date1,$date2){
 
 }
 
+//fonction qui prend un temps representant un jour
+// et renvoit ce même jour mais àl'heure 00:00:00
+function jourExacte($time){
+    return $res;
+}
+
 //fonction qui dit si la date en entrée et au moins 2jours de plus qu'aujourd'hui
 function isTwoDaysAfter($dateDebut){
     //on met la date en entré en temps
@@ -225,6 +231,19 @@ function getResaFilm($idFilm){
     //ensuite il reste un cas parmis toutes ces dates,
     //le cas où la date de début est avant aujourd'hui + 2jours à voir dans les fonctions qui suivent
     $dateFin = time() + (2 * 24 * 60 * 60);
+    //on récupère le temps en trop
+    $heureTrop = date("H:i:s", $dateFin);
+    $tempsTrop = explode(":",$heureTrop);
+
+    $heure = intval($tempsTrop[0]) * 60 * 60;
+    $min = intval($tempsTrop[1]) * 60;
+    $sec = intval($tempsTrop[2]);
+
+    $trop = $heure + $min+ $sec;
+
+    //on met à jour j+2 avec le temps en trop
+    $ajdPlus2j = $ajdPlus2j -  $trop ;
+
     $date = date("Y-m-d",$dateFin);
 
     $sql = "SELECT idLocataire, points, dateDebut, dateFin FROM User INNER JOIN Reservation ON idUser = idLocataire WHERE idDvd = $idFilm AND dateFin > \"$date\" ";
@@ -247,7 +266,7 @@ function getConflitResa($idFilm,$debut,$fin){
  
     if(!empty($reservations)){
         foreach($reservations as &$resa){
-            
+
             $d = $resa['dateDebut'];
             $f = $resa['dateFin'];
         
@@ -281,7 +300,17 @@ function haveMorePoints($user1,$user2){
     return $pt1 > $pt2;
 }
 
+//fonction qui dit si la reservation est en cours
+// $debut < (date de blockage = ajd +2j) < $fin
+function isInProcess($debut,$fin){
 
+    $j2 = time() +(2 * 24 * 60 * 60);
+    
+    $d = strtotime($debut);
+    $f = strtotime($fin);
+
+    return ($d <= $j2) && ($f >= $j2); 
+}
 
 // fonction qui prend en paramètre les dates de début et de fin d'une réservation
 // et dit si il est possible de réserver
