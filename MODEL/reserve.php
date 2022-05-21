@@ -125,16 +125,6 @@ function isYourDvd($idUser,$idDvd){
 }
 
 
-//fonction qui prend trois dates en entrées, et dis si la premère et entre les deux autres
-function isDateIn($date, $dateInf, $dateSupp){
-    $d = strtotime($date);
-    $dI = strtotime($dateInf);
-    $dS = strtotime($dateSupp); 
-
-    return ($d >= $dI) && ($d <= $dS);
-
-}
-
 //fonction qui supprime la reservation d'un utilisateur
 function supprimeReservation($user, $film){
     global $c;
@@ -187,9 +177,54 @@ function pointsReserve($debut,$fin){
     return $pts;
 }
 
+//fonction qui prend trois dates en entrées, et dis si la premère et entre les deux autres
+function isDateIn($date, $dateInf, $dateSupp){
+    $d = strtotime($date);
+    $dI = strtotime($dateInf);
+    $dS = strtotime($dateSupp); 
+
+    return ($d >= $dI) && ($d <= $dS);
+
+}
+
+
+// function qui dis si le dvd est déjà réservé par l'utilisateur
+//(pour ne pas réserver plusieurs fois d'affilé)
+function isAlreadyReserved($idUser){
+
+    $isReserved = false;
+    global $c;
+
+    $sql = "SELECT * FROM Reservation WHERE idLocataire = $idUser ORDER BY dateFin DESC";
+    $res = mysqli_query($c,$sql);
+    $row = mysqli_fetch_assoc($res)
+
+    if(isset($row)){
+
+        $dateFin = $row["dateFin"];
+        $dt = strtotime($dateFin);
+
+        $ajd = time();
+
+        if($dt < $ajd){
+            $isReserved = true;
+        }
+    }
+    return $isReserved;
+}
 
 
 
+// fonction qui prend en paramètre les dates de début et de fin d'une réservation
+// et dit si il est possible de réserver
+// (on peut réserver, si il n'y a personne sur ces dates, ou si l'utlisateur à plus de points)
+function isDateDispo($iduser,$debut,$fin){
+
+    global $c;
+
+    $sql = "";
+
+}
 
 
 
