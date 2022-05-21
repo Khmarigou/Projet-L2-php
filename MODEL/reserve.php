@@ -211,23 +211,65 @@ function isDateIn($date, $dateInf, $dateSupp){
     $dS = strtotime($dateSupp); 
 
     return ($d >= $dI) && ($d <= $dS);
-
 }
+
+
+//renvoit toutes les réservations d'un film
+function getResaFilm($idFilm){
+
+    global $c;
+    $tab = array();
+    //on peut pas réserver plus de 20 jours.
+    //il est donc pas necessaire de récupérer les dvd
+    // dont la date de fin est inférieure à aujourd'hui -20
+
+    //sachant qu'on doit réserver deux jours à l'avance, on peut sélectionner
+    // les films avec une date de début supérieure ou égale à aujourd'hui -18
+    $jMoins18 = time() - (18 * 24 * 60 * 60);
+    $date = date("Y-m-d",$jMoins18);
+
+    $sql = "SELECT idLocataire, points, dateDebut, dateFin FROM User INNER JOIN Reservation ON idUser = idLocataire WHERE idDvd = $idFilm AND dateDebut > \"$date\" ";
+    $res = mysqli_query($c,$sql);
+
+    if($res){
+        while($row = mysqli_fetch_assoc($res)){
+            $tab[] = $row;
+        }
+    }
+    
+    return $tab;
+}
+
+//fonction qui renvoit une liste de réservation avec des conflits
+function getConflitResa($idFilm,$debut,$fin){
+
+    $conflits = array();
+    $reservations = getResaFilm($idFilm);
+    var_dump($reservations);
+ 
+    if(!empty($reservations)){
+        foreach($reservations as &$resa){
+            $d = $resa['dateDebut'];
+            $f = $resa['dateFin'];
+            
+            if(isDateIn($debut,$d,$f) || isDateIn($fin,$d,$f)){
+                $conflits[] = $resa;
+            }
+        }
+    }
+    return $conflits;
+}
+
 
 
 // fonction qui prend en paramètre les dates de début et de fin d'une réservation
 // et dit si il est possible de réserver
 // (on peut réserver, si il n'y a personne sur ces dates, ou si l'utlisateur à plus de points)
-function isDateReservable($iduser,$debut,$fin){
-
-    global $c;
-    $canReserve = true;
-
-    $sql = "";
-
-    return $canReserve;
+function isDateReservable($idFilm,$iduser,$debut,$fin){
 
 }
+
+
 
 
 
