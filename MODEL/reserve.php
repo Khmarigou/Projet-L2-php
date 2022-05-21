@@ -177,16 +177,6 @@ function pointsReserve($debut,$fin){
     return $pts;
 }
 
-//fonction qui prend trois dates en entrées, et dis si la premère et entre les deux autres
-function isDateIn($date, $dateInf, $dateSupp){
-    $d = strtotime($date);
-    $dI = strtotime($dateInf);
-    $dS = strtotime($dateSupp); 
-
-    return ($d >= $dI) && ($d <= $dS);
-
-}
-
 
 // function qui dis si le dvd est déjà réservé par l'utilisateur
 //(pour ne pas réserver plusieurs fois d'affilé)
@@ -215,15 +205,28 @@ function isAlreadyReserved($idUser){
 }
 
 
+//fonction qui prend trois dates en entrées, et dis si la premère et entre les deux autres
+function isDateIn($date, $dateInf, $dateSupp){
+    $d = strtotime($date);
+    $dI = strtotime($dateInf);
+    $dS = strtotime($dateSupp); 
+
+    return ($d >= $dI) && ($d <= $dS);
+
+}
+
 
 // fonction qui prend en paramètre les dates de début et de fin d'une réservation
 // et dit si il est possible de réserver
 // (on peut réserver, si il n'y a personne sur ces dates, ou si l'utlisateur à plus de points)
-function isDateDispo($iduser,$debut,$fin){
+function isDateReservable($iduser,$debut,$fin){
 
     global $c;
+    $canReserve = true;
 
     $sql = "";
+
+    return $canReserve = 
 
 }
 
