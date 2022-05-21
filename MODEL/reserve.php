@@ -264,7 +264,6 @@ function haveMorePoints($user1,$user2){
     global $c;
 
     $sql = "SELECT idUser, points FROM User WHERE idUser = $user1 OR idUser = $user2";
-    var_dump($sql);
     $res = mysqli_query($c,$sql);
 
     while($row = mysqli_fetch_assoc($res)){
@@ -298,29 +297,32 @@ function isInProcess($debut,$fin){
 // (on peut réserver, si il n'y a personne sur ces dates, ou si l'utlisateur à plus de points)
 function isDateReservable($idFilm,$idUser,$debut,$fin){
 
-    $reservable = true;
     $conflits = getConflitResa($idFilm,$debut,$fin);
 
     if(empty($conflits)){
-        $reservable = true;
+        $res = true;
     }else{
         //on regarde si chaque resa en conflit peuvent être
         //réservé par dessus sinon on arrête
+        $res = true;
         $i = 0;
-        while(($i < sizeof($conflits)) && $reservable ){
+        while( ($i < sizeof($conflits)) && ($res) ){
 
             $id = $conflits[$i]["idLocataire"];
+            var_dump($id);
 
             $d = $conflits[$i]["dateDebut"];
+            var_dump($d);
             $f = $conflits[$i]["dateFin"];
+            var_dump($f);
 
-            if( (! haveMorePoints($idUser,$id)) || (isInProcess($d,$f))){
-                $reservable = false;
+            if( (!haveMorePoints($idUser,$id)) || (isInProcess($d,$f))){
+                $res = false;
             }
             $i++;
         }
     }
-    return $reservable;
+    return $res;
 }
 
 
