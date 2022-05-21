@@ -211,7 +211,40 @@ function isDateIn($date, $dateInf, $dateSupp){
     $dS = strtotime($dateSupp); 
 
     return ($d >= $dI) && ($d <= $dS);
+}
 
+
+//renvoit toutes les réservations d'un film
+function getResaFilm($idFilm){
+
+    global $c;
+    
+    //on peut pas réserver plus de 20 jours.
+    //il est donc pas necessaire de récupérer les dvd
+    // dont la date de fin est inférieure à aujourd'hui -20
+
+    //sachant qu'on doit réserver deux jours à l'avance, on peut sélectionner
+    // les films avec une date de début supérieure ou égale à aujourd'hui -18
+
+    $jMoins18 = time() - (18 * 24 * 60 * 60);
+    var_dump($jMoins18);
+
+    $date = date("Y-m-d",$jMoins18);
+    var_dump($date);
+
+    $sql = "SELECT idUser, points FROM User INNER JOIN Dvd WHERE idDvd = $idFilm AND dateDebut > \" $date \" ";
+    var_dump($sql);
+    $res = mysqli_query($c,$sql);
+
+    if($res){
+        while($row = mysqli_fetch_assoc($res)){
+            $tab[] = $row;
+        }
+    }
+    if(!isset($tab)){
+        $tab = array();
+    }
+    return $tab;
 }
 
 
@@ -226,8 +259,9 @@ function isDateReservable($iduser,$debut,$fin){
     $sql = "";
 
     return $canReserve;
-
 }
+
+
 
 
 
