@@ -52,6 +52,9 @@
 			if($_POST['Categorie'] == ""){
 				echo "résultats pour : <span style='font-style: italic; font-weight: bold;'>" . "$titre ". "</span>";	
 			}
+			else if($_POST['Titre'] == "") {
+				echo "résultats pour la catégorie <span style='font-style: italic;font-weight: bold;'>". $_POST['Categorie']."</span>";
+			}
 			else{
 				echo "résultats pour : <span style='font-style: italic; font-weight: bold;'>" . "$titre ". "</span> dans la catégorie <span style='font-style: italic;font-weight: bold;'>". $_POST['Categorie']."</span>";
 			}	
