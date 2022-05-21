@@ -41,6 +41,7 @@ if(isset($_POST["note"])){
     if($row == NULL){
         $sql = "INSERT INTO Notation (idUS, idDvd, note) VALUE ($idUs, $idDvd, $note)";
         $result = mysqli_query($c, $sql);
+        ajoutePoints($isUs,10);
     }else{
         $sql = "UPDATE notation SET note = $note WHERE idUs = $idUs AND idDvd = $idDvd";
         $result = mysqli_query($c, $sql);
