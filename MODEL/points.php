@@ -1,5 +1,6 @@
 <?php
 
+include_once "logs.php";
 /**
     Modifie le nombre de points d'un utilisateur.
     @param $user : l'id de l'utilisateur.

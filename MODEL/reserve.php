@@ -409,6 +409,8 @@ if(isset($_POST["location"])){
             ajoutLog($_SESSION['id'], $message);
 
             $points = pointsReserve($deb,$fin);
+            var_dump($points);
+            exit;
             ajoutePoints($idUser,$points);
         }
 
