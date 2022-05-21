@@ -407,6 +407,9 @@ if(isset($_POST["location"])){
         if($result){
             $message = "Vous avez reservé le film " . $row_titre['titre'] . " du " . $deb . " au " . $fin . ".";
             ajoutLog($_SESSION['id'], $message);
+
+            $points = pointsReserve($deb,$fin);
+            ajoutePoints($idUser,$points);
         }
 
         $conflits = getConflitResa($idDvd,$deb,$fin);
