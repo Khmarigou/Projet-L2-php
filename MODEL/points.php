@@ -60,10 +60,19 @@ function affichePoints($user){
     return $res;
 }
 
+//Fonction qui enleve les points d'un utilisateur si il n'a pas fait d'action pendant 30 jours
 function inactif($user){
-    recupereLogs($user);
-    var_dump($value['jour']);
-    exit;
+    global $c;
+    $sql = "SELECT jour FROM Logs WHERE utilisateur = $user ORDER BY jour DESC LIMIT 15";
+    $liste = mysqli_query($c,$sql);
+    $dernier_log = mysqli_fetch_assoc($liste);
+    if(time() + (30 * 24 * 60 * 60) < $dernier_log['jour']){
+        $sql = "UPDATE User u SET points = 0 WHERE idUser=$user";
+        $res = mysqli_query($c,$sql);
+        $message = "Vous avez perdu vos points pour cause d'inactivité.";
+        ajoutLog($user, $message);
+    }
+    
 }
 
 ?>
