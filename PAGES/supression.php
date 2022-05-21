@@ -14,14 +14,33 @@ $titre = $row["titre"];
 $sql="DELETE FROM Notation WHERE idDvd = $id";
 $result = mysqli_query($db,$sql);
 
-$sql4 = "SELECT idLocataire FROM Reservation WHERE idDvd=$id";
+$sql4 = "SELECT * FROM Reservation WHERE idDvd=$id";
 $res = mysqli_query($db,$sql4);
 $row = mysqli_fetch_assoc($res);
+
+$sql5 = "SELECT titre FROM Dvd INNER JOIN Reservation ON Dvd.id = Reservation.idDvd WHERE idDvd = $id";
+$res = mysqli_query($db,$sql5);
+$row_titre = mysqli_fetch_assoc($res);
+
 if(!empty($row)){
     foreach ($row as $key => $value) {
-        $message = "Votre réservation à été annulé car le film n'est plus disponible";
+        $message = "Votre réservation pour le film ". $row_titre['titre'] . " du " . $row['dateDebut'] . " au " .  $row['dateFin'] . " à été annulé car le film à été supprimé";
         ajoutLog($value, $message);
     }
+}
+
+$sql6 = "SELECT idUser FROM User INNER JOIN Dvd ON User.idUser = Dvd.proprio";
+$res_proprio = mysqli_query($db,$sql6);
+$row_proprio = mysqli_fetch_assoc($res_proprio);
+
+
+if(!empty($row_proprio)){
+    foreach ($row_proprio as $key => $value) {
+        $message = "Votre film ". $titre . " à été supprimé par un administrateur.";
+        ajoutLog($value, $message);
+    }
+    
+    
 }
 
 $sql= "DELETE FROM Reservation WHERE idDvd=$id";
@@ -29,6 +48,7 @@ $sql2= "DELETE FROM Dvd WHERE id=$id";
 
 $result = mysqli_query($db,$sql);
 $result2 = mysqli_query($db,$sql2);
+
 header('Location: ../praujet/index.php?page=suggestion');
 
 if($result){

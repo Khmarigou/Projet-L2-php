@@ -111,7 +111,6 @@ function isYourDvd($idUser,$idDvd){
 
     $sql = "SELECT id FROM Dvd WHERE proprio=$idUser";
     $res = mysqli_query($c,$sql);
-    var_dump($sql);
     
     while(($row = mysqli_fetch_assoc($res)) && !$trouve){
         
@@ -241,6 +240,13 @@ if(isset($_POST["location"])){
 
         $sql = "INSERT INTO Reservation (idDvd, idLocataire, dateDebut, dateFin) VALUES ($idDvd,$idUser,'$deb','$fin')";
         $result = mysqli_query($db, $sql);
+
+        $sql2 = "SELECT titre FROM Dvd WHERE id = $idDvd ";
+        $res = mysqli_query($db, $sql2);
+        $row_titre = mysqli_fetch_assoc($res);
+        
+        $message = "Vous avez reservé le film " . $row_titre['titre'] . " du " . $deb . " au " . $fin . ".";
+        ajoutLog($_SESSION['id'], $message);
 
         header('Location: ../index.php?page=suggestion');
     }
