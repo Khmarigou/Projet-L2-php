@@ -326,6 +326,20 @@ function isDateReservable($idFilm,$idUser,$debut,$fin){
 }
 
 
+//fonction qui supprime une réservation et met un log à un
+//l'utilisateur qui n'a plus sa reservation
+function supprimeResa($idDvd,$idUser,$message){
+
+    global $c;
+
+    $sql ="DELETE FROM Reservation WHERE idDvd = $idDvd AND idLocataire = $idUser";
+    $res = mysqli_query($c,$sql);
+
+    if($res){
+        ajoutLog($idUser,$message);
+    }
+}
+
 
 
 
@@ -377,7 +391,15 @@ if(isset($_POST["location"])){
 
         header('Location: ../index.php?page=dvd_detail&id='.$idDvd);
 
-    }else{
+    }elseif(isDateReservable($idDvd,$idUser,$deb,$fin)){
+
+        $conflits = getConflitResa($idDvd,$deb,$fin);
+        if(!empty($conflits)){
+            foreach($conflits as &$resa){
+                supprimeResa($idDvd, $resa["idLocataire"],$message);
+            }
+        }
+
 
         $sql = "INSERT INTO Reservation (idDvd, idLocataire, dateDebut, dateFin) VALUES ($idDvd,$idUser,'$deb','$fin')";
         $result = mysqli_query($db, $sql);
@@ -389,7 +411,20 @@ if(isset($_POST["location"])){
         $message = "Vous avez reservé le film " . $row_titre['titre'] . " du " . $deb . " au " . $fin . ".";
         ajoutLog($_SESSION['id'], $message);
 
+        
+        $conflits = getConflitResa($idDvd,$deb,$fin);
+        if(!empty($conflits)){
+            foreach($conflits as &$resa){
+                supprimeResa($idDvd, $resa["idLocataire"],$message);
+            }
+        }
+
         header('Location: ../index.php?page=suggestion');
+
+    }else{
+
+        $message = "Erreur : une erreur est survenue, veuillez réessayer plus tard." ;
+        $_SESSION['error'] = $message;
     } 
 }
 
