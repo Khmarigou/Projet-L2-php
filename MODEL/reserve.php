@@ -393,14 +393,6 @@ if(isset($_POST["location"])){
 
     }elseif(isDateReservable($idDvd,$idUser,$deb,$fin)){
 
-        $conflits = getConflitResa($idDvd,$deb,$fin);
-        if(!empty($conflits)){
-            foreach($conflits as &$resa){
-                supprimeResa($idDvd, $resa["idLocataire"],$message);
-            }
-        }
-
-
         $sql = "INSERT INTO Reservation (idDvd, idLocataire, dateDebut, dateFin) VALUES ($idDvd,$idUser,'$deb','$fin')";
         $result = mysqli_query($db, $sql);
 
@@ -411,7 +403,7 @@ if(isset($_POST["location"])){
         $message = "Vous avez reservé le film " . $row_titre['titre'] . " du " . $deb . " au " . $fin . ".";
         ajoutLog($_SESSION['id'], $message);
 
-        
+
         $conflits = getConflitResa($idDvd,$deb,$fin);
         if(!empty($conflits)){
             foreach($conflits as &$resa){
