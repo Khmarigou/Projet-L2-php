@@ -204,7 +204,7 @@ font-size: 1.6rem;
 
 .tm-hero {
 min-height: 200px;
-background: transparent;
+background-image:url(../IMAGES/hero.jpg);
 }
 
 .tm-mt-60 { margin-top: 60px; }
