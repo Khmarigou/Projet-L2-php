@@ -11,7 +11,7 @@
 
         $d2 = "2022-06-30";
 
-        $t = getResaFilm(9);
+        $t = getResaFilm(9,$d1,$d2);
         var_dump($t);
 
 
