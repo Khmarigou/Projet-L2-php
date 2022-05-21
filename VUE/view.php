@@ -34,9 +34,9 @@
                         <li class="nav-item">
                             <a class="nav-link nav-link-2" href=".?page=louer">Louer</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link nav-link-2" href=".?page=testDate">Date</a>
-                        </li>
+                        </li> -->
 
 
                         <!-- <li class="nav-item">
