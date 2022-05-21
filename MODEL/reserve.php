@@ -410,7 +410,6 @@ if(isset($_POST["location"])){
 
             $points = pointsReserve($deb,$fin);
             var_dump($points);
-            exit;
             ajoutePoints($idUser,$points);
         }
 
