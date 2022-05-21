@@ -2,6 +2,7 @@
 <?php
 
 include_once "logs.php";
+include_once "points.php";
 
 //$db = mysqli_connect("localhost", "root", "", "l2_info_11");
 $db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
@@ -172,7 +173,7 @@ function pointsReserve($debut,$fin){
 //(pour ne pas réserver plusieurs fois d'affilé)
 function isAlreadyReserved($idUser){
 
-    $isReserved = true;
+    $isReserved = false;
     global $c;
 
     $sql = "SELECT * FROM Reservation WHERE idLocataire = $idUser ORDER BY dateFin DESC";
@@ -190,6 +191,8 @@ function isAlreadyReserved($idUser){
 
         if($dt < $jour){
             $isReserved = false;
+        }else{
+            $isReserved = true;
         }
     }
     return $isReserved;
@@ -394,6 +397,7 @@ if(isset($_POST["location"])){
     }elseif(isDateReservable($idDvd,$idUser,$deb,$fin)){
 
         $sql = "INSERT INTO Reservation (idDvd, idLocataire, dateDebut, dateFin) VALUES ($idDvd,$idUser,'$deb','$fin')";
+        var_dump($sql);
         $result = mysqli_query($db, $sql);
 
         $sql2 = "SELECT titre FROM Dvd WHERE id = $idDvd ";
@@ -403,12 +407,17 @@ if(isset($_POST["location"])){
         if($result){
             $message = "Vous avez reservé le film " . $row_titre['titre'] . " du " . $deb . " au " . $fin . ".";
             ajoutLog($_SESSION['id'], $message);
+
+            $points = pointsReserve($deb,$fin);
+            var_dump($points);
+            exit;
+            ajoutePoints($idUser,$points);
         }
 
         $conflits = getConflitResa($idDvd,$deb,$fin);
         if(!empty($conflits)){
             foreach($conflits as &$resa){
-                $message = "IMPORTANT ! Votre réservation pour le film ". $row_titre['titre'] . " du " . $deb . " au ". $fin . " à été annulé par la réservation d'un utilisateur avec plus de points";
+                $message = "IMPORTANT ! Votre réservation pour le film ". $row_titre['titre'] . " du " . $deb . " au ". $fin . " à été annulé par la réservation d'un utilisateur avec plus de points.";
                 supprimeResa($idDvd, $resa["idLocataire"],$message);
                 ajoutePoints($resa["idLocataire"], 20);
             }
