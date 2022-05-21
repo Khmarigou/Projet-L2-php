@@ -43,6 +43,7 @@ c fait : - il faut réserver deux jour à l'avance minimum (date début => date 
     - si tu réserves par dessus la réservation de quelqu'un qui a moins de points, celui qui en a le moins gagne des points
     - plus la durée de réservation est longue, plus tu perds des points
         - resa < 4 jours = perd 0pt
+        - resa > 4 jours = perd 1pt
         - resa > 6 jours = perd 2 pts
         - resa > 14 jours = perd 4 pts
 
@@ -141,6 +142,56 @@ function supprimeReservation($user, $film){
 
     return $res;
 }
+
+
+//fonction qui prend en entrée deux dates, et dis combien de jours
+// il y a entre les deux
+function countDays($debut,$fin){
+
+    $td = strtotime($debut);
+    $tf = strtotime($fin);
+
+    $j = $tf - $td;
+    $res = (($j / 24) / 60) / 60;
+
+    return $res;
+}
+
+//fonction qui dit si la reservation dure plus de 20 jours
+function isMoreTwentyDays($debut,$fin){
+
+    $nbJ = countDays($debut,$fin);
+
+    return $nbJ > 20;
+}
+
+
+//fonction qui prend en entrée deux dates de réservations, et
+// renvoit le nombre de points à gagner ou perdre en fonction
+// du nb de jour
+function pointsReserve($debut,$fin){
+
+    $jour = countDays($debut,$fin);
+
+    if($jour <= 4){
+        $pts = 0;
+    }elseif( $jour < 6){
+        $pts = -1;
+    }elseif( $jour < 14){
+        $pts = -2;
+    }else{
+        $pts = -4;
+    }
+
+    return $pts;
+}
+
+
+
+
+
+
+
 
 if(isset($_POST["location"])){
 
