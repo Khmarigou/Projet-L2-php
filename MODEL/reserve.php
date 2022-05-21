@@ -222,7 +222,7 @@ function getResaFilm($idFilm){
 
     $date = date("Y-m-d",$dateFin);
 
-    $sql = "SELECT idLocataire, points, dateDebut, dateFin FROM User INNER JOIN Reservation ON idUser = idLocataire WHERE idDvd = $idFilm AND dateFin > \"$date\" ";
+    $sql = "SELECT idLocataire, dateDebut, dateFin FROM Reservation WHERE idDvd = $idFilm AND dateFin > \"$date\" ";
     $res = mysqli_query($c,$sql);
 
     if($res){
@@ -296,15 +296,30 @@ function isInProcess($debut,$fin){
 // fonction qui prend en paramètre les dates de début et de fin d'une réservation
 // et dit si il est possible de réserver
 // (on peut réserver, si il n'y a personne sur ces dates, ou si l'utlisateur à plus de points)
-function isDateReservable($idFilm,$iduser,$debut,$fin){
+function isDateReservable($idFilm,$idUser,$debut,$fin){
 
-    $reservable = false;
+    $reservable = true;
     $conflits = getConflitResa($idFilm,$debut,$fin);
 
-    if(!empty($conflits)){
-        $reservable = false;
+    if(empty($conflits)){
+        $reservable = true;
+    }else{
+        //on regarde si chaque resa en conflit peuvent être
+        //réservé par dessus sinon on arrête
+        $i = 0;
+        while(($i < sizeof($conflits)) && $reservable ){
+
+            $id = $conflits[$i]["idLocataire"];
+
+            $d = $conflits[$i]["dateDebut"];
+            $f = $conflits[$i]["dateFin"];
+
+            if( (! haveMorePoints($idUser,$id)) || (isInProcess($d,$f))){
+                $reservable = false;
+            }
+            $i++;
+        }
     }
-    
     return $reservable;
 }
 
