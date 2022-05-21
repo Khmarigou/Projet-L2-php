@@ -225,16 +225,13 @@ function isDateReservable($iduser,$debut,$fin){
 
     $sql = "";
 
-    return $canReserve = 
+    return $canReserve;
 
 }
 
 
 
-
 if(isset($_POST["location"])){
-
-    
 
     session_start();
     $deb = $_POST['debut'];
@@ -295,10 +292,7 @@ if(isset($_POST["location"])){
         ajoutLog($_SESSION['id'], $message);
 
         header('Location: ../index.php?page=suggestion');
-    }
-   
-
-    
+    } 
 }
 
 
