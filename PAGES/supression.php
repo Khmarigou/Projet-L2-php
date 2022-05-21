@@ -13,6 +13,16 @@ $titre = $row["titre"];
 
 $sql="DELETE FROM Notation WHERE idDvd = $id";
 $result = mysqli_query($db,$sql);
+
+$sql4 = "SELECT idLocataire FROM Reservation WHERE idDvd=$id";
+$res = mysqli_query($db,$sql4);
+$row = mysqli_fetch_assoc($res);
+
+foreach ($row as $key => $value) {
+    $message = "Votre réservation à été annulé car le film n'est plus disponible";
+    ajoutLog($value, $message);
+}
+
 $sql= "DELETE FROM Reservation WHERE idDvd=$id";
 $sql2= "DELETE FROM Dvd WHERE id=$id";
 
