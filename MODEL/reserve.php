@@ -80,22 +80,8 @@ function isBiggerDate($date1,$date2){
 //fonction qui prend un temps representant un jour
 // et renvoit ce même jour mais àl'heure 00:00:00
 function jourExacte($time){
-    return $res;
-}
-
-//fonction qui dit si la date en entrée et au moins 2jours de plus qu'aujourd'hui
-function isTwoDaysAfter($dateDebut){
-    //on met la date en entré en temps
-    $d = strtotime($dateDebut);
-
-    //on crée le temps, qui est l'heure actuelle, mais en enlevant 
-    //les heures, les mins et les sec en trop
-    // on veut j+2 à 00:00:00 heure
-    $mtn = time();
-    $ajdPlus2j = $mtn + (2 * 24 * 60 * 60) ;
-
     //on récupère le temps en trop
-    $heureTrop = date("H:i:s", $ajdPlus2j);
+    $heureTrop = date("H:i:s", $time);
     $tempsTrop = explode(":",$heureTrop);
 
     $heure = intval($tempsTrop[0]) * 60 * 60;
@@ -104,11 +90,20 @@ function isTwoDaysAfter($dateDebut){
 
     $trop = $heure + $min+ $sec;
 
-    //on met à jour j+2 avec le temps en trop
-    $ajdPlus2j = $ajdPlus2j -  $trop ;
+    $res = $time - $trop;
+    return $res;
+}
 
+//fonction qui dit si la date en entrée et au moins 2jours de plus qu'aujourd'hui
+function isTwoDaysAfter($dateDebut){
+    //on met la date en entré en temps
+    $d = strtotime($dateDebut);
 
-    return $d >= $ajdPlus2j;
+    $ajdPlus2j = time() + (2 * 24 * 60 * 60);
+
+    $jExacte = jourExacte($ajdPlus2j);
+
+    return $d >= $jExacte;
 }
 
 function isYourDvd($idUser,$idDvd){
@@ -127,16 +122,6 @@ function isYourDvd($idUser,$idDvd){
 
     return $trouve;
 
-}
-
-
-//fonction qui supprime la reservation d'un utilisateur
-function supprimeReservation($user, $film){
-    global $c;
-    $sql = "DELETE FROM `reservation` WHERE `idDvd`= $film AND `idLocataire` = $user";
-    $res = mysqli_query($c, $sql);
-    
-    return $res;
 }
 
 
@@ -201,8 +186,9 @@ function isAlreadyReserved($idUser){
         $dt = strtotime($dateFin);
 
         $ajd = time();
+        $jour = jourExacte($ajd);
 
-        if($dt < $ajd){
+        if($dt < $jour){
             $isReserved = false;
         }
     }
@@ -230,19 +216,9 @@ function getResaFilm($idFilm){
 
     //ensuite il reste un cas parmis toutes ces dates,
     //le cas où la date de début est avant aujourd'hui + 2jours à voir dans les fonctions qui suivent
-    $dateFin = time() + (2 * 24 * 60 * 60);
-    //on récupère le temps en trop
-    $heureTrop = date("H:i:s", $dateFin);
-    $tempsTrop = explode(":",$heureTrop);
 
-    $heure = intval($tempsTrop[0]) * 60 * 60;
-    $min = intval($tempsTrop[1]) * 60;
-    $sec = intval($tempsTrop[2]);
-
-    $trop = $heure + $min+ $sec;
-
-    //on met à jour j+2 avec le temps en trop
-    $ajdPlus2j = $ajdPlus2j -  $trop ;
+    $fin = time() + (2 * 24 * 60 * 60);
+    $dateFin = jourExacte($fin);
 
     $date = date("Y-m-d",$dateFin);
 
