@@ -14,6 +14,8 @@
         $t = getResaFilm(9,$d1,$d2);
         var_dump($t);
 
+        $t2 = haveMorePoints(3,2);
+
 
     ?>
 

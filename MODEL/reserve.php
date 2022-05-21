@@ -260,7 +260,26 @@ function getConflitResa($idFilm,$debut,$fin){
     return $conflits;
 }
 
+//fonction qui di si un utilisateur à plus de points que l'autre
+// user 1 a t-il plus de points
+function haveMorePoints($user1,$user2){
 
+    global $c;
+
+    $sql = "SELECT idUser, points FROM User WHERE idUser = $user1 OR idUser = $user2";
+    var_dump($sql);
+    $res = mysqli_query($c,$sql);
+
+    while($row = mysqli_fetch_assoc($res)){
+
+        if($row["idUser"] == $user1){
+            $pt1 = $row["points"];
+        }elseif($row["idUser"] == $user2)
+            $pt2 = $row["points"];
+        }
+    }
+    return $pt1 > $pt2;
+}
 
 // fonction qui prend en paramètre les dates de début et de fin d'une réservation
 // et dit si il est possible de réserver
