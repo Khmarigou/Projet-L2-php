@@ -129,7 +129,7 @@ function supprimeReservation($user, $film){
     global $c;
     $sql = "DELETE FROM `reservation` WHERE `idDvd`= $film AND `idLocataire` = $user";
     $res = mysqli_query($c, $sql);
-
+    
     return $res;
 }
 
@@ -219,16 +219,15 @@ function getResaFilm($idFilm){
 
     global $c;
     $tab = array();
-    //on peut pas réserver plus de 20 jours.
-    //il est donc pas necessaire de récupérer les dvd
-    // dont la date de fin est inférieure à aujourd'hui -20
+    //Pour ne pas réserver par dessus quelqu'un dont la réservation est en cours,
+    //on sélectionne toute les dates où la dates de fin est supérieure à aujourd'hui + 2 jours.
 
-    //sachant qu'on doit réserver deux jours à l'avance, on peut sélectionner
-    // les films avec une date de début supérieure ou égale à aujourd'hui -18
-    $jMoins18 = time() - (18 * 24 * 60 * 60);
-    $date = date("Y-m-d",$jMoins18);
+    //ensuite il reste un cas parmis toutes ces dates,
+    //le cas où la date de début est avant aujourd'hui + 2jours à voir dans les fonctions qui suivent
+    $dateFin = time() + (2 * 24 * 60 * 60);
+    $date = date("Y-m-d",$dateFin);
 
-    $sql = "SELECT idLocataire, points, dateDebut, dateFin FROM User INNER JOIN Reservation ON idUser = idLocataire WHERE idDvd = $idFilm AND dateDebut > \"$date\" ";
+    $sql = "SELECT idLocataire, points, dateDebut, dateFin FROM User INNER JOIN Reservation ON idUser = idLocataire WHERE idDvd = $idFilm AND dateFin > \"$date\" ";
     $res = mysqli_query($c,$sql);
 
     if($res){
@@ -245,14 +244,15 @@ function getConflitResa($idFilm,$debut,$fin){
 
     $conflits = array();
     $reservations = getResaFilm($idFilm);
-    var_dump($reservations);
  
     if(!empty($reservations)){
         foreach($reservations as &$resa){
+            
             $d = $resa['dateDebut'];
             $f = $resa['dateFin'];
-            
-            if(isDateIn($debut,$d,$f) || isDateIn($fin,$d,$f)){
+        
+            //on regarde si la potentielle reservation est dans une autre, ou si elle est par dessus
+            if(isDateIn($debut,$d,$f) || isDateIn($fin,$d,$f) || isDateIn($d,$debut,$fin) || isDateIn($f,$debut,$fin)){
                 $conflits[] = $resa;
             }
         }
@@ -274,18 +274,27 @@ function haveMorePoints($user1,$user2){
 
         if($row["idUser"] == $user1){
             $pt1 = $row["points"];
-        }elseif($row["idUser"] == $user2)
+        }elseif($row["idUser"] == $user2){
             $pt2 = $row["points"];
         }
     }
     return $pt1 > $pt2;
 }
 
+
+
 // fonction qui prend en paramètre les dates de début et de fin d'une réservation
 // et dit si il est possible de réserver
 // (on peut réserver, si il n'y a personne sur ces dates, ou si l'utlisateur à plus de points)
 function isDateReservable($idFilm,$iduser,$debut,$fin){
 
+    $reservable = false;
+    $conflits = getConflitResa($idFilm,$debut,$fin);
+
+    if(!empty($conflits)){
+        $reservable = false;
+    }
+    return $reservable;
 }
 
 

@@ -11,10 +11,11 @@
 
         $d2 = "2022-06-30";
 
-        $t = getResaFilm(9,$d1,$d2);
+        $t = getResaFilm(10);
         var_dump($t);
 
-        $t2 = haveMorePoints(3,2);
+        $t2 = getConflitResa(10,"2022-05-19","2022-06-");
+        var_dump($t2);
 
 
     ?>
