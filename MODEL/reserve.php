@@ -400,14 +400,17 @@ if(isset($_POST["location"])){
         $res = mysqli_query($db, $sql2);
         $row_titre = mysqli_fetch_assoc($res);
         
-        $message = "Vous avez reservé le film " . $row_titre['titre'] . " du " . $deb . " au " . $fin . ".";
-        ajoutLog($_SESSION['id'], $message);
-
+        if($result){
+            $message = "Vous avez reservé le film " . $row_titre['titre'] . " du " . $deb . " au " . $fin . ".";
+            ajoutLog($_SESSION['id'], $message);
+        }
 
         $conflits = getConflitResa($idDvd,$deb,$fin);
         if(!empty($conflits)){
             foreach($conflits as &$resa){
+                $message = "IMPORTANT ! Votre réservation pour le film ". $row_titre['titre'] . " du " . $deb . " au ". $fin . " à été annulé par la réservation d'un utilisateur avec plus de points";
                 supprimeResa($idDvd, $resa["idLocataire"],$message);
+                ajoutePoints($resa["idLocataire"], 20);
             }
         }
 
