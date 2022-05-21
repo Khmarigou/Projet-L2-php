@@ -49,7 +49,10 @@
         <div class="row mb-4">
             <h2 class="col-6 tm-text-primary">
 			<?php 
-			if($_POST['Categorie'] == ""){
+			 if($_POST['Categorie'] == "" AND $_POST['Titre'] == ""){
+				echo "Découvre le catalogue de DVD";
+			}	
+			else if($_POST['Categorie'] == ""){
 				echo "résultats pour : <span style='font-style: italic; font-weight: bold;'>" . "$titre ". "</span>";	
 			}
 			else if($_POST['Titre'] == "") {
@@ -57,7 +60,7 @@
 			}
 			else{
 				echo "résultats pour : <span style='font-style: italic; font-weight: bold;'>" . "$titre ". "</span> dans la catégorie <span style='font-style: italic;font-weight: bold;'>". $_POST['Categorie']."</span>";
-			}	
+			}
 			?>
                  
             </h2>

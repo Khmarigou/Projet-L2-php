@@ -35,7 +35,7 @@
 	<div class="container-fluid tm-container-content tm-mt-60">
         <div class="row mb-4">
             <h2 class="col-6 tm-text-primary">
-                Vos meilleurs recommendations
+				Découvre le catalogue de DVD
             </h2>
         </div>
         <?php
