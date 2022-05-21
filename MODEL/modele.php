@@ -331,6 +331,53 @@ function afficher_dvd ($list){
 	}
 	
 }
+
+function affiche_mes_films ($list){
+	global $c;
+	echo '<div class="row tm-mb-90 tm-gallery">';
+	echo "<article><h2>Mes DVD en location.</h2></article>";
+	foreach ($list as $key => $value) {
+		echo '<div class="col-xl-4 col-lg-4 col-md- col-sm-6 col-12 mb-5">';
+			echo '<figure class="effect-ming tm-video-item">';
+	
+				echo "<img src='./IMAGES/Locations/". $value["couverture"] . "' class='img-fluid image-resize'>";
+				echo '<figcaption class="d-flex align-items-center justify-content-center">';
+				echo '<h2>'.$value["titre"].' </br><p><b>Categorie :</b> '.$value["categorie"].'</p><br><br><br></h2>';
+				$id = $value["id"];
+				echo "<a href='index.php?page=dvd_detail&id=$id'>View more</a>";
+				echo '</figcaption>';                 
+			echo '</figure>';
+			echo '<div class="d-flex justify-content-between tm-text-gray">';
+				
+				
+					
+			$id = $value["id"];
+			echo "<a class='btn_supprimer' href='index.php?page=supression&id=$id'>Supprimer</a>";
+					
+			
+				$id = $value["id"];
+				$sql = "SELECT COUNT(*) FROM Notation WHERE idDvd = $id";
+				$result = mysqli_query($c, $sql);
+				$row =  mysqli_fetch_assoc($result);
+				$nbNote = intval($row['COUNT(*)']);
+				if($nbNote == 0){
+					echo '<span>Pas de notes</span>';
+				}else {
+					$sql = "SELECT SUM(note) FROM Notation WHERE idDvd = $id";
+					$result = mysqli_query($c, $sql);
+					$row =  mysqli_fetch_assoc($result);
+					$noteCumul = intval($row['SUM(note)']);
+					$moy = round($noteCumul / $nbNote,1) ;
+					echo '<span>Note : '.$moy.'/5 </span>';
+				}
+			echo '</div>';
+		echo '</div>';
+	}
+	echo '</div>'; 
+	
+	
+}
+
 function afficher_film ($film){
 	if ($film == null)
 	{
@@ -394,6 +441,8 @@ function afficher_film_similaire($list){
 	}
 	
 }
+
+
 
 //test pour page de reservation 
 //alexandre
