@@ -569,15 +569,6 @@ table {
 }
 
 
-
-
-
-
-
-
-
-
-
 .h6, h6 {
     font-size: .75rem !important;
     font-weight: 500;
@@ -816,9 +807,6 @@ img.rounded {
 
 /* dropdown */
 
-
-
-
 .dropdown-menu {
     position: absolute;
     top: 100%;
@@ -915,10 +903,50 @@ img.rounded {
 
 }
 
+.conteneur{
+    display: flex;
+}
 
+.left{
+    flex-grow: 1;
+    width: 60%;
+}
 
+.right{
+    flex-grow: 1;
+    width: 40%;
+    margin-right: 5%;
+    margin-top: 5%;
+}
 
+.right h2{
+    text-align: center;
+    margin-bottom: 30px;
+}
 
+@media (max-width: 767px) {
+    .conteneur{
+        display: block
+    }
+    
+    .left{
+        margin: 10%;
+    }
+    
+    .right{
+        text-align: center;
+        margin: 10%;
+    }
+}
 
+.log{
+    padding-left: 30%;
+    text-align:left;
+    
+}
+
+.log p{
+    font-size: 1em;
+}
 
 

@@ -24,7 +24,7 @@ $row_titre = mysqli_fetch_assoc($res);
 
 if(!empty($row)){
     foreach ($row as $key => $value) {
-        $message = "Votre réservation pour le film ". $row_titre['titre'] . " du " . $row['dateDebut'] . " au " .  $row['dateFin'] . " à été annulé car le film à été supprimé";
+        $message = "Votre réservation pour le film ". $row_titre['titre'] . " du " . $row['dateDebut'] . " au " .  $row['dateFin'] . " à été annulé car le film à été supprimé.";
         ajoutLog($value, $message);
     }
 }
