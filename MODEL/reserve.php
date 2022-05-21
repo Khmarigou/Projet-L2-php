@@ -231,7 +231,7 @@ if(isset($_POST["location"])){
 
     }elseif(isMoreTwentyDays($deb,$fin)){
 
-        $message = "Impossible de réserver : vous devez réserver au moins deux jour à l'avance." ;
+        $message = "Impossible de réserver : votre réservation dépasse la durée maximale de 20 jours." ;
         $_SESSION['error'] = $message;
 
         header('Location: ../index.php?page=dvd_detail&id='.$idDvd);
