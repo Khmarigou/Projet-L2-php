@@ -2,6 +2,7 @@
 <?php
 
 include_once "logs.php";
+
 //$db = mysqli_connect("localhost", "root", "", "l2_info_11");
 $db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 
@@ -202,23 +203,37 @@ if(isset($_POST["location"])){
     $fin = $_POST['fin'];
     $idDvd = $_POST['idDvd'];
     $idUser = $_SESSION['id'];
+    $_SESSION['error'] = null;
     //$c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 
 
 
     if(isBiggerDate($deb,$fin)){
-        /* $message = "Impossible de réserver : les dâtes ne sont pas cohérentes." ;
-        printPHP($message); */
+
+        $message = "Impossible de réserver : les dâtes ne sont pas cohérentes." ;
+        $_SESSION['error'] = $message;
+        
         header('Location: ../index.php?page=dvd_detail&id='.$idDvd);
 
     }elseif(!isTwoDaysAfter($deb)){
-        /* $message = "Impossible de réserver : vous devez réserver au moins deux jour à l'avance." ;
-        printPHP($message); */
+
+        $message = "Impossible de réserver : vous devez réserver au moins deux jour à l'avance." ;
+        $_SESSION['error'] = $message;
+
+        header('Location: ../index.php?page=dvd_detail&id='.$idDvd);
+
+    }elseif(isMoreTwentyDays($deb,$fin)){
+
+        $message = "Impossible de réserver : vous devez réserver au moins deux jour à l'avance." ;
+        $_SESSION['error'] = $message;
+
         header('Location: ../index.php?page=dvd_detail&id='.$idDvd);
 
     }elseif(isYourDvd($idUser,$idDvd)){
-        /* $message = "Impossible de réserver : vous ne pouvez pas réserver votre propre DVD." ;
-        printPHP($message); */
+
+        $message = "Impossible de réserver : vous ne pouvez pas réserver votre propre DVD." ;
+        $_SESSION['error'] = $message;
+
         header('Location: ../index.php?page=dvd_detail&id='.$idDvd);
 
     }else{

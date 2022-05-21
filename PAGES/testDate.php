@@ -6,12 +6,17 @@
 
         include_once "../praujet/MODEL/reserve.php";
 
-        $d1 = "2022-05-20";
+        $d1 = "2022-06-01";
 
-        $d2 = "2022-05-22";
+        $d2 = "2022-06-30";
 
-        $t = countDays($d1,"2022-05-30");
+        $t = isMoreTwentyDays($d1,$d2);
         var_dump($t);
+
+        $p = pointsReserve($d1,$d2);
+        var_dump($p);
+
+
 
         
 

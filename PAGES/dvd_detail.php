@@ -40,6 +40,14 @@ $db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 
     <?php
 
+    if(isset($_SESSION['error'])){
+        echo "<div class=\"erreur\">";
+        echo $_SESSION['error'];
+        echo "</div>";
+
+        $_SESSION['error'] = null;
+    }
+
     if(isset($_GET['id'])){
         $id = $_GET['id'];
         $sql = "SELECT * FROM Dvd WHERE id = $id";
