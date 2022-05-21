@@ -1133,6 +1133,10 @@ img.rounded {
 
 .erreur {
     color: red;
+    font-family: "Roboto Slab","Times New Roman",serif;
+    font-size: 3rem;
+    text-align: center;
+    margin : 2rem;
 
 }
 

@@ -208,9 +208,17 @@ if(isset($_POST["location"])){
 
 
 
-    if(isBiggerDate($deb,$fin)){
+    if(isYourDvd($idUser,$idDvd)){
 
-        $message = "Impossible de réserver : les dâtes ne sont pas cohérentes." ;
+        $message = "Impossible de réserver : vous ne pouvez pas réserver votre propre DVD." ;
+        $_SESSION['error'] = $message;
+
+        header('Location: ../index.php?page=dvd_detail&id='.$idDvd);
+
+
+    }elseif(isBiggerDate($deb,$fin)){
+
+        $message = "Impossible de réserver : les dates ne sont pas cohérentes." ;
         $_SESSION['error'] = $message;
         
         header('Location: ../index.php?page=dvd_detail&id='.$idDvd);
@@ -229,14 +237,8 @@ if(isset($_POST["location"])){
 
         header('Location: ../index.php?page=dvd_detail&id='.$idDvd);
 
-    }elseif(isYourDvd($idUser,$idDvd)){
-
-        $message = "Impossible de réserver : vous ne pouvez pas réserver votre propre DVD." ;
-        $_SESSION['error'] = $message;
-
-        header('Location: ../index.php?page=dvd_detail&id='.$idDvd);
-
     }else{
+
         $sql = "INSERT INTO Reservation (idDvd, idLocataire, dateDebut, dateFin) VALUES ($idDvd,$idUser,'$deb','$fin')";
         $result = mysqli_query($db, $sql);
 

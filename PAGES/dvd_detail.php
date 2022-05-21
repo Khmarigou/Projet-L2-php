@@ -58,11 +58,7 @@ $db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 
     ?>
 
-                                                                                
-
-
-
-
+                                                                        
 
     <div class="row mb-4">
         <h2 class="col-12 tm-text-primary">
