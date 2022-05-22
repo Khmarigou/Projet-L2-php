@@ -230,7 +230,7 @@ function getResaFilm($idFilm){
 
     $date = date("Y-m-d",$dateFin);
 
-    $sql = "SELECT idLocataire, dateDebut, dateFin FROM Reservation WHERE idDvd = $idFilm AND dateFin > \"$date\" ";
+    $sql = "SELECT idLocataire, points, dateDebut, dateFin FROM Reservation INNER JOIN User ON User.idUser = Reservation.idLocataire WHERE idDvd = $idFilm AND dateFin > \"$date\" ";
     $res = mysqli_query($c,$sql);
 
     if($res){
@@ -374,141 +374,22 @@ function haveReserved($idUser){
  */
 
 
-//fonction qui renvoit le nombre de jour dans 1 mois
-function joursMois($month,$year){
-    // 't' -> nb de jour dans le mois
-    return date('t',strtotime($year.'-'.$month.'-01'));
-}
+function afficheReservation($idDvd,$idUser){
 
+    $points = affichePoints($idUser);
+    $film = getResaFilm($idDvd);
 
-//fonction qui renvoit le nombre de semaine dans 1 mois
-function semainesMois($month,$year){
-        
-    $nbJours = joursMois($month,$year);
-        
-    $nbWeeks = ($nbJours%7==0?0:1) + intval($nbJours/7);
-    
-    // N -> represente les jour, 1 pour lundi, 7 pour dimanche
-    $finMois= date('N',strtotime($year.'-'.$month.'-'.$nbJours));
-    $debutMois = date('N',strtotime($year.'-'.$month.'-01'));
-       
-    if($finMois < $debutMois){
-        $nbWeeks++;
-    }
-        
-    return $nbWeeks;
-}
-
-
-//fonction permet de créer chaque case de la semaine
-function createColonne(){  
-    
-    $jours = array("Lun.","Mar.","Mer.","Jeu.","Ven.","Sam.","Dim.");
-    $content='';
-    
-    foreach($jours as $key => $j ){
-        
-        $content.='<li class="'.($j==6?'end title':'start title').' title">'.$j.'</li>';
-
-    }
-    
-    return $content;
-}
-
-//fonction qui affiche le contenue de chaque case
-function createCase($numCase,$annee,$mois){
-
-    $jour = $numCase;
-        
-    if($jour==0){
-            
-        $firstDayOfTheWeek = date('N',strtotime($annee.'-'.$mois.'-01'));
-                    
-        if(intval($numCase) == intval($firstDayOfTheWeek)){
-                
-            $jour = 1;
-        
-        }
-    }
-        
-    if( ($jour!=0) && ($jour <= joursMois($mois,$annee)) ){
-            
-        $jour = date('Y-m-d',strtotime($annee.'-'.$mois.'-'.($jour)));
-        $cellContent = $jour;
-        $jour++;   
-            
+    if(empty($film)){
+        echo "<div>";
+        echo "Il n'y a aucune réservations pour ce films, soyez le premier !";
+        echo "</div>";
     }else{
-            
-        $jour =null;
-        $cellContent=null;
+        echo "salut";
     }
 
-    $affiche = '<li id="li-'.$jour.'" class="'.($numCase%7==1?' start ':($numCase%7==0?' end ':' ')).($cellContent==null?'mask':'').'">'.$cellContent.'</li>';
-            
-    return $affiche;
+    return $points;
+
 }
-
-
-function _createNavi(){
-        
-    $nextMonth = $this->currentMonth==12?1:intval($this->currentMonth)+1;
-        
-    $nextYear = $this->currentMonth==12?intval($this->currentYear)+1:$this->currentYear;
-        
-    $preMonth = $this->currentMonth==1?12:intval($this->currentMonth)-1;
-        
-    $preYear = $this->currentMonth==1?intval($this->currentYear)-1:$this->currentYear;
-        
-    return
-        '<div class="header">'.
-            '<a class="prev" href="'.$this->naviHref.'?month='.sprintf('%02d',$preMonth).'&year='.$preYear.'">Prev</a>'.
-                '<span class="title">'.date('Y M',strtotime($this->currentYear.'-'.$this->currentMonth.'-1')).'</span>'.
-            '<a class="next" href="'.$this->naviHref.'?month='.sprintf("%02d", $nextMonth).'&year='.$nextYear.'">Next</a>'.
-        '</div>';
-}
-
-
-//affiche le calendrier
-function afficheCalendrier($idDvd){
-
-    $year = date("Y",time());
-    $month = date("m",time());
-                
-    $jourMois = joursMois($month,$year);
-    
-    $content='<div id="calendar">'.
-                    '<div class="box">'.
-                    //$this->_createNavi().
-                    '</div>'.
-                    '<div class="box-content">'.
-                            '<ul class="label">'.createColonne().'</ul>';   
-                            $content.='<div class="clear"></div>';     
-                            $content.='<ul class="dates">';    
-                            
-                            $weeksInMonth = semainesMois($month,$year);
-
-                            // Create weeks in a month
-                            for( $i=0; $i<$weeksInMonth; $i++ ){
-                                
-                                //Create days in a week
-                                for($j=1;$j<=7;$j++){
-                                    $content.=createCase($i*7+$j,$year,$month);
-                                }
-                            }
-                            
-                            $content.='</ul>';
-                            
-                            $content.='<div class="clear"></div>';     
-        
-                    $content.='</div>';
-            
-    $content.='</div>';
-    return $content;
-}
-
-/*
-createNavi
-show */
 
 
 
