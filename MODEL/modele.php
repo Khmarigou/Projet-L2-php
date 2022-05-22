@@ -61,15 +61,15 @@ if(isset($_POST["login"])){
 
 if(isset($_POST["register"])){
 	session_start();
-	if(!empty($_POST['username']) AND !empty($_POST['password']) AND !empty($_POST['name']) AND !empty($_POST['surname'])){
+	if(!empty($_POST['username']) AND !empty($_POST['password']) AND !empty($_POST['name']) AND !empty($_POST['surname']) AND !empty($_POST['confirmpassword'])){
 
 		//$c = mysqli_connect("localhost", "root", "", "l2_info_11");
 		//$c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 		$pseudo = "SELECT username FROM `User` WHERE `username` = '". $_POST['username'] ."' ";
 		$pseudo_exist = mysqli_query($c, $pseudo);
 		$row = mysqli_num_rows($pseudo_exist);
-
-		if($row == 0){
+		$mdpOk = ($_POST['password'] == $_POST['confirmpassword']);
+		if($row == 0 AND $mdpOk){
 			$crypt_password=password_hash($_POST["password"], PASSWORD_DEFAULT);
 			$sql = "INSERT INTO `User` (`idUser`, `nom`, `prenom`, `username`, `password`, `is_admin`) VALUES (NULL,'$_POST[surname]', '$_POST[name]', '$_POST[username]', '$crypt_password', 0);";
 			$results = mysqli_query($c,$sql);
