@@ -401,9 +401,9 @@ function semainesMois($month,$year){
 
 
 //fonction permet de créer chaque case de la semaine
-function createCase(){  
+function createColonne(){  
     
-    $jours = array("lun.","mar.","mer.","jeu.","ven.","sam.","dim.");
+    $jours = array("Lun.","Mar.","Mer.","Jeu.","Ven.","Sam.","Dim.");
     $content='';
     
     foreach($jours as $key => $j ){
@@ -414,10 +414,40 @@ function createCase(){
     
     return $content;
 }
-     
+
+//fonction qui affiche le contenue de chaque case
+function createCase($numCase,$annee,$mois,$jour){
+        
+    if($jour==0){
+            
+        $firstDayOfTheWeek = date('N',strtotime($annee.'-'.$mois.'-01'));
+                    
+        if(intval($numCase) == intval($firstDayOfTheWeek)){
+                
+            $jour = 1;
+        
+        }
+    }
+        
+    if( ($jour!=0) && ($jour <= joursMois($mois,$annee)) ){
+            
+        $jour = date('Y-m-d',strtotime($annee.'-'.$mois.'-'.($jour)));
+        $cellContent = $jour;
+        $jour++;   
+            
+    }else{
+            
+        $jour =null;
+        $cellContent=null;
+    }
+
+    $affiche = '<li id="li-'.$jour.'" class="'.($numCase%7==1?' start ':($numCase%7==0?' end ':' ')).($cellContent==null?'mask':'').'">'.$cellContent.'</li>';
+            
+    return $affiche;
+}
 /*
 createNavi
-shoDay
+showDay
 show */
 
 

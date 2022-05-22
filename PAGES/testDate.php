@@ -37,7 +37,9 @@
 
         $semaine = semainesMois(4,2022);
         var_dump($semaine);
-        createCase();
+        echo createColonne();
+
+        echo createCase(3,"2022","03",1);
 
     ?>
 
