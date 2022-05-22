@@ -494,9 +494,10 @@ if(isset($_POST["location"])){
         if(!empty($conflits)){
             foreach($conflits as &$resa){
                 //on envoit un message à ceux qui n'ont plus de résa et on leur donne des points
-                $message = "IMPORTANT ! Votre réservation pour le film ". $row_titre['titre'] . " du " . $deb . " au ". $fin . " à été annulé par la réservation d'un utilisateur avec plus de points.";
+                $message = "IMPORTANT ! Votre réservation pour le film ". $row_titre['titre'] . " du " . $deb . " au ". $fin . " à été annulé par la réservation d'un utilisateur avec plus de points. Vous gagnez 20 points en contrepartie";
                 supprimeResa($idDvd, $resa["idLocataire"],$message);
                 ajoutePoints($resa["idLocataire"], 20);
+                
             }
         }
 

@@ -144,7 +144,9 @@ function afficher_suppr_admin()
             $sql = "SELECT * FROM `User` WHERE is_admin = 1 AND username != '".$_SESSION['username']."'";
             $listeAdmin = recup_dvd_sql($sql);
             foreach ($listeAdmin as $key => $value) {
-                echo "<option value='".$value["username"]."'> ".$value["username"]." </option>";
+				if(!$value["username"] == "admin"){
+                	echo "<option value='".$value["username"]."'> ".$value["username"]." </option>";
+				}
             }
 			echo '</p>
 			</select></br>
@@ -186,6 +188,11 @@ function creer_admin()
 	if($username !== ""){
 		$sql = "UPDATE User SET is_admin = 1 WHERE username = '$username'";
 		$results = mysqli_query($c,$sql);
+		$sql = "SELECT * FROM User WHERE username = '$username'";
+		$results = mysqli_query($c,$sql);
+		$row = mysqli_fetch_assoc($results);
+		$message = "Vous êtes devenu administrateur";
+        ajoutLog($row['idUser'], $message);
 	}
 	else{
 		echo("champ vide.");
@@ -199,6 +206,11 @@ function enlever_admin()
 	if($username !== ""){
 		$sql = "UPDATE User SET is_admin = 0 WHERE username = '$username'";
 		$results = mysqli_query($c,$sql);
+		$sql = "SELECT * FROM User WHERE username = '$username'";
+		$results = mysqli_query($c,$sql);
+		$row = mysqli_fetch_assoc($results);
+		$message = "Vous n'êtes plus administrateur";
+        ajoutLog($row['idUser'], $message);
 	}
 	else{
 		echo("champ vide.");
