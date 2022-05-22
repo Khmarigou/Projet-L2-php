@@ -35,8 +35,9 @@
         $jour = joursMois(1,2022);
         var_dump($jour);
 
-        $semaine = (1,2022);
+        $semaine = semainesMois(4,2022);
         var_dump($semaine);
+        createCase();
 
     ?>
 

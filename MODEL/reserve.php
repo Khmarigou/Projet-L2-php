@@ -391,7 +391,7 @@ function semainesMois($month,$year){
     // N -> represente les jour, 1 pour lundi, 7 pour dimanche
     $finMois= date('N',strtotime($year.'-'.$month.'-'.$nbJours));
     $debutMois = date('N',strtotime($year.'-'.$month.'-01'));
-        
+       
     if($finMois < $debutMois){
         $nbWeeks++;
     }
@@ -399,6 +399,26 @@ function semainesMois($month,$year){
     return $nbWeeks;
 }
 
+
+//fonction permet de créer chaque case de la semaine
+function createCase(){  
+    
+    $jours = array("lun.","mar.","mer.","jeu.","ven.","sam.","dim.");
+    $content='';
+    
+    foreach($jours as $key => $j ){
+        
+        $content.='<li class="'.($j==6?'end title':'start title').' title">'.$j.'</li>';
+
+    }
+    
+    return $content;
+}
+     
+/*
+createNavi
+shoDay
+show */
 
 
 
