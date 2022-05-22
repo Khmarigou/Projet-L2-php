@@ -5,7 +5,7 @@
 include_once "points.php";
 
 //$c = mysqli_connect("localhost", "root", "", "l2_info_11");
-$c = mysqli_connect("localhost:3307", "l2_info_11", "Mei9shoh", "l2_info_11");
+$c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 
 $sql = "CREATE TABLE User(
     idUser INT NOT NULL AUTO_INCREMENT,

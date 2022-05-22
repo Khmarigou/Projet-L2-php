@@ -32,10 +32,10 @@
         $teste = isDateReservable(10,7,$d1,$d2);
         var_dump($teste); */
 
-        $jour =
+        $jour = joursMois(1,2022);
         var_dump($jour);
 
-        $semaine =
+        $semaine = (1,2022);
         var_dump($semaine);
 
     ?>
