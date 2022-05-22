@@ -17,13 +17,16 @@ function ajoutePoints($user,$points){
     $sql = "UPDATE User u SET points = u.points + $points WHERE idUser=$user";
 
     $res = mysqli_query($c,$sql);
-    if($points == 1){
-        $message = "Vous avez gagné " . $points . " point.";
+    if($point != 0){
+        if($points == 1){
+            $message = "Vous avez gagné " . $points . " point.";
+        }
+        else{
+           $message = "Vous avez gagné " . $points . " points.";
+        }
+        ajoutLog($user, $message);
     }
-    else{
-       $message = "Vous avez gagné " . $points . " points.";
-    }
-    ajoutLog($user, $message);
+    
 
     $modif = true;
 

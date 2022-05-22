@@ -381,32 +381,35 @@ function afficheReservation($idDvd,$idUser){
 
     if(empty($reservation)){
         echo "<div>";
-        echo "Il n'y a aucune réservation pour ce film, soyez le premier !";
+        echo "<h3 class='center'>Il n'y a aucune réservation pour ce film, soyez le premier !</h3>";
         echo "</div>";
     }else{
-
+        echo "<h3 class='center'>Les dernières réservations de ce film</h3>";
         echo "<table>";
-        echo "<thead>";
-        echo "<tr><th>Les dernières réservations : <th></tr>";
-        echo "</thead>";
+        echo "<thead>
+        <th class='center'>début de la reservation</th>
+        <th class='center'>Fin de la reservation</th>
+        <th class='center'>Possibilité de surpasser la reservation</th>
+        </thead>";
+
         echo "<tbody>";
         foreach($reservation as &$resa){
-            echo "<tr>";
-            
+            echo "<tr>" ;
 
             if($resa["points"] >= $points){
-                echo "<td class='orange'>". $resa["dateDebut"] ."</td>";
-                echo "<td class='orange'>". $resa["dateFin"] ."</td>";
+                echo "<td class='orange center'>". $resa["dateDebut"] ."</td>";
+                echo "<td class='orange center'>". $resa["dateFin"] ."</td>";
+                echo "<td class='orange center'>&#x274C;</td>";
             }else{
-                echo "<td class='vert'>". $resa["dateDebut"] ."</td>";
-                echo "<td class='vert'>". $resa["dateFin"] ."</td>";
+                echo "<td class='vert center'>". $resa["dateDebut"] ."</td>";
+                echo "<td class='vert center'>". $resa["dateFin"] ."</td>";
+                echo "<td class='vert center'>&#x2705;</td>";
             }
             
             echo "</tr>";
         }
-        echo "<tbody>";
-        echo "</table>";
-        echo "Vous ne pouvez pas réserver par dessus les dates en oranges, car vous n'avez pas assez de points !<br>";
+        echo "</tbody>";
+        echo "</table><br><br><br>";
     }
     return $points;
 
