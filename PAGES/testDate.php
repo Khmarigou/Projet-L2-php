@@ -6,15 +6,16 @@
 
 
         include_once "../praujet/MODEL/reserve.php";
-        include_once "../praujet/MODEL/calendrierResa.php";
         
 
         $d1 = "2022-05-24";
         $d2 = "2022-06-08";
 
         echo "Voici toutes les reservations récentes : <br>";
-        $t = getResaFilm(1);
+        $t = getResaFilm(2);
         var_dump($t);
+
+        afficheReservation(1,1);
 
         /* echo "<br>";
 

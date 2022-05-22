@@ -230,7 +230,7 @@ function getResaFilm($idFilm){
 
     $date = date("Y-m-d",$dateFin);
 
-    $sql = "SELECT idLocataire, points, dateDebut, dateFin FROM Reservation INNER JOIN User ON User.idUser = Reservation.idLocataire WHERE idDvd = $idFilm AND dateFin > \"$date\" ";
+    $sql = "SELECT idLocataire, points, dateDebut, dateFin FROM Reservation INNER JOIN User ON User.idUser = Reservation.idLocataire WHERE idDvd = $idFilm AND dateFin > \"$date\" ORDER BY dateDebut";
     $res = mysqli_query($c,$sql);
 
     if($res){
@@ -371,22 +371,43 @@ function haveReserved($idUser){
 
 /* 
 -------------------------------------------- Model pour l'affichage des reservations ------------------------------------------------------------
- */
+*/
 
 
 function afficheReservation($idDvd,$idUser){
 
     $points = affichePoints($idUser);
-    $film = getResaFilm($idDvd);
+    $reservation = getResaFilm($idDvd);
 
-    if(empty($film)){
+    if(empty($reservation)){
         echo "<div>";
-        echo "Il n'y a aucune réservations pour ce films, soyez le premier !";
+        echo "Il n'y a aucune réservation pour ce film, soyez le premier !";
         echo "</div>";
     }else{
-        echo "salut";
-    }
 
+        echo "<table>";
+        echo "<thead>";
+        echo "<tr><th>Les dernières réservations : <th></tr>";
+        echo "</thead>";
+        echo "<tbody>";
+        foreach($reservation as &$resa){
+            echo "<tr>";
+            
+
+            if($resa["points"] >= $points){
+                echo "<td class='orange'>". $resa["dateDebut"] ."</td>";
+                echo "<td class='orange'>". $resa["dateFin"] ."</td>";
+            }else{
+                echo "<td class='vert'>". $resa["dateDebut"] ."</td>";
+                echo "<td class='vert'>". $resa["dateFin"] ."</td>";
+            }
+            
+            echo "</tr>";
+        }
+        echo "<tbody>";
+        echo "</table>";
+        echo "Vous ne pouvez pas réserver par dessus les dates en oranges, car vous n'avez pas assez de points !<br>";
+    }
     return $points;
 
 }

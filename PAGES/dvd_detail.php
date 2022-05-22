@@ -55,7 +55,10 @@ $db = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
         afficher_film_test($film, $id);
 
     }
-
+    if(isset($_SESSION["username"])){
+        afficheReservation($_GET['id'],$_SESSION['id']);
+    }
+    
     ?>
 
                                                                         

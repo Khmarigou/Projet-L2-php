@@ -949,4 +949,21 @@ img.rounded {
     font-size: 1em;
 }
 
+.orange{
+    background-color : orange;
+    
+}
+
+.vert{
+    background-color : green;
+}
+
+table{
+    border-collapse: collapse;
+}
+  
+th, td{
+    border: 1px solid black;
+    padding: 10px;
+}
 
