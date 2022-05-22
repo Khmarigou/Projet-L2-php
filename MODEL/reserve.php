@@ -42,7 +42,8 @@ c fait : - il faut réserver deux jour à l'avance minimum (date début => date 
 
 
 - gestion points :
-    - si tu réserves par dessus la réservation de quelqu'un qui a moins de points, celui qui en a le moins gagne des points
+    - si tu réserves par dessus la réservation de quelqu'un qui a moins de points, celui qui en a 
+    le moins gagne des points
     - plus la durée de réservation est longue, plus tu perds des points
         - resa < 4 jours = perd 0pt
         - resa > 4 jours = perd 1pt
@@ -67,6 +68,11 @@ c fait : - il faut réserver deux jour à l'avance minimum (date début => date 
 
 */
 
+
+
+/* 
+-------------------------------------------- Model pour l'ajout de reservation ---------------------------------------------------------------------------
+ */
 date_default_timezone_set("Europe/Paris");
 
 //prend deux dates en string, et renvoit si la première est plus grande que la deuxième
@@ -363,6 +369,26 @@ function haveReserved($idUser){
 }
 
 
+/* 
+-------------------------------------------- Model pour l'affichage des reservations ------------------------------------------------------------
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* 
+-------------------------------------------- Controler pour la gestion des reservations ------------------------------------------------------------
+ */
 
 if(isset($_POST["location"])){
 
