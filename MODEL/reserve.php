@@ -179,7 +179,6 @@ function isAlreadyReserved($idUser){
     $sql = "SELECT * FROM Reservation WHERE idLocataire = $idUser ORDER BY dateFin DESC";
     $res = mysqli_query($c,$sql);
     $row = mysqli_fetch_assoc($res);
-    var_dump($row);
 
     if(isset($row)){
 
@@ -312,12 +311,9 @@ function isDateReservable($idFilm,$idUser,$debut,$fin){
         while( ($i < sizeof($conflits)) && ($res) ){
 
             $id = $conflits[$i]["idLocataire"];
-            var_dump($id);
 
             $d = $conflits[$i]["dateDebut"];
-            var_dump($d);
             $f = $conflits[$i]["dateFin"];
-            var_dump($f);
 
             if( (!haveMorePoints($idUser,$id)) || (isInProcess($d,$f))){
                 $res = false;
@@ -343,6 +339,8 @@ function supprimeResa($idDvd,$idUser,$message){
     }
 }
 
+
+//fonction qui dit si l'utilisateur a déjà une réservation de n'importe quel dvd
 
 
 
@@ -406,7 +404,6 @@ if(isset($_POST["location"])){
         }
 
         $sql = "INSERT INTO Reservation (idDvd, idLocataire, dateDebut, dateFin) VALUES ($idDvd,$idUser,'$deb','$fin')";
-        var_dump($sql);
         $result = mysqli_query($db, $sql);
 
         $sql2 = "SELECT titre FROM Dvd WHERE id = $idDvd ";
@@ -418,7 +415,6 @@ if(isset($_POST["location"])){
             ajoutLog($_SESSION['id'], $message);
 
             $points = pointsReserve($deb,$fin);
-            var_dump($points);
             ajoutePoints($idUser,$points);
         }
 
@@ -428,8 +424,10 @@ if(isset($_POST["location"])){
 
     }else{
 
-        $message = "Erreur : une erreur est survenue, veuillez réessayer plus tard." ;
+        $message = "Impossible de réserver : vous essayer peut-être de réserver par dessus quelqu'un qui a plus de points que vous." ;
         $_SESSION['error'] = $message;
+
+        header('Location: ../index.php?page=dvd_detail&id='.$idDvd);
     } 
 }
 
