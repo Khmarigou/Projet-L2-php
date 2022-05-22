@@ -396,6 +396,15 @@ if(isset($_POST["location"])){
 
     }elseif(isDateReservable($idDvd,$idUser,$deb,$fin)){
 
+        $conflits = getConflitResa($idDvd,$deb,$fin);
+        if(!empty($conflits)){
+            foreach($conflits as &$resa){
+                $message = "IMPORTANT ! Votre réservation pour le film ". $row_titre['titre'] . " du " . $deb . " au ". $fin . " à été annulé par la réservation d'un utilisateur avec plus de points.";
+                supprimeResa($idDvd, $resa["idLocataire"],$message);
+                ajoutePoints($resa["idLocataire"], 20);
+            }
+        }
+
         $sql = "INSERT INTO Reservation (idDvd, idLocataire, dateDebut, dateFin) VALUES ($idDvd,$idUser,'$deb','$fin')";
         var_dump($sql);
         $result = mysqli_query($db, $sql);
@@ -413,14 +422,7 @@ if(isset($_POST["location"])){
             ajoutePoints($idUser,$points);
         }
 
-        $conflits = getConflitResa($idDvd,$deb,$fin);
-        if(!empty($conflits)){
-            foreach($conflits as &$resa){
-                $message = "IMPORTANT ! Votre réservation pour le film ". $row_titre['titre'] . " du " . $deb . " au ". $fin . " à été annulé par la réservation d'un utilisateur avec plus de points.";
-                supprimeResa($idDvd, $resa["idLocataire"],$message);
-                ajoutePoints($resa["idLocataire"], 20);
-            }
-        }
+        
 
         header('Location: ../index.php?page=suggestion');
 
