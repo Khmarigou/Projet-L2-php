@@ -42,7 +42,7 @@ function ajoutePointsLocation ($user) {
     $result = mysqli_query($c, $sql);
     $row = mysqli_fetch_assoc($result);
     $nbReservation = intval($row['COUNT(*)']);
-    if ($nbReservation == 0) {
+    if ($nbReservation == 1) {
         $modif = ajoutePoints($user, 50);
     } else {
         $modif = ajoutePoints ($user, 10);
