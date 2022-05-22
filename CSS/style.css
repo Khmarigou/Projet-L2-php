@@ -952,49 +952,46 @@ img.rounded {
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
 
-* {
-  box-sizing: border-box;
-}
 
 
-.resa table {
+table {
   width: 100%;
   border-spacing: 0;
   border-radius: 1em;
   overflow: hidden;
 }
 
-.resa thead {
+thead {
  visibility: hidden;
  position: absolute;
  width: 0;
  height: 0;
 }
 
-.resa th {
+th {
   background: #3399CC;
   color: #fff;
 }
 
-.resa td:nth-child(1) {
+td:nth-child(1) {
   background: #3399CC;
   color: #fff;
   border-radius: 1em 1em 0 0;
 }
 
-.resa th, .resa td {
+th, td {
   padding: 1em;
 }
 
-.resa tr, .resa td {
+tr, td {
   display: block;
 }
 
-.resa td {
+td {
   position: relative;
 }
 
-.resa td::before {
+td::before {
   content: attr(data-label);
   position: absolute;
   left: 0;
@@ -1004,67 +1001,67 @@ img.rounded {
   text-transform: uppercase;
 }
 
-.resa tr {
+tr {
   margin-bottom: 1.5em;
   border: 1px solid #ddd;
   border-radius: 1em;
   text-align: right;
 }
 
-.resa tr:last-of-type {
+tr:last-of-type {
   margin-bottom: 0;
 }
 
-.resa td:nth-child(n+2):nth-child(odd) {
+td:nth-child(n+2):nth-child(odd) {
   background-color: #ddd;
 }
 
 
 @media only screen and (min-width: 768px) {
   
-    .resa table {
+  table {
     max-width: 1200px;
     margin: 0 auto;
     border: 1px solid #ddd;
   }
   
-  .resa thead {
+  thead {
     visibility: visible;
     position: relative;
   }
   
-  .resa th {
+  th {
     text-align: left;
     text-transform: uppercase;
     font-size: .9em;
   }
   
-  .resa tr {
+  tr {
     display: table-row;
     border: none;
     border-radius: 0;
     text-align: left;
   }
   
-  .resa tr:nth-child(even) {
+  tr:nth-child(even) {
   background-color: #ddd;
-    }
+}
   
-    .resa td {
+  td {
     display: table-cell;
   }
   
-  .resa td::before {
+  td::before {
     content: none;
   }
   
-  .resa td:nth-child(1) {
+  td:nth-child(1) {
     background: transparent;
     color: #444;
     border-radius: 0;
   }
   
-  .resa td:nth-child(n+2):nth-child(odd) {
+  td:nth-child(n+2):nth-child(odd) {
     background-color: transparent;
   }
   

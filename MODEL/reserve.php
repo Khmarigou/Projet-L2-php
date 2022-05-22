@@ -385,7 +385,7 @@ function afficheReservation($idDvd,$idUser){
         echo "</div>";
     }else{
         echo "<h3 class='center'>Les dernières réservations de ce film</h3>";
-        echo "<table class='resa'>";
+        echo "<table>";
         echo "<thead>
         <th class='center'>début de la reservation</th>
         <th class='center'>Fin de la reservation</th>
