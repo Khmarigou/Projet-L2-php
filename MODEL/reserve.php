@@ -421,23 +421,29 @@ if(isset($_POST["location"])){
 
     }elseif(isDateReservable($idDvd,$idUser,$deb,$fin)){
 
+        //on récupère le titre du dvd
+        $sql2 = "SELECT titre FROM Dvd WHERE id = $idDvd ";
+        $res = mysqli_query($db, $sql2);
+        $row_titre = mysqli_fetch_assoc($res);
+
+        //on peut réserver, donc on supprime toutes les reservations en conflits
         $conflits = getConflitResa($idDvd,$deb,$fin);
         if(!empty($conflits)){
             foreach($conflits as &$resa){
+                //on envoit un message à ceux qui n'ont plus de résa et on leur donne des points
                 $message = "IMPORTANT ! Votre réservation pour le film ". $row_titre['titre'] . " du " . $deb . " au ". $fin . " à été annulé par la réservation d'un utilisateur avec plus de points.";
                 supprimeResa($idDvd, $resa["idLocataire"],$message);
                 ajoutePoints($resa["idLocataire"], 20);
             }
         }
 
+        //on ajoute la reservation
         $sql = "INSERT INTO Reservation (idDvd, idLocataire, dateDebut, dateFin) VALUES ($idDvd,$idUser,'$deb','$fin')";
         $result = mysqli_query($db, $sql);
 
-        $sql2 = "SELECT titre FROM Dvd WHERE id = $idDvd ";
-        $res = mysqli_query($db, $sql2);
-        $row_titre = mysqli_fetch_assoc($res);
         
         if($result){
+            //si la reservation a été ajouté, on envoit un message et on met à jour les points
             $message = "Vous avez reservé le film " . $row_titre['titre'] . " du " . $deb . " au " . $fin . ".";
             ajoutLog($_SESSION['id'], $message);
 
