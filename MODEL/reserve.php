@@ -374,8 +374,30 @@ function haveReserved($idUser){
  */
 
 
+//fonction qui renvoit le nombre de jour dans 1 mois
+function joursMois($month,$year){
+    // 't' -> nb de jour dans le mois
+    return date('t',strtotime($year.'-'.$month.'-01'));
+}
 
 
+//fonction qui renvoit le nombre de semaine dans 1 mois
+function semainesMois($month,$year){
+        
+    $nbJours = joursMois($month,$year);
+        
+    $nbWeeks = ($nbJours%7==0?0:1) + intval($nbJours/7);
+    
+    // N -> represente les jour, 1 pour lundi, 7 pour dimanche
+    $finMois= date('N',strtotime($year.'-'.$month.'-'.$nbJours));
+    $debutMois = date('N',strtotime($year.'-'.$month.'-01'));
+        
+    if($finMois < $debutMois){
+        $nbWeeks++;
+    }
+        
+    return $nbWeeks;
+}
 
 
 

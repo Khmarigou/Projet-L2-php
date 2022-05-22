@@ -7,7 +7,7 @@
 
         include_once "../praujet/MODEL/reserve.php";
 
-        $d1 = "2022-05-24";
+        /* $d1 = "2022-05-24";
         $d2 = "2022-06-08";
 
         echo "Voici toutes les reservations récentes : <br>";
@@ -30,7 +30,14 @@
         echo $d2 ."<br>";
 
         $teste = isDateReservable(10,7,$d1,$d2);
-        var_dump($teste);
+        var_dump($teste); */
+
+        $jour =
+        var_dump($jour);
+
+        $semaine =
+        var_dump($semaine);
+
     ?>
 
 </section>
