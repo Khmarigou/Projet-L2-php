@@ -372,6 +372,7 @@ if(isset($_POST["location"])){
     $idDvd = $_POST['idDvd'];
     $idUser = $_SESSION['id'];
     $_SESSION['error'] = null;
+    echo $idDvd;
     //$c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
 
 
