@@ -41,6 +41,8 @@
 
         echo createCase(3,"2022","03",1);
 
+        echo afficheCalendrier(4);
+
     ?>
 
 </section>

@@ -416,7 +416,9 @@ function createColonne(){
 }
 
 //fonction qui affiche le contenue de chaque case
-function createCase($numCase,$annee,$mois,$jour){
+function createCase($numCase,$annee,$mois){
+
+    $jour = $numCase;
         
     if($jour==0){
             
@@ -445,9 +447,48 @@ function createCase($numCase,$annee,$mois,$jour){
             
     return $affiche;
 }
+
+
+//affiche le calendrier
+function afficheCalendrier($idDvd){
+
+    $year = date("Y",time());
+    $month = date("m",time());
+                
+    $jourMois = joursMois($month,$year);
+    
+    $content='<div id="calendar">'.
+                    '<div class="box">'.
+                    //$this->_createNavi().
+                    '</div>'.
+                    '<div class="box-content">'.
+                            '<ul class="label">'.createColonne().'</ul>';   
+                            $content.='<div class="clear"></div>';     
+                            $content.='<ul class="dates">';    
+                            
+                            $weeksInMonth = semainesMois($month,$year);
+
+                            // Create weeks in a month
+                            for( $i=0; $i<$weeksInMonth; $i++ ){
+                                
+                                //Create days in a week
+                                for($j=1;$j<=7;$j++){
+                                    $content.=createCase($i*7+$j,$year,$month);
+                                }
+                            }
+                            
+                            $content.='</ul>';
+                            
+                            $content.='<div class="clear"></div>';     
+        
+                    $content.='</div>';
+            
+    $content.='</div>';
+    return $content;
+}
+
 /*
 createNavi
-showDay
 show */
 
 
