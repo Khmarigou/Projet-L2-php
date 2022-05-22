@@ -6,6 +6,8 @@
 
 
         include_once "../praujet/MODEL/reserve.php";
+        include_once "../praujet/MODEL/calendrierResa.php";
+        
 
         /* $d1 = "2022-05-24";
         $d2 = "2022-06-08";
@@ -32,16 +34,23 @@
         $teste = isDateReservable(10,7,$d1,$d2);
         var_dump($teste); */
 
-        $jour = joursMois(1,2022);
-        var_dump($jour);
+ 
+        /* if ($m == ""){ */
+            
+            $dateComponents = getdate();
+            $month = $dateComponents['mon'];
+            $year = $dateComponents['year'];
+        /* } else {
+        
+            $month = $m;
+            $year = $y;
+        
+        } */
 
-        $semaine = semainesMois(4,2022);
-        var_dump($semaine);
-        echo createColonne();
+        echo build_previousMonth($month, $year, "2");
+        echo build_nextMonth($month,$year,"2");
+        echo build_calendar($month,$year,array("2022-05-01","2022-05-02","2022-05-03"));
 
-        echo createCase(3,"2022","03",1);
-
-        echo afficheCalendrier(4);
 
     ?>
 
