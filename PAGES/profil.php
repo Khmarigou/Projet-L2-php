@@ -84,23 +84,23 @@ if(isset($_SESSION["username"])){
                 <p>&nbsp;</p>
                 <h5>Modification du mot de passe</h5>
                 <br>
-                <form method="post">
+                <form action="../praujet/MODEL/compte.php" method="post">
                     <div class="row">
                         <div class="input-field col s12">
                             <label for="old-password">Ancien mot de passe</label>
-                            <input id="old-password" type="password" class="validate" name="ancien_mot_de_passe">
+                            <input id="old-password" type="password" class="validate" name="old">
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <label for="password">Nouveau mot de passe</label>
-                            <input id="password" type="password" class="validate" name="mot_de_passe">
+                            <input id="password" type="password" class="validate" name="new">
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <label for="confirmation">Confirmation du nouveau mot de passe</label>
-                            <input id="confirmation" type="password" class="validate" name="confirmation">
+                            <input id="confirmation" type="password" class="validate" name="confirm">
                         </div>
                     </div>
                     <div class="row">

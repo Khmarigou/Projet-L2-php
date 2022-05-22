@@ -5,14 +5,14 @@
 include_once "points.php";
 
 //$c = mysqli_connect("localhost", "root", "", "l2_info_11");
-$c = mysqli_connect("localhost", "l2_info_11", "Mei9shoh", "l2_info_11");
+$c = mysqli_connect("localhost:3307", "l2_info_11", "Mei9shoh", "l2_info_11");
 
 $sql = "CREATE TABLE User(
     idUser INT NOT NULL AUTO_INCREMENT,
     nom VARCHAR(50) NOT NULL,
 	prenom VARCHAR(50) NOT NULL,
 	username VARCHAR(50) NOT NULL,
-	password VARCHAR(500) NOT NULL,
+	password VARCHAR(255) NOT NULL,
 	is_admin INT,
 	points INT DEFAULT 0,
 
