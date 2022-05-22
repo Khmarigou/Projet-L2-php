@@ -476,7 +476,9 @@ function afficher_film_test ($film, $id){
 			echo '</div>';
 			echo '<br><h3 class="tm-text-gray-dark mb-3">Louer ce film</h3>';
 			if(isset($_SESSION["username"])){
-				echo "<form method='POST' action='MODEL/reserve.php' enctype='multipart/form-data' value='id' class='text-center mb-5'>";
+				echo "<form method='POST' action='CONTROLER/reserveControler.php' enctype='multipart/form-data' value='id' class='text-center mb-5'>";
+
+				//echo "<form method='POST' action='MODEL/reserve.php' enctype='multipart/form-data' value='id' class='text-center mb-5'>";
 				echo "<input type='hidden' name='idDvd' value='$id' /></br>";//disabled='disabled'
 				echo "<label>Date de début : </label>";
 				echo "<input type='date' name='debut'/></br>";
